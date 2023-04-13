@@ -11,6 +11,7 @@ using System.Windows.Forms;
 
 namespace Viscometer
 {
+    //для гита
     public partial class Form1 : Form
     {
         public Form1()
@@ -22,7 +23,7 @@ namespace Viscometer
         {
             try
             {
-                SerialPort serialPort = new SerialPort("COM3");
+                SerialPort serialPort = new SerialPort("COM6");
                 serialPort.DataReceived += SerialPort_DataReceived;
                 serialPort.Open();
             }
