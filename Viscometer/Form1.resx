@@ -117,26 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
-    <value>A 0 003:00.0
-A 1 125.00
-A 2 002:00.0
-A 24 1
-SV1L,A125.0,C  2:00.0,B  3:00.0,D  0:00.0,F27AJF3422       ,
-L,a  0:01.0,b   0.3,d124.9,e125.0,
-L,a  0:02.0,b   0.0,d124.6,e124.9,
-L,a  0:03.0,b-  0.2,d124.1,e124.8,
-L,a  0:04.0,b-  0.2,d123.9,e124.8,
-L,a  0:05.0,b-  0.2,d123.5,e124.6,
-L,a  0:06.0,b-  0.3,d123.2,e124.6,
-L,a  0:07.0,b-  0.3,d123.1,e124.5,
-L,a  0:08.0,b-  0.3,d122.9,e124.5,
-L,a  0:09.0,b-  0.3,d122.8,e124.4,
-L,a  0:10.0,b-  0.3,d122.7,e124.4,
-L,a  0:11.0,b-  0.4,d122.6,e124.4,
-L,a  0:12.0,b-  0.4,d122.6,e124.3,
-L,a  0:13.0,b-  0.4,d122.6,e124.4,
-L,a  0:14.0,b-  0.4,d122.7,e124.3,
-L,a  0:15.0,b-  0.4,d122.8,e124.3,</value>
-  </data>
 </root>
