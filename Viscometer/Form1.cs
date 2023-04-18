@@ -110,6 +110,27 @@ namespace Viscometer
                             actChart();
                     }
                 }
+                else if (arr[0] == "SV1L")
+                {
+                    foreach (var item in arr)
+                    {
+                        switch (item[0])
+                        {
+                            case 'A':
+                                lblTemperature.Text = "Температура: " + item.Remove(0, 1); break;
+                            case 'B':
+                                lblTestTime.Text = "Время испытания: " + item.Remove(0, 1); break;
+                            case 'C':
+                                lblPreheat.Text = "Время прогрева: " + item.Remove(0, 1); break;
+                            case 'D':
+                                lblRelax.Text = "Время релаксации: " + item.Remove(0, 1); break;
+                            case 'F':
+                                lblNum.Text = "Номер: " + item.Remove(0, 1); break;
+                            default:
+                                break;
+                        }
+                    }
+                }
             }
         }
     }

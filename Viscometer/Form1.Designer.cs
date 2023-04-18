@@ -47,13 +47,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtData = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblRelax = new System.Windows.Forms.Label();
+            this.lblTemperature = new System.Windows.Forms.Label();
+            this.lblPreheat = new System.Windows.Forms.Label();
+            this.lblTestTime = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblNum = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -81,6 +82,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblNum);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
@@ -91,10 +93,10 @@
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.txtData);
             this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.lblRelax);
+            this.panel1.Controls.Add(this.lblTemperature);
+            this.panel1.Controls.Add(this.lblPreheat);
+            this.panel1.Controls.Add(this.lblTestTime);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(722, 3);
@@ -184,12 +186,12 @@
             this.txtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtData.Location = new System.Drawing.Point(0, 287);
+            this.txtData.Location = new System.Drawing.Point(0, 302);
             this.txtData.Multiline = true;
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtData.Size = new System.Drawing.Size(294, 260);
+            this.txtData.Size = new System.Drawing.Size(294, 245);
             this.txtData.TabIndex = 7;
             // 
             // label7
@@ -198,48 +200,48 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.BackColor = System.Drawing.Color.SkyBlue;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(0, 261);
+            this.label7.Location = new System.Drawing.Point(0, 276);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(294, 23);
             this.label7.TabIndex = 6;
             this.label7.Text = "Текущие данные";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // lblRelax
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 212);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(106, 13);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Время релаксации:";
+            this.lblRelax.AutoSize = true;
+            this.lblRelax.Location = new System.Drawing.Point(3, 204);
+            this.lblRelax.Name = "lblRelax";
+            this.lblRelax.Size = new System.Drawing.Size(106, 13);
+            this.lblRelax.TabIndex = 5;
+            this.lblRelax.Text = "Время релаксации:";
             // 
-            // label5
+            // lblTemperature
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Температура:";
+            this.lblTemperature.AutoSize = true;
+            this.lblTemperature.Location = new System.Drawing.Point(3, 182);
+            this.lblTemperature.Name = "lblTemperature";
+            this.lblTemperature.Size = new System.Drawing.Size(77, 13);
+            this.lblTemperature.TabIndex = 4;
+            this.lblTemperature.Text = "Температура:";
             // 
-            // label3
+            // lblPreheat
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 233);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Время прогрева:";
+            this.lblPreheat.AutoSize = true;
+            this.lblPreheat.Location = new System.Drawing.Point(3, 226);
+            this.lblPreheat.Name = "lblPreheat";
+            this.lblPreheat.Size = new System.Drawing.Size(93, 13);
+            this.lblPreheat.TabIndex = 2;
+            this.lblPreheat.Text = "Время прогрева:";
             // 
-            // label2
+            // lblTestTime
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 167);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Время испытания:";
+            this.lblTestTime.AutoSize = true;
+            this.lblTestTime.Location = new System.Drawing.Point(3, 160);
+            this.lblTestTime.Name = "lblTestTime";
+            this.lblTestTime.Size = new System.Drawing.Size(101, 13);
+            this.lblTestTime.TabIndex = 1;
+            this.lblTestTime.Text = "Время испытания:";
             // 
             // label1
             // 
@@ -247,7 +249,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.BackColor = System.Drawing.Color.SkyBlue;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(0, 130);
+            this.label1.Location = new System.Drawing.Point(0, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(294, 23);
             this.label1.TabIndex = 0;
@@ -305,6 +307,15 @@
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 
+            // lblNum
+            // 
+            this.lblNum.AutoSize = true;
+            this.lblNum.Location = new System.Drawing.Point(3, 249);
+            this.lblNum.Name = "lblNum";
+            this.lblNum.Size = new System.Drawing.Size(44, 13);
+            this.lblNum.TabIndex = 16;
+            this.lblNum.Text = "Номер:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,14 +338,14 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTestTime;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartValue;
         private System.Windows.Forms.TextBox txtData;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblRelax;
+        private System.Windows.Forms.Label lblTemperature;
+        private System.Windows.Forms.Label lblPreheat;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperature;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
@@ -344,6 +355,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblNum;
     }
 }
 
