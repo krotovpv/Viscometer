@@ -14,7 +14,6 @@ namespace Viscometer
     public partial class Form1 : Form
     {
         string dataTail = string.Empty;
-        List<string> data = new List<string>();
 
         public Form1()
         {
@@ -102,6 +101,7 @@ namespace Viscometer
             {
                 foreach (var item in arr)
                 {
+                    if (item == "") continue;
                     switch (item[0])
                     {
                         case 'A':

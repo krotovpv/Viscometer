@@ -37,6 +37,9 @@
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblNum = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -54,9 +57,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.lblNum = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblResult = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -108,6 +108,38 @@
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
             this.panel1.Size = new System.Drawing.Size(294, 599);
             this.panel1.TabIndex = 0;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(3, 570);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(65, 13);
+            this.lblResult.TabIndex = 18;
+            this.lblResult.Text = "Результат: ";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.SkyBlue;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(0, 535);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(294, 23);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Результат";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblNum
+            // 
+            this.lblNum.AutoSize = true;
+            this.lblNum.Location = new System.Drawing.Point(3, 249);
+            this.lblNum.Name = "lblNum";
+            this.lblNum.Size = new System.Drawing.Size(44, 13);
+            this.lblNum.TabIndex = 16;
+            this.lblNum.Text = "Номер:";
             // 
             // label14
             // 
@@ -310,38 +342,6 @@
             this.chartTemperature.Size = new System.Drawing.Size(713, 297);
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
-            // 
-            // lblNum
-            // 
-            this.lblNum.AutoSize = true;
-            this.lblNum.Location = new System.Drawing.Point(3, 249);
-            this.lblNum.Name = "lblNum";
-            this.lblNum.Size = new System.Drawing.Size(44, 13);
-            this.lblNum.TabIndex = 16;
-            this.lblNum.Text = "Номер:";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.BackColor = System.Drawing.Color.SkyBlue;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(0, 535);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(294, 23);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Результат";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblResult
-            // 
-            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(3, 570);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(65, 13);
-            this.lblResult.TabIndex = 18;
-            this.lblResult.Text = "Результат: ";
             // 
             // Form1
             // 
