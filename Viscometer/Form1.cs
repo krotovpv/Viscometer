@@ -131,6 +131,10 @@ namespace Viscometer
                         }
                     }
                 }
+                else if (arr[0][0] == 'E')
+                {
+                    lblResult.Text = $"{arr[1]}, {arr[2]}, {arr[3]}, {arr[4]}, {arr[5]}";
+                }
             }
         }
     }

@@ -55,6 +55,8 @@
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lblNum = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -77,11 +79,13 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1019, 553);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1019, 605);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblResult);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblNum);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
@@ -102,7 +106,7 @@
             this.panel1.Location = new System.Drawing.Point(722, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(294, 547);
+            this.panel1.Size = new System.Drawing.Size(294, 599);
             this.panel1.TabIndex = 0;
             // 
             // label14
@@ -117,7 +121,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(4, 100);
+            this.label13.Location = new System.Drawing.Point(3, 100);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(95, 13);
             this.label13.TabIndex = 14;
@@ -126,7 +130,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(4, 78);
+            this.label12.Location = new System.Drawing.Point(3, 78);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(83, 13);
             this.label12.TabIndex = 13;
@@ -153,7 +157,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(4, 56);
+            this.label9.Location = new System.Drawing.Point(3, 56);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(67, 13);
             this.label9.TabIndex = 10;
@@ -162,7 +166,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 34);
+            this.label8.Location = new System.Drawing.Point(3, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 9;
@@ -191,7 +195,7 @@
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtData.Size = new System.Drawing.Size(294, 245);
+            this.txtData.Size = new System.Drawing.Size(294, 230);
             this.txtData.TabIndex = 7;
             // 
             // label7
@@ -274,7 +278,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
             this.chartValue.Series.Add(series1);
-            this.chartValue.Size = new System.Drawing.Size(713, 270);
+            this.chartValue.Size = new System.Drawing.Size(713, 296);
             this.chartValue.TabIndex = 1;
             this.chartValue.Text = "chart1";
             // 
@@ -287,7 +291,7 @@
             this.chartTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.chartTemperature.Legends.Add(legend2);
-            this.chartTemperature.Location = new System.Drawing.Point(3, 279);
+            this.chartTemperature.Location = new System.Drawing.Point(3, 305);
             this.chartTemperature.Name = "chartTemperature";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -303,7 +307,7 @@
             series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
             this.chartTemperature.Series.Add(series2);
             this.chartTemperature.Series.Add(series3);
-            this.chartTemperature.Size = new System.Drawing.Size(713, 271);
+            this.chartTemperature.Size = new System.Drawing.Size(713, 297);
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 
@@ -316,11 +320,34 @@
             this.lblNum.TabIndex = 16;
             this.lblNum.Text = "Номер:";
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.BackColor = System.Drawing.Color.SkyBlue;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(0, 535);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(294, 23);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Результат";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblResult
+            // 
+            this.lblResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(3, 570);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(65, 13);
+            this.lblResult.TabIndex = 18;
+            this.lblResult.Text = "Результат: ";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 556);
+            this.ClientSize = new System.Drawing.Size(1022, 608);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Испытание";
@@ -356,6 +383,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblNum;
+        private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.Label label2;
     }
 }
 
