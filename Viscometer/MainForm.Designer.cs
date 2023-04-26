@@ -1,6 +1,6 @@
 ﻿namespace Viscometer
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -303,6 +303,9 @@
             this.chartValue.Legends.Add(legend1);
             this.chartValue.Location = new System.Drawing.Point(3, 3);
             this.chartValue.Name = "chartValue";
+            this.chartValue.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            this.chartValue.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Lime};
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series1.IsVisibleInLegend = false;
@@ -325,6 +328,10 @@
             this.chartTemperature.Legends.Add(legend2);
             this.chartTemperature.Location = new System.Drawing.Point(3, 305);
             this.chartTemperature.Name = "chartTemperature";
+            this.chartTemperature.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            this.chartTemperature.PaletteCustomColors = new System.Drawing.Color[] {
+        System.Drawing.Color.Red,
+        System.Drawing.Color.Gold};
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.IsVisibleInLegend = false;

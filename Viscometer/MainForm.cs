@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace Viscometer
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         string dataTail = string.Empty;
 
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
         }
