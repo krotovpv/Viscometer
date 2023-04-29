@@ -13,6 +13,7 @@ namespace Viscometer
 {
     public partial class MainForm : Form
     {
+        string portName = string.Empty;
         string dataTail = string.Empty;
 
         public MainForm()
@@ -22,9 +23,19 @@ namespace Viscometer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            using (SelectViscometerForm svForm = new SelectViscometerForm())
+            {
+                if (svForm.ShowDialog() == DialogResult.OK)
+                    portName = svForm.SelectPortName;
+                else
+                    this.Close();
+
+                MessageBox.Show($"Select{portName}");
+            }
+
             try
             {
-                SerialPort serialPort = new SerialPort("COM3");
+                SerialPort serialPort = new SerialPort(portName);
                 serialPort.DataReceived += SerialPort_DataReceived;
                 serialPort.Open();
             }
