@@ -54,9 +54,9 @@
             this.lblPortName.AutoSize = true;
             this.lblPortName.Location = new System.Drawing.Point(0, 76);
             this.lblPortName.Name = "lblPortName";
-            this.lblPortName.Size = new System.Drawing.Size(37, 13);
+            this.lblPortName.Size = new System.Drawing.Size(89, 13);
             this.lblPortName.TabIndex = 2;
-            this.lblPortName.Text = "COM3";
+            this.lblPortName.Text = "Название порта";
             // 
             // lblNumber
             // 
@@ -64,9 +64,9 @@
             this.lblNumber.AutoSize = true;
             this.lblNumber.Location = new System.Drawing.Point(0, 89);
             this.lblNumber.Name = "lblNumber";
-            this.lblNumber.Size = new System.Drawing.Size(61, 13);
+            this.lblNumber.Size = new System.Drawing.Size(117, 13);
             this.lblNumber.TabIndex = 3;
-            this.lblNumber.Text = "27AJF3422";
+            this.lblNumber.Text = "Номер вискозиметра";
             // 
             // pictureBox1
             // 

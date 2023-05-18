@@ -1,6 +1,6 @@
 ﻿namespace ViscometerViewer
 {
-    partial class AddForm
+    partial class AddTestForm
     {
         /// <summary>
         /// Required designer variable.

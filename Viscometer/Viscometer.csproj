@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -47,6 +50,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddViscometerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddViscometerForm.Designer.cs">
+      <DependentUpon>AddViscometerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaveSettings.cs" />
+    <Compile Include="Viscometer.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +79,9 @@
     <Compile Include="UCViscometerButton.Designer.cs">
       <DependentUpon>UCViscometerButton.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddViscometerForm.resx">
+      <DependentUpon>AddViscometerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -87,6 +101,7 @@
     <EmbeddedResource Include="UCViscometerButton.resx">
       <DependentUpon>UCViscometerButton.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

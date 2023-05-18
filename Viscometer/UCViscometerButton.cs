@@ -11,9 +11,13 @@ namespace Viscometer
 {
     public partial class UCViscometerButton : UserControl
     {
-        public UCViscometerButton()
+        public UCViscometerButton(Viscometer viscometer)
         {
             InitializeComponent();
+
+            lblName.Text = viscometer.Name;
+            lblPortName.Text = viscometer.PortName;
+            lblNumber.Text = viscometer.Number;
         }
 
         private void UCViscometerButton_Load(object sender, EventArgs e)
@@ -24,8 +28,6 @@ namespace Viscometer
                 if (item.Name != "picBoxDel")
                     item.Click += UCViscometerButton_Click;
             }
-
-            lblName.Text = new Random().Next().ToString();
         }
 
         private void UCViscometerButton_Click(object sender, EventArgs e)
@@ -41,6 +43,15 @@ namespace Viscometer
         {
             if (MessageBox.Show("Вы действительно желаете удалить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                foreach (var item in SaveSettings.Viscometers)
+                {
+                    if (item.PortName == this.lblPortName.Text)
+                    {
+                        SaveSettings.Viscometers.Remove(item);
+                        break;
+                    }
+                }
+                SaveSettings.Save();
                 FlowLayoutPanel flp = Parent as FlowLayoutPanel;
                 flp.Controls.Remove(this);
             }
