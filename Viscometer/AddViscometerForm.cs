@@ -22,6 +22,7 @@ namespace Viscometer
 
         private void AddViscometerForm_Load(object sender, EventArgs e)
         {
+            cbPortName.Items.Clear();
             cbPortName.Items.AddRange(PortNames);
         }
 

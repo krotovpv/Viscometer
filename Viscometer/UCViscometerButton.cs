@@ -28,6 +28,8 @@ namespace Viscometer
                 if (item.Name != "picBoxDel")
                     item.Click += UCViscometerButton_Click;
             }
+            //проверить доступно ли устройство
+
         }
 
         private void UCViscometerButton_Click(object sender, EventArgs e)
