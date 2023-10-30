@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ViscometerViewer
 {
-    public partial class AddTestForm : Form
+    public partial class AddOrderForm : Form
     {
-        public AddTestForm()
+        public AddOrderForm()
         {
             InitializeComponent();
         }

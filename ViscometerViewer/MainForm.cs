@@ -16,5 +16,16 @@ namespace ViscometerViewer
         {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            new AuthorizationForm().ShowDialog();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            new AddOrderForm().ShowDialog();
+        }
+
     }
 }

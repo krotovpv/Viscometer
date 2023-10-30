@@ -31,15 +31,18 @@
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
+            this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.grpBoxTester = new System.Windows.Forms.GroupBox();
+            this.lblTester = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnChart = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.grpBoxTester.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -61,10 +64,42 @@
             this.txtSearch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txtSearch.Location = new System.Drawing.Point(103, 62);
+            this.txtSearch.Location = new System.Drawing.Point(60, 62);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(848, 20);
+            this.txtSearch.Size = new System.Drawing.Size(891, 20);
             this.txtSearch.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Поиск:";
+            // 
+            // grpBoxTester
+            // 
+            this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxTester.Controls.Add(this.lblTester);
+            this.grpBoxTester.Location = new System.Drawing.Point(671, 12);
+            this.grpBoxTester.Name = "grpBoxTester";
+            this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
+            this.grpBoxTester.TabIndex = 10;
+            this.grpBoxTester.TabStop = false;
+            this.grpBoxTester.Text = "Подразделение";
+            // 
+            // lblTester
+            // 
+            this.lblTester.AutoSize = true;
+            this.lblTester.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTester.Location = new System.Drawing.Point(3, 16);
+            this.lblTester.Name = "lblTester";
+            this.lblTester.Size = new System.Drawing.Size(106, 15);
+            this.lblTester.TabIndex = 0;
+            this.lblTester.Text = "Имя испытателя";
             // 
             // btnSearch
             // 
@@ -135,21 +170,14 @@
             this.btnAdd.TabIndex = 1;
             this.toolTipForButton.SetToolTip(this.btnAdd, "Добавить");
             this.btnAdd.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Строка поиска:";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 526);
+            this.Controls.Add(this.grpBoxTester);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnSearch);
@@ -161,7 +189,10 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "MainForm";
             this.Text = "Вискозиметр";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.grpBoxTester.ResumeLayout(false);
+            this.grpBoxTester.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -179,6 +210,8 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.ToolTip toolTipForButton;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox grpBoxTester;
+        private System.Windows.Forms.Label lblTester;
     }
 }
 
