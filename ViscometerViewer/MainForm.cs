@@ -20,6 +20,10 @@ namespace ViscometerViewer
         private void MainForm_Load(object sender, EventArgs e)
         {
             new AuthorizationForm().ShowDialog();
+            if (!Tester.IsAuthorization) this.Close();
+
+            grpBoxTester.Text = Tester.NameSub;
+            lblTester.Text = Tester.Name;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)

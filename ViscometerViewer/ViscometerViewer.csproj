@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rights.cs" />
     <Compile Include="Tester.cs" />
     <EmbeddedResource Include="AddOrderForm.resx">
       <DependentUpon>AddOrderForm.cs</DependentUpon>

@@ -18,9 +18,27 @@ namespace ViscometerViewer
 
         private void AuthorizationForm_Load(object sender, EventArgs e)
         {
-            DataTable dt = DataBase.GetData("SELECT [nameTester] FROM [Testers]");
-            for (int i = 0; i < dt.Rows.Count; i++)
-                cbName.Items.Add(dt.Rows[i].Field<string>("nameTester"));
+            DataTable dtSub = DataBase.GetData("SELECT [nameSubdiv] FROM [Subdivisions]");
+            cbSub.Items.Add("ВСЕ");
+            for (int i = 0; i < dtSub.Rows.Count; i++)
+                cbSub.Items.Add(dtSub.Rows[i].Field<string>("nameSubdiv"));
+            cbSub.SelectedIndex = 0;
+            cbSub.SelectedIndexChanged += CbSub_SelectedIndexChanged;
+            CbSub_SelectedIndexChanged(null, null);
+        }
+
+        private void CbSub_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbName.Items.Clear();
+            DataTable dtTesters = null;
+            if (cbSub.Text == "ВСЕ")
+                dtTesters = DataBase.GetData("SELECT [nameTester] FROM [Testers]");
+            else
+                dtTesters = DataBase.GetData("SELECT [nameTester] FROM [Testers] WHERE [idSubdiv] = (SELECT [idSubdiv] FROM [Subdivisions] WHERE [nameSubdiv] = '" + cbSub.SelectedItem + "')");
+
+            if (dtTesters != null)
+                for (int i = 0; i < dtTesters.Rows.Count; i++)
+                    cbName.Items.Add(dtTesters.Rows[i].Field<string>("nameTester"));
         }
 
         private void CheckAutorization()
@@ -39,13 +57,20 @@ namespace ViscometerViewer
         private void cbName_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
                 CheckAutorization();
+            }    
+                
         }
 
         private void maskedTxtPassword_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
                 CheckAutorization();
+            }
         }
 
     }

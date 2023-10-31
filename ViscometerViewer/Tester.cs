@@ -11,14 +11,14 @@ namespace ViscometerViewer
     {
         public static bool IsAuthorization { get; private set; } = false;
         public static short Id { get; private set; } = 0;
-        public static string Name { get; private set; } = "";
+        public static string Name { get; private set; } = string.Empty;
         public static short? IdSub { get; private set; } = null;
-        public static string NameSub { get; private set; } = "";
+        public static string NameSub { get; private set; } = string.Empty;
         public static string Rights { get; private set; } = "MyOrders";
 
-        public static bool Authorization(string Name, string Password)
+        public static bool Authorization(string NameUser, string Password)
         {
-            DataTable dt = DataBase.GetData("SELECT [idTester],[nameTester],[Password],[idSubdiv],[idRights] FROM [dbo].[Testers] WHERE [nameTester]='" + Name.Trim() + "'");
+            DataTable dt = DataBase.GetData("SELECT [idTester],[nameTester],[Password],[idSubdiv],[idRights] FROM [dbo].[Testers] WHERE [nameTester]='" + NameUser.Trim() + "'");
             if (dt.Rows.Count < 1) return false;
 
             if (dt.Rows[0].Field<string>("Password") == Password)
@@ -30,7 +30,7 @@ namespace ViscometerViewer
 
                 if (IdSub != null)
                 {
-                    NameSub = DataBase.GetData("SELECT [nameSubdiv] WHERE [idSubdiv]='" + IdSub + "'").Rows[0].Field<string>("nameSubdiv");
+                    NameSub = DataBase.GetData("SELECT [nameSubdiv] FROM [Subdivisions] WHERE [idSubdiv]='" + IdSub + "'").Rows[0].Field<string>("nameSubdiv");
                 }
 
                 short idRights = dt.Rows[0].Field<short>("idRights");

@@ -32,15 +32,15 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.grpBoxTester = new System.Windows.Forms.GroupBox();
-            this.lblTester = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
             this.btnTest = new System.Windows.Forms.Button();
             this.btnPrint = new System.Windows.Forms.Button();
             this.btnChart = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.grpBoxTester = new System.Windows.Forms.GroupBox();
+            this.lblTester = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             this.SuspendLayout();
@@ -53,10 +53,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 88);
+            this.dataGridView1.Location = new System.Drawing.Point(5, 88);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(939, 426);
+            this.dataGridView1.Size = new System.Drawing.Size(953, 434);
             this.dataGridView1.TabIndex = 0;
             // 
             // txtSearch
@@ -68,38 +68,6 @@
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(891, 20);
             this.txtSearch.TabIndex = 7;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 65);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Поиск:";
-            // 
-            // grpBoxTester
-            // 
-            this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxTester.Controls.Add(this.lblTester);
-            this.grpBoxTester.Location = new System.Drawing.Point(671, 12);
-            this.grpBoxTester.Name = "grpBoxTester";
-            this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
-            this.grpBoxTester.TabIndex = 10;
-            this.grpBoxTester.TabStop = false;
-            this.grpBoxTester.Text = "Подразделение";
-            // 
-            // lblTester
-            // 
-            this.lblTester.AutoSize = true;
-            this.lblTester.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTester.Location = new System.Drawing.Point(3, 16);
-            this.lblTester.Name = "lblTester";
-            this.lblTester.Size = new System.Drawing.Size(106, 15);
-            this.lblTester.TabIndex = 0;
-            this.lblTester.Text = "Имя испытателя";
             // 
             // btnSearch
             // 
@@ -134,7 +102,7 @@
             this.btnPrint.Name = "btnPrint";
             this.btnPrint.Size = new System.Drawing.Size(44, 44);
             this.btnPrint.TabIndex = 4;
-            this.toolTipForButton.SetToolTip(this.btnPrint, "На печать");
+            this.toolTipForButton.SetToolTip(this.btnPrint, "Отчет");
             this.btnPrint.UseVisualStyleBackColor = true;
             // 
             // btnChart
@@ -145,7 +113,7 @@
             this.btnChart.Name = "btnChart";
             this.btnChart.Size = new System.Drawing.Size(44, 44);
             this.btnChart.TabIndex = 3;
-            this.toolTipForButton.SetToolTip(this.btnChart, "Графики");
+            this.toolTipForButton.SetToolTip(this.btnChart, "Детальная информация");
             this.btnChart.UseVisualStyleBackColor = true;
             // 
             // btnDelete
@@ -171,6 +139,37 @@
             this.toolTipForButton.SetToolTip(this.btnAdd, "Добавить");
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 65);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Поиск:";
+            // 
+            // grpBoxTester
+            // 
+            this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxTester.Controls.Add(this.lblTester);
+            this.grpBoxTester.Location = new System.Drawing.Point(671, 12);
+            this.grpBoxTester.Name = "grpBoxTester";
+            this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
+            this.grpBoxTester.TabIndex = 10;
+            this.grpBoxTester.TabStop = false;
+            this.grpBoxTester.Text = "Подразделение";
+            // 
+            // lblTester
+            // 
+            this.lblTester.AutoSize = true;
+            this.lblTester.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTester.Location = new System.Drawing.Point(3, 16);
+            this.lblTester.Name = "lblTester";
+            this.lblTester.Size = new System.Drawing.Size(106, 15);
+            this.lblTester.TabIndex = 0;
+            this.lblTester.Text = "Имя испытателя";
             // 
             // MainForm
             // 
