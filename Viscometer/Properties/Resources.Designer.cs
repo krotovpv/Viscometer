@@ -63,6 +63,36 @@ namespace Viscometer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Belshina_logo {
+            get {
+                object obj = ResourceManager.GetObject("Belshina_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_adobe_file_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_adobe_file_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_find_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_find_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_industry_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-industry-48", resourceCulture);
@@ -73,9 +103,59 @@ namespace Viscometer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_usb_отключен_48 {
+        internal static System.Drawing.Bitmap icons8_архив_64 {
             get {
-                object obj = ResourceManager.GetObject("icons8-usb-отключен-48", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_архив_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_архив_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_архив_64__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_выбор_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_выбор_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_документ_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_документ_64__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_закрыть_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_закрыть_64__1_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_мусор_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_мусор_64", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +183,69 @@ namespace Viscometer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_удалить_навсегда_16 {
+        internal static System.Drawing.Bitmap icons8_сбалансировать_портфель_64 {
             get {
-                object obj = ResourceManager.GetObject("icons8-удалить-навсегда-16", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_сбалансировать_портфель_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_файл_64__8_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_файл_64__8_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_файл_64_view {
+            get {
+                object obj = ResourceManager.GetObject("icons8_файл_64_view", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap usb_отключен_48 {
+            get {
+                object obj = ResourceManager.GetObject("usb_отключен_48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap добавить_64 {
+            get {
+                object obj = ResourceManager.GetObject("добавить_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap линейный_график_40 {
+            get {
+                object obj = ResourceManager.GetObject("линейный_график_40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap удалить_навсегда_16 {
+            get {
+                object obj = ResourceManager.GetObject("удалить_навсегда_16", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

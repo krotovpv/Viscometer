@@ -85,7 +85,7 @@
             // 
             this.picBoxDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.picBoxDel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picBoxDel.Image = global::Viscometer.Properties.Resources.icons8_удалить_навсегда_16;
+            this.picBoxDel.Image = global::Viscometer.Properties.Resources.удалить_навсегда_16;
             this.picBoxDel.Location = new System.Drawing.Point(46, -1);
             this.picBoxDel.Name = "picBoxDel";
             this.picBoxDel.Size = new System.Drawing.Size(17, 17);

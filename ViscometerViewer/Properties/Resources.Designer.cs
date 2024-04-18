@@ -63,9 +63,49 @@ namespace ViscometerViewer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Belshina_logo {
+            get {
+                object obj = ResourceManager.GetObject("Belshina_logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_adobe_file_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-adobe-file-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_find_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-find-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_архив_64 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-архив-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_архив_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-архив-64 (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,6 +143,16 @@ namespace ViscometerViewer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_закрыть_64__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-закрыть-64 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_мусор_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-мусор-64", resourceCulture);
@@ -116,6 +166,26 @@ namespace ViscometerViewer.Properties {
         internal static System.Drawing.Bitmap icons8_сбалансировать_портфель_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-сбалансировать-портфель-64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_файл_64__8_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8-файл-64 (8)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_файл_64_view {
+            get {
+                object obj = ResourceManager.GetObject("icons8-файл-64-view", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

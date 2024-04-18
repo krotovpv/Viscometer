@@ -123,5 +123,26 @@
   <ItemGroup>
     <None Include="Resources\icons8-find-64.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-файл-64-view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-закрыть-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-файл-64 %288%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-архив-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-архив-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-adobe-file-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Belshina_logo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -50,19 +50,45 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddOrderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddOrderForm.Designer.cs">
+      <DependentUpon>AddOrderForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddViscometerForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddViscometerForm.Designer.cs">
       <DependentUpon>AddViscometerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SaveSettings.cs" />
-    <Compile Include="Viscometer.cs" />
+    <Compile Include="AuthorizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AuthorizationForm.Designer.cs">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataBase.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Rights.cs" />
+    <Compile Include="SaveSettings.cs" />
+    <Compile Include="Tester.cs" />
+    <Compile Include="Viscometer.cs" />
+    <Compile Include="WorkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WorkForm.Designer.cs">
+      <DependentUpon>WorkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
@@ -79,22 +105,26 @@
     <Compile Include="UCViscometerButton.Designer.cs">
       <DependentUpon>UCViscometerButton.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddOrderForm.resx">
+      <DependentUpon>AddOrderForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddViscometerForm.resx">
       <DependentUpon>AddViscometerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AuthorizationForm.resx">
+      <DependentUpon>AuthorizationForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="WorkForm.resx">
+      <DependentUpon>WorkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="SelectViscometerForm.resx">
       <DependentUpon>SelectViscometerForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,10 +155,52 @@
     <None Include="Resources\icons8-плюс-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-удалить-навсегда-16.png" />
+    <None Include="Resources\удалить-навсегда-16.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\icons8-usb-отключен-48.png" />
+    <None Include="Resources\usb-отключен-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Belshina_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-adobe-file-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-find-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-архив-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-архив-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-выбор-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\добавить-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-документ-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-закрыть-64 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-мусор-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-сбалансировать-портфель-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-файл-64-view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-файл-64 %288%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\линейный-график-40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

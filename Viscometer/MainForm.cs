@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,137 +12,46 @@ namespace Viscometer
 {
     public partial class MainForm : Form
     {
-        string portName = string.Empty;
-        string dataTail = string.Empty;
-
         public MainForm()
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+         
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            using (SelectViscometerForm svForm = new SelectViscometerForm())
-            {
-                if (svForm.ShowDialog() == DialogResult.OK)
-                    portName = svForm.SelectPortName;
-                else
-                    this.Close();
+            new AuthorizationForm().ShowDialog();
+            if (!Tester.IsAuthorization) this.Close();
 
-                MessageBox.Show($"Select{portName}");
-            }
+            grpBoxTester.Text = Tester.NameSub;
+            lblTester.Text = Tester.Name; 
 
-            try
-            {
-                SerialPort serialPort = new SerialPort(portName);
-                serialPort.DataReceived += SerialPort_DataReceived;
-                serialPort.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                this.Close();
-            }
-            
+            btnView_Click(null, null);
         }
 
-        private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            dataTail += ((SerialPort)sender).ReadExisting();
-
-            ParseData();
+            new AddOrderForm().ShowDialog();
         }
 
-        private void ParseData()
+        private void btnView_Click(object sender, EventArgs e)
         {
-            string line = String.Empty;
-            foreach (char item in dataTail)
-            {
-                if (item == '\n' || item == '\r')
-                {
-                    ParseLine(line);
-                    line = String.Empty;
-                }
-                else
-                {
-                    line += item;
-                }
-            }
-            dataTail = line;
+            dgvOrders.DataSource = DataBase.GetData(
+                "SELECT Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv " +
+                "FROM Orders " +
+                "INNER JOIN Testers ON Orders.idTester = Testers.idTester " +
+                "INNER JOIN Subdivisions ON Orders.idSubdiv = Subdivisions.idSubdiv AND Testers.idSubdiv = Subdivisions.idSubdiv");
         }
-
-        private void ParseLine(string line)
+         
+        private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
-            if (line == "") return;
-            //записываем строку в базу
-
-            txtData.InvokeEx(() => 
+            if (dgvOrders.SelectedRows.Count > 0)
             {
-                txtData.AppendText(line + Environment.NewLine);
-                txtData.SelectionStart = txtData.Text.Length;
-                txtData.ScrollToCaret();
-            });
-
-            string[] arr = line.Split(',');
-            if (arr[0] == "L" && arr[1][0] == 'a')
-            {
-                string[] timeArr = arr[1].Trim(' ', 'a').Split(':', '.');
-                TimeSpan time = new TimeSpan(0, Convert.ToInt16(timeArr[0]), Convert.ToInt16(timeArr[1]));
-                if (arr[2][0] == 'b')
-                {
-                    double value = Convert.ToDouble(arr[2].Replace('.', ',').Replace(" ", "").Replace("b", ""));
-
-                    chartValue.InvokeEx(() =>
-                        chartValue.Series[0].Points.Add(new System.Windows.Forms.DataVisualization.Charting.DataPoint(time.TotalSeconds, value)));
-                }
-                if (arr[3][0] == 'd' && arr[4][0] == 'e')
-                {
-                    double valueD = Convert.ToDouble(arr[3].Replace('.', ',').Replace(" ", "").Replace("d", ""));
-                    double valueE = Convert.ToDouble(arr[4].Replace('.', ',').Replace(" ", "").Replace("e", ""));
-
-                    chartTemperature.InvokeEx(() => 
-                    {
-                        chartTemperature.Series[0].Points.Add(new System.Windows.Forms.DataVisualization.Charting.DataPoint(time.TotalSeconds, valueD));
-                        chartTemperature.Series[1].Points.Add(new System.Windows.Forms.DataVisualization.Charting.DataPoint(time.TotalSeconds, valueE));
-                    });
-                }
-            }
-            else if (arr[0] == "SV1L")
-            {
-                foreach (var item in arr)
-                {
-                    if (item == "") continue;
-                    switch (item[0])
-                    {
-                        case 'A':
-                            lblTemperature.InvokeEx(() =>
-                                lblTemperature.Text = "Температура: " + item.Remove(0, 1));
-                            break;
-                        case 'B':
-                            lblTestTime.InvokeEx(() => 
-                                lblTestTime.Text = "Время испытания: " + item.Remove(0, 1)); 
-                            break;
-                        case 'C':
-                            lblPreheat.InvokeEx(() =>
-                                lblPreheat.Text = "Время прогрева: " + item.Remove(0, 1));
-                            break;
-                        case 'D':
-                            lblRelax.InvokeEx(() =>
-                                lblRelax.Text = "Время релаксации: " + item.Remove(0, 1));
-                            break;
-                        case 'F':
-                            lblNum.InvokeEx(() =>
-                                lblNum.Text = "Номер: " + item.Remove(0, 1));
-                            break;
-                        default:
-                            break;
-                    }
-                }
-            }
-            else if (arr[0][0] == 'E')
-            {
-                lblResult.InvokeEx(() =>
-                    lblResult.Text = $"{arr[1]}, {arr[2]}, {arr[3]}, {arr[4]}, {arr[5]}");
+                dgvTests.DataSource = DataBase.GetData(
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.description " +
+                    "FROM Tests " +
+                    "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
+                    "INNER JOIN TestProgramm ON Tests.idProgramm = TestProgramm.idProgramm AND Compounds.idParameters = TestProgramm.idProgramm " +
+                    "INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE (Tests.idOrder = '" + dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString() + "')");
             }
         }
     }
