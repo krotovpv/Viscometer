@@ -37,6 +37,13 @@
             System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTemp2Res = new System.Windows.Forms.Label();
+            this.lblTimeRes = new System.Windows.Forms.Label();
+            this.lblTemp1Res = new System.Windows.Forms.Label();
+            this.lblMoonyRes = new System.Windows.Forms.Label();
+            this.lblTime = new System.Windows.Forms.Label();
+            this.lblTemp2 = new System.Windows.Forms.Label();
+            this.lblTemp1 = new System.Windows.Forms.Label();
             this.lblMoony = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNum = new System.Windows.Forms.Label();
@@ -57,9 +64,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.lblTemp1 = new System.Windows.Forms.Label();
-            this.lblTemp2 = new System.Windows.Forms.Label();
-            this.lblTime = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -87,6 +91,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblTemp2Res);
+            this.panel1.Controls.Add(this.lblTimeRes);
+            this.panel1.Controls.Add(this.lblTemp1Res);
+            this.panel1.Controls.Add(this.lblMoonyRes);
             this.panel1.Controls.Add(this.lblTime);
             this.panel1.Controls.Add(this.lblTemp2);
             this.panel1.Controls.Add(this.lblTemp1);
@@ -114,6 +122,80 @@
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
             this.panel1.Size = new System.Drawing.Size(294, 630);
             this.panel1.TabIndex = 0;
+            // 
+            // lblTemp2Res
+            // 
+            this.lblTemp2Res.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTemp2Res.AutoSize = true;
+            this.lblTemp2Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTemp2Res.Location = new System.Drawing.Point(246, 610);
+            this.lblTemp2Res.Name = "lblTemp2Res";
+            this.lblTemp2Res.Size = new System.Drawing.Size(12, 15);
+            this.lblTemp2Res.TabIndex = 25;
+            this.lblTemp2Res.Text = "-";
+            // 
+            // lblTimeRes
+            // 
+            this.lblTimeRes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTimeRes.AutoSize = true;
+            this.lblTimeRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTimeRes.Location = new System.Drawing.Point(229, 589);
+            this.lblTimeRes.Name = "lblTimeRes";
+            this.lblTimeRes.Size = new System.Drawing.Size(12, 15);
+            this.lblTimeRes.TabIndex = 24;
+            this.lblTimeRes.Text = "-";
+            // 
+            // lblTemp1Res
+            // 
+            this.lblTemp1Res.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTemp1Res.AutoSize = true;
+            this.lblTemp1Res.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTemp1Res.Location = new System.Drawing.Point(92, 610);
+            this.lblTemp1Res.Name = "lblTemp1Res";
+            this.lblTemp1Res.Size = new System.Drawing.Size(12, 15);
+            this.lblTemp1Res.TabIndex = 23;
+            this.lblTemp1Res.Text = "-";
+            // 
+            // lblMoonyRes
+            // 
+            this.lblMoonyRes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblMoonyRes.AutoSize = true;
+            this.lblMoonyRes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblMoonyRes.Location = new System.Drawing.Point(45, 589);
+            this.lblMoonyRes.Name = "lblMoonyRes";
+            this.lblMoonyRes.Size = new System.Drawing.Size(12, 15);
+            this.lblMoonyRes.TabIndex = 22;
+            this.lblMoonyRes.Text = "-";
+            // 
+            // lblTime
+            // 
+            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTime.AutoSize = true;
+            this.lblTime.Location = new System.Drawing.Point(157, 591);
+            this.lblTime.Name = "lblTime";
+            this.lblTime.Size = new System.Drawing.Size(67, 13);
+            this.lblTime.TabIndex = 21;
+            this.lblTime.Text = "Время исп.:";
+            // 
+            // lblTemp2
+            // 
+            this.lblTemp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTemp2.AutoSize = true;
+            this.lblTemp2.Location = new System.Drawing.Point(157, 613);
+            this.lblTemp2.Name = "lblTemp2";
+            this.lblTemp2.Size = new System.Drawing.Size(83, 13);
+            this.lblTemp2.TabIndex = 20;
+            this.lblTemp2.Text = "Температура2:";
+            // 
+            // lblTemp1
+            // 
+            this.lblTemp1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTemp1.AutoSize = true;
+            this.lblTemp1.Location = new System.Drawing.Point(3, 613);
+            this.lblTemp1.Name = "lblTemp1";
+            this.lblTemp1.Size = new System.Drawing.Size(83, 13);
+            this.lblTemp1.TabIndex = 19;
+            this.lblTemp1.Text = "Температура1:";
             // 
             // lblMoony
             // 
@@ -360,36 +442,6 @@
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 
-            // lblTemp1
-            // 
-            this.lblTemp1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTemp1.AutoSize = true;
-            this.lblTemp1.Location = new System.Drawing.Point(3, 613);
-            this.lblTemp1.Name = "lblTemp1";
-            this.lblTemp1.Size = new System.Drawing.Size(83, 13);
-            this.lblTemp1.TabIndex = 19;
-            this.lblTemp1.Text = "Температура1:";
-            // 
-            // lblTemp2
-            // 
-            this.lblTemp2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTemp2.AutoSize = true;
-            this.lblTemp2.Location = new System.Drawing.Point(157, 613);
-            this.lblTemp2.Name = "lblTemp2";
-            this.lblTemp2.Size = new System.Drawing.Size(83, 13);
-            this.lblTemp2.TabIndex = 20;
-            this.lblTemp2.Text = "Температура2:";
-            // 
-            // lblTime
-            // 
-            this.lblTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblTime.AutoSize = true;
-            this.lblTime.Location = new System.Drawing.Point(157, 591);
-            this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(67, 13);
-            this.lblTime.TabIndex = 21;
-            this.lblTime.Text = "Время исп.:";
-            // 
             // WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -436,6 +488,10 @@
         private System.Windows.Forms.Label lblTime;
         private System.Windows.Forms.Label lblTemp2;
         private System.Windows.Forms.Label lblTemp1;
+        private System.Windows.Forms.Label lblMoonyRes;
+        private System.Windows.Forms.Label lblTemp2Res;
+        private System.Windows.Forms.Label lblTimeRes;
+        private System.Windows.Forms.Label lblTemp1Res;
     }
 }
 

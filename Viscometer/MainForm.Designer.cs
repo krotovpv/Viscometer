@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
-            this.ColIdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNumOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNameTester = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNameSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -64,6 +59,11 @@
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCompaund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ColIdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDateOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNumOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNameTester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNameSub = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -90,49 +90,13 @@
             this.ColNameTester,
             this.ColNameSub});
             this.dgvOrders.Location = new System.Drawing.Point(1, 53);
+            this.dgvOrders.MultiSelect = false;
             this.dgvOrders.Name = "dgvOrders";
             this.dgvOrders.ReadOnly = true;
             this.dgvOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvOrders.Size = new System.Drawing.Size(481, 373);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
-            // 
-            // ColIdOrder
-            // 
-            this.ColIdOrder.DataPropertyName = "idOrder";
-            this.ColIdOrder.HeaderText = "Id";
-            this.ColIdOrder.Name = "ColIdOrder";
-            this.ColIdOrder.ReadOnly = true;
-            this.ColIdOrder.Visible = false;
-            // 
-            // ColDateOrder
-            // 
-            this.ColDateOrder.DataPropertyName = "dateOrder";
-            this.ColDateOrder.HeaderText = "Дата";
-            this.ColDateOrder.Name = "ColDateOrder";
-            this.ColDateOrder.ReadOnly = true;
-            // 
-            // ColNumOrder
-            // 
-            this.ColNumOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNumOrder.DataPropertyName = "numOrder";
-            this.ColNumOrder.HeaderText = "Номер заказа";
-            this.ColNumOrder.Name = "ColNumOrder";
-            this.ColNumOrder.ReadOnly = true;
-            // 
-            // ColNameTester
-            // 
-            this.ColNameTester.DataPropertyName = "nameTester";
-            this.ColNameTester.HeaderText = "Испытатель";
-            this.ColNameTester.Name = "ColNameTester";
-            this.ColNameTester.ReadOnly = true;
-            // 
-            // ColNameSub
-            // 
-            this.ColNameSub.DataPropertyName = "nameSubdiv";
-            this.ColNameSub.HeaderText = "Подразделение";
-            this.ColNameSub.Name = "ColNameSub";
-            this.ColNameSub.ReadOnly = true;
             // 
             // button10
             // 
@@ -224,7 +188,7 @@
             this.btnDelTest.Name = "btnDelTest";
             this.btnDelTest.Size = new System.Drawing.Size(44, 44);
             this.btnDelTest.TabIndex = 15;
-            this.toolTipForButton.SetToolTip(this.btnDelTest, "Удалить");
+            this.toolTipForButton.SetToolTip(this.btnDelTest, "Удалить испытание");
             this.btnDelTest.UseVisualStyleBackColor = true;
             // 
             // btnChartTest
@@ -409,6 +373,7 @@
             this.ColNameParogramm,
             this.ColCompaund});
             this.dgvTests.Location = new System.Drawing.Point(1, 53);
+            this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
             this.dgvTests.ReadOnly = true;
             this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -465,6 +430,43 @@
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
+            // ColIdOrder
+            // 
+            this.ColIdOrder.DataPropertyName = "idOrder";
+            this.ColIdOrder.HeaderText = "Id";
+            this.ColIdOrder.Name = "ColIdOrder";
+            this.ColIdOrder.ReadOnly = true;
+            this.ColIdOrder.Visible = false;
+            // 
+            // ColDateOrder
+            // 
+            this.ColDateOrder.DataPropertyName = "dateOrder";
+            this.ColDateOrder.HeaderText = "Дата";
+            this.ColDateOrder.Name = "ColDateOrder";
+            this.ColDateOrder.ReadOnly = true;
+            // 
+            // ColNumOrder
+            // 
+            this.ColNumOrder.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNumOrder.DataPropertyName = "numOrder";
+            this.ColNumOrder.HeaderText = "Номер заказа";
+            this.ColNumOrder.Name = "ColNumOrder";
+            this.ColNumOrder.ReadOnly = true;
+            // 
+            // ColNameTester
+            // 
+            this.ColNameTester.DataPropertyName = "nameTester";
+            this.ColNameTester.HeaderText = "Испытатель";
+            this.ColNameTester.Name = "ColNameTester";
+            this.ColNameTester.ReadOnly = true;
+            // 
+            // ColNameSub
+            // 
+            this.ColNameSub.DataPropertyName = "nameSubdiv";
+            this.ColNameSub.HeaderText = "Подразделение";
+            this.ColNameSub.Name = "ColNameSub";
+            this.ColNameSub.ReadOnly = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,11 +508,6 @@
         private System.Windows.Forms.Button btnViewOrder;
         private System.Windows.Forms.SplitContainer splitContMain;
         private System.Windows.Forms.DataGridView dgvTests;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColIdOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDateOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNumOrder;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNameTester;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColNameSub;
         private System.Windows.Forms.Button btnDelOrder;
         private System.Windows.Forms.Button btnDelTest;
         private System.Windows.Forms.Button btnChartTest;
@@ -531,6 +528,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTesterStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameParogramm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCompaund;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColIdOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDateOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNumOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNameTester;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNameSub;
     }
 }
 

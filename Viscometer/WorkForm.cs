@@ -16,10 +16,14 @@ namespace Viscometer
         string portName = string.Empty;
         string dataTail = string.Empty;
         SerialPort serialPort = null;
+        string idOrder;
+        string idTest;
 
-        public WorkForm()
+        public WorkForm(string IdOrder, string IdTest)
         {
             InitializeComponent();
+            idOrder = IdOrder;
+            idTest = IdTest;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -31,7 +35,7 @@ namespace Viscometer
                 else
                     this.Close();
 
-                this.Text = portName;
+                this.Text = portName + " Заказ #" + idOrder + " Испытание #" + idTest;
             }
 
             try
@@ -151,20 +155,22 @@ namespace Viscometer
             }
             else if (arr[0][0] == 'E')
             {
-                lblMoony.InvokeEx(() =>
-                    lblMoony.Text = $"Муни: {arr[1]}");
-                lblTime.InvokeEx(() =>
-                    lblTime.Text = $"Время исп.: {arr[3]}");
-                lblTemp1.InvokeEx(() =>
-                    lblTemp1.Text = $"Температура1: {arr[2]}");
-                lblTemp2.InvokeEx(() =>
-                    lblTemp2.Text = $"Температура1: {arr[4]}");
+                //отметить в БД что испытание завершено
+
+                lblMoonyRes.InvokeEx(() =>
+                    lblMoonyRes.Text = arr[1].Trim(' ', 'a'));
+                lblTimeRes.InvokeEx(() =>
+                    lblTimeRes.Text = arr[3].Trim(' ', 'f'));
+                lblTemp1Res.InvokeEx(() =>
+                    lblTemp1Res.Text = arr[2].Trim(' ', 'e'));
+                lblTemp2Res.InvokeEx(() =>
+                    lblTemp2Res.Text = arr[4].Trim(' ', 'p'));
             }
         }
 
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            serialPort.Close();
+            serialPort?.Close();
         }
     }
 }

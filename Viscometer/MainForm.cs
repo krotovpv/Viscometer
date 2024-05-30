@@ -58,7 +58,10 @@ namespace Viscometer
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            new WorkForm().Show();
+            if (dgvOrders.SelectedRows.Count < 1) { MessageBox.Show("Выберите заказ!"); return; }
+            if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
+
+            new WorkForm(dgvOrders.SelectedRows[0].Cells["ColNumOrder"].Value.ToString(), dgvTests.SelectedRows[0].Cells["ColNumLoad"].Value.ToString()).Show();
         }
 
         private void btnAddTest_Click(object sender, EventArgs e)
@@ -69,7 +72,7 @@ namespace Viscometer
                 return;
             }
 
-            new AddTest(dgvOrders.SelectedRows[0].Index).ShowDialog();
+            new AddTest(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
         }
     }
 }
