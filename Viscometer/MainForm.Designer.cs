@@ -39,17 +39,17 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnChart = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.btnTest = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnViewOrder = new System.Windows.Forms.Button();
+            this.btnAddOrder = new System.Windows.Forms.Button();
+            this.btnChartOrder = new System.Windows.Forms.Button();
+            this.btnDelOrder = new System.Windows.Forms.Button();
+            this.btnDelTest = new System.Windows.Forms.Button();
+            this.btnChartTest = new System.Windows.Forms.Button();
+            this.btnRejectTest = new System.Windows.Forms.Button();
+            this.btnReceiptTest = new System.Windows.Forms.Button();
+            this.btnViewTest = new System.Windows.Forms.Button();
+            this.btnStartTest = new System.Windows.Forms.Button();
+            this.btnAddTest = new System.Windows.Forms.Button();
             this.grpBoxTester = new System.Windows.Forms.GroupBox();
             this.lblTester = new System.Windows.Forms.Label();
             this.splitContMain = new System.Windows.Forms.SplitContainer();
@@ -170,130 +170,134 @@
             this.toolTipForButton.SetToolTip(this.button8, "Поиск");
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // btnView
+            // btnViewOrder
             // 
-            this.btnView.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64_view;
-            this.btnView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnView.Location = new System.Drawing.Point(3, 3);
-            this.btnView.Name = "btnView";
-            this.btnView.Size = new System.Drawing.Size(44, 44);
-            this.btnView.TabIndex = 11;
-            this.toolTipForButton.SetToolTip(this.btnView, "Обновить");
-            this.btnView.UseVisualStyleBackColor = true;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
+            this.btnViewOrder.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64_view;
+            this.btnViewOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnViewOrder.Location = new System.Drawing.Point(3, 3);
+            this.btnViewOrder.Name = "btnViewOrder";
+            this.btnViewOrder.Size = new System.Drawing.Size(44, 44);
+            this.btnViewOrder.TabIndex = 11;
+            this.toolTipForButton.SetToolTip(this.btnViewOrder, "Обновить");
+            this.btnViewOrder.UseVisualStyleBackColor = true;
+            this.btnViewOrder.Click += new System.EventHandler(this.btnView_Click);
             // 
-            // btnAdd
+            // btnAddOrder
             // 
-            this.btnAdd.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
-            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAdd.Location = new System.Drawing.Point(53, 3);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(44, 44);
-            this.btnAdd.TabIndex = 1;
-            this.toolTipForButton.SetToolTip(this.btnAdd, "Добавить");
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnAddOrder.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
+            this.btnAddOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddOrder.Location = new System.Drawing.Point(53, 3);
+            this.btnAddOrder.Name = "btnAddOrder";
+            this.btnAddOrder.Size = new System.Drawing.Size(44, 44);
+            this.btnAddOrder.TabIndex = 1;
+            this.toolTipForButton.SetToolTip(this.btnAddOrder, "Добавить заказ");
+            this.btnAddOrder.UseVisualStyleBackColor = true;
+            this.btnAddOrder.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // btnChart
+            // btnChartOrder
             // 
-            this.btnChart.BackgroundImage = global::Viscometer.Properties.Resources.icons8_сбалансировать_портфель_64;
-            this.btnChart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnChart.Location = new System.Drawing.Point(103, 3);
-            this.btnChart.Name = "btnChart";
-            this.btnChart.Size = new System.Drawing.Size(44, 44);
-            this.btnChart.TabIndex = 3;
-            this.toolTipForButton.SetToolTip(this.btnChart, "Детальная информация");
-            this.btnChart.UseVisualStyleBackColor = true;
+            this.btnChartOrder.BackgroundImage = global::Viscometer.Properties.Resources.icons8_сбалансировать_портфель_64;
+            this.btnChartOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnChartOrder.Location = new System.Drawing.Point(103, 3);
+            this.btnChartOrder.Name = "btnChartOrder";
+            this.btnChartOrder.Size = new System.Drawing.Size(44, 44);
+            this.btnChartOrder.TabIndex = 3;
+            this.toolTipForButton.SetToolTip(this.btnChartOrder, "Детальная информация");
+            this.btnChartOrder.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnDelOrder
             // 
-            this.button2.BackgroundImage = global::Viscometer.Properties.Resources.icons8_мусор_64;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.Location = new System.Drawing.Point(153, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(44, 44);
-            this.button2.TabIndex = 14;
-            this.toolTipForButton.SetToolTip(this.button2, "Удалить");
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnDelOrder.BackgroundImage = global::Viscometer.Properties.Resources.icons8_мусор_64;
+            this.btnDelOrder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDelOrder.Location = new System.Drawing.Point(153, 3);
+            this.btnDelOrder.Name = "btnDelOrder";
+            this.btnDelOrder.Size = new System.Drawing.Size(44, 44);
+            this.btnDelOrder.TabIndex = 14;
+            this.toolTipForButton.SetToolTip(this.btnDelOrder, "Удалить");
+            this.btnDelOrder.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnDelTest
             // 
-            this.button3.BackgroundImage = global::Viscometer.Properties.Resources.icons8_мусор_64;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.Location = new System.Drawing.Point(303, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(44, 44);
-            this.button3.TabIndex = 15;
-            this.toolTipForButton.SetToolTip(this.button3, "Удалить");
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnDelTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_мусор_64;
+            this.btnDelTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDelTest.Location = new System.Drawing.Point(253, 3);
+            this.btnDelTest.Name = "btnDelTest";
+            this.btnDelTest.Size = new System.Drawing.Size(44, 44);
+            this.btnDelTest.TabIndex = 15;
+            this.toolTipForButton.SetToolTip(this.btnDelTest, "Удалить");
+            this.btnDelTest.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnChartTest
             // 
-            this.button4.BackgroundImage = global::Viscometer.Properties.Resources.icons8_сбалансировать_портфель_64;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button4.Location = new System.Drawing.Point(203, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(44, 44);
-            this.button4.TabIndex = 16;
-            this.toolTipForButton.SetToolTip(this.button4, "Детальная информация");
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnChartTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_сбалансировать_портфель_64;
+            this.btnChartTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnChartTest.Location = new System.Drawing.Point(203, 3);
+            this.btnChartTest.Name = "btnChartTest";
+            this.btnChartTest.Size = new System.Drawing.Size(44, 44);
+            this.btnChartTest.TabIndex = 16;
+            this.toolTipForButton.SetToolTip(this.btnChartTest, "Детальная информация");
+            this.btnChartTest.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnRejectTest
             // 
-            this.button5.BackgroundImage = global::Viscometer.Properties.Resources.icons8_закрыть_64__1_;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.Location = new System.Drawing.Point(153, 3);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(44, 44);
-            this.button5.TabIndex = 17;
-            this.toolTipForButton.SetToolTip(this.button5, "Добавить");
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnRejectTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_закрыть_64__1_;
+            this.btnRejectTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnRejectTest.Location = new System.Drawing.Point(153, 3);
+            this.btnRejectTest.Name = "btnRejectTest";
+            this.btnRejectTest.Size = new System.Drawing.Size(44, 44);
+            this.btnRejectTest.TabIndex = 17;
+            this.toolTipForButton.SetToolTip(this.btnRejectTest, "Забраковать результат");
+            this.btnRejectTest.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnReceiptTest
             // 
-            this.button6.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64__8_;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.Location = new System.Drawing.Point(103, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(44, 44);
-            this.button6.TabIndex = 18;
-            this.toolTipForButton.SetToolTip(this.button6, "Добавить");
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnReceiptTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64__8_;
+            this.btnReceiptTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnReceiptTest.Location = new System.Drawing.Point(103, 3);
+            this.btnReceiptTest.Name = "btnReceiptTest";
+            this.btnReceiptTest.Size = new System.Drawing.Size(44, 44);
+            this.btnReceiptTest.TabIndex = 18;
+            this.toolTipForButton.SetToolTip(this.btnReceiptTest, "Подтвердить результат");
+            this.btnReceiptTest.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnViewTest
             // 
-            this.button7.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64_view;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.Location = new System.Drawing.Point(3, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(44, 44);
-            this.button7.TabIndex = 19;
-            this.toolTipForButton.SetToolTip(this.button7, "Обновить");
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnViewTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_файл_64_view;
+            this.btnViewTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnViewTest.Location = new System.Drawing.Point(3, 3);
+            this.btnViewTest.Name = "btnViewTest";
+            this.btnViewTest.Size = new System.Drawing.Size(44, 44);
+            this.btnViewTest.TabIndex = 19;
+            this.toolTipForButton.SetToolTip(this.btnViewTest, "Обновить");
+            this.btnViewTest.UseVisualStyleBackColor = true;
             // 
-            // btnTest
+            // btnStartTest
             // 
-            this.btnTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_выбор_64;
-            this.btnTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTest.Location = new System.Drawing.Point(253, 3);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(44, 44);
-            this.btnTest.TabIndex = 5;
-            this.btnTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTipForButton.SetToolTip(this.btnTest, "Испытание");
-            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnStartTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStartTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStartTest.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStartTest.Location = new System.Drawing.Point(387, 3);
+            this.btnStartTest.Name = "btnStartTest";
+            this.btnStartTest.Size = new System.Drawing.Size(83, 44);
+            this.btnStartTest.TabIndex = 5;
+            this.btnStartTest.Text = "ТЕСТ";
+            this.btnStartTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipForButton.SetToolTip(this.btnStartTest, "Испытание");
+            this.btnStartTest.UseVisualStyleBackColor = true;
+            this.btnStartTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // button1
+            // btnAddTest
             // 
-            this.button1.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Location = new System.Drawing.Point(53, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(44, 44);
-            this.button1.TabIndex = 13;
-            this.toolTipForButton.SetToolTip(this.button1, "Добавить");
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnAddTest.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
+            this.btnAddTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddTest.Location = new System.Drawing.Point(53, 3);
+            this.btnAddTest.Name = "btnAddTest";
+            this.btnAddTest.Size = new System.Drawing.Size(44, 44);
+            this.btnAddTest.TabIndex = 20;
+            this.toolTipForButton.SetToolTip(this.btnAddTest, "Добавить испытание");
+            this.btnAddTest.UseVisualStyleBackColor = true;
+            this.btnAddTest.Click += new System.EventHandler(this.btnAddTest_Click);
             // 
             // grpBoxTester
             // 
@@ -331,24 +335,24 @@
             this.splitContMain.Panel1.Controls.Add(this.label2);
             this.splitContMain.Panel1.Controls.Add(this.dgvOrders);
             this.splitContMain.Panel1.Controls.Add(this.dateTimePicker2);
-            this.splitContMain.Panel1.Controls.Add(this.btnView);
+            this.splitContMain.Panel1.Controls.Add(this.btnViewOrder);
             this.splitContMain.Panel1.Controls.Add(this.label1);
-            this.splitContMain.Panel1.Controls.Add(this.btnAdd);
+            this.splitContMain.Panel1.Controls.Add(this.btnAddOrder);
             this.splitContMain.Panel1.Controls.Add(this.dateTimePicker1);
-            this.splitContMain.Panel1.Controls.Add(this.btnChart);
-            this.splitContMain.Panel1.Controls.Add(this.button2);
+            this.splitContMain.Panel1.Controls.Add(this.btnChartOrder);
+            this.splitContMain.Panel1.Controls.Add(this.btnDelOrder);
             // 
             // splitContMain.Panel2
             // 
             this.splitContMain.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContMain.Panel2.Controls.Add(this.button3);
-            this.splitContMain.Panel2.Controls.Add(this.button4);
-            this.splitContMain.Panel2.Controls.Add(this.button5);
-            this.splitContMain.Panel2.Controls.Add(this.button6);
-            this.splitContMain.Panel2.Controls.Add(this.button7);
-            this.splitContMain.Panel2.Controls.Add(this.btnTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnAddTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnDelTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnChartTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnRejectTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnReceiptTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnViewTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnStartTest);
             this.splitContMain.Panel2.Controls.Add(this.dgvTests);
-            this.splitContMain.Panel2.Controls.Add(this.button1);
             this.splitContMain.Size = new System.Drawing.Size(963, 427);
             this.splitContMain.SplitterDistance = 483;
             this.splitContMain.TabIndex = 12;
@@ -429,7 +433,7 @@
             // 
             // ColTesterStatus
             // 
-            this.ColTesterStatus.DataPropertyName = "description";
+            this.ColTesterStatus.DataPropertyName = "short_description";
             this.ColTesterStatus.HeaderText = "Статус";
             this.ColTesterStatus.Name = "ColTesterStatus";
             this.ColTesterStatus.ReadOnly = true;
@@ -493,13 +497,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvOrders;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Button btnChart;
-        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnAddOrder;
+        private System.Windows.Forms.Button btnChartOrder;
+        private System.Windows.Forms.Button btnStartTest;
         private System.Windows.Forms.ToolTip toolTipForButton;
         private System.Windows.Forms.GroupBox grpBoxTester;
         private System.Windows.Forms.Label lblTester;
-        private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnViewOrder;
         private System.Windows.Forms.SplitContainer splitContMain;
         private System.Windows.Forms.DataGridView dgvTests;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColIdOrder;
@@ -507,13 +511,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameTester;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameSub;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnDelOrder;
+        private System.Windows.Forms.Button btnDelTest;
+        private System.Windows.Forms.Button btnChartTest;
+        private System.Windows.Forms.Button btnRejectTest;
+        private System.Windows.Forms.Button btnReceiptTest;
+        private System.Windows.Forms.Button btnViewTest;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
@@ -522,6 +525,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAddTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColIdTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumLoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTesterStatus;

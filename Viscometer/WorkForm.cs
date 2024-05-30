@@ -15,6 +15,7 @@ namespace Viscometer
     {
         string portName = string.Empty;
         string dataTail = string.Empty;
+        SerialPort serialPort = null;
 
         public WorkForm()
         {
@@ -30,12 +31,12 @@ namespace Viscometer
                 else
                     this.Close();
 
-                MessageBox.Show($"Select{portName}");
+                this.Text = portName;
             }
 
             try
             {
-                SerialPort serialPort = new SerialPort(portName);
+                serialPort = new SerialPort(portName);
                 serialPort.DataReceived += SerialPort_DataReceived;
                 serialPort.Open();
             }
@@ -61,7 +62,15 @@ namespace Viscometer
             {
                 if (item == '\n' || item == '\r')
                 {
-                    ParseLine(line);
+                    try
+                    {
+                        ParseLine(line);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    
                     line = String.Empty;
                 }
                 else
@@ -142,9 +151,20 @@ namespace Viscometer
             }
             else if (arr[0][0] == 'E')
             {
-                lblResult.InvokeEx(() =>
-                    lblResult.Text = $"{arr[1]}, {arr[2]}, {arr[3]}, {arr[4]}, {arr[5]}");
+                lblMoony.InvokeEx(() =>
+                    lblMoony.Text = $"Муни: {arr[1]}");
+                lblTime.InvokeEx(() =>
+                    lblTime.Text = $"Время исп.: {arr[3]}");
+                lblTemp1.InvokeEx(() =>
+                    lblTemp1.Text = $"Температура1: {arr[2]}");
+                lblTemp2.InvokeEx(() =>
+                    lblTemp2.Text = $"Температура1: {arr[4]}");
             }
+        }
+
+        private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            serialPort.Close();
         }
     }
 }

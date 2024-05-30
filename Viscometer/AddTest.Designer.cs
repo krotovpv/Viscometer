@@ -1,0 +1,178 @@
+﻿namespace Viscometer
+{
+    partial class AddTest
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.label1 = new System.Windows.Forms.Label();
+            this.nudLoadNumber = new System.Windows.Forms.NumericUpDown();
+            this.cbProgramm = new System.Windows.Forms.ComboBox();
+            this.cbCompaund = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblOrderNumber = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnOk = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Номер загрузки:";
+            // 
+            // nudLoadNumber
+            // 
+            this.nudLoadNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.nudLoadNumber.Location = new System.Drawing.Point(291, 50);
+            this.nudLoadNumber.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudLoadNumber.Name = "nudLoadNumber";
+            this.nudLoadNumber.Size = new System.Drawing.Size(51, 26);
+            this.nudLoadNumber.TabIndex = 1;
+            this.nudLoadNumber.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // cbProgramm
+            // 
+            this.cbProgramm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbProgramm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbProgramm.FormattingEnabled = true;
+            this.cbProgramm.Location = new System.Drawing.Point(131, 84);
+            this.cbProgramm.Name = "cbProgramm";
+            this.cbProgramm.Size = new System.Drawing.Size(211, 24);
+            this.cbProgramm.TabIndex = 2;
+            // 
+            // cbCompaund
+            // 
+            this.cbCompaund.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCompaund.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbCompaund.FormattingEnabled = true;
+            this.cbCompaund.Location = new System.Drawing.Point(131, 114);
+            this.cbCompaund.Name = "cbCompaund";
+            this.cbCompaund.Size = new System.Drawing.Size(211, 24);
+            this.cbCompaund.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(50, 16);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Заказ:";
+            // 
+            // lblOrderNumber
+            // 
+            this.lblOrderNumber.AutoSize = true;
+            this.lblOrderNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblOrderNumber.Location = new System.Drawing.Point(68, 9);
+            this.lblOrderNumber.Name = "lblOrderNumber";
+            this.lblOrderNumber.Size = new System.Drawing.Size(11, 16);
+            this.lblOrderNumber.TabIndex = 5;
+            this.lblOrderNumber.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(12, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Программа исп.:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(12, 117);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 16);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Компаунд:";
+            // 
+            // btnOk
+            // 
+            this.btnOk.Location = new System.Drawing.Point(238, 161);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(104, 32);
+            this.btnOk.TabIndex = 8;
+            this.btnOk.Text = "OK";
+            this.btnOk.UseVisualStyleBackColor = true;
+            // 
+            // AddTest
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(354, 205);
+            this.Controls.Add(this.btnOk);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblOrderNumber);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cbCompaund);
+            this.Controls.Add(this.cbProgramm);
+            this.Controls.Add(this.nudLoadNumber);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AddTest";
+            this.Text = "Добавить испытание";
+            this.Load += new System.EventHandler(this.AddTest_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown nudLoadNumber;
+        private System.Windows.Forms.ComboBox cbProgramm;
+        private System.Windows.Forms.ComboBox cbCompaund;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblOrderNumber;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnOk;
+    }
+}

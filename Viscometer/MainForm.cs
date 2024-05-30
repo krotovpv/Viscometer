@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Viscometer.Properties;
 
 namespace Viscometer
 {
@@ -47,12 +48,28 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 dgvTests.DataSource = DataBase.GetData(
-                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.description " +
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.short_description " +
                     "FROM Tests " +
                     "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
                     "INNER JOIN TestProgramm ON Tests.idProgramm = TestProgramm.idProgramm AND Compounds.idParameters = TestProgramm.idProgramm " +
                     "INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE (Tests.idOrder = '" + dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString() + "')");
             }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            new WorkForm().Show();
+        }
+
+        private void btnAddTest_Click(object sender, EventArgs e)
+        {
+            if (dgvOrders.SelectedRows[0].Index < 0)
+            {
+                MessageBox.Show("Выберите заказ!");
+                return;
+            }
+
+            new AddTest(dgvOrders.SelectedRows[0].Index).ShowDialog();
         }
     }
 }
