@@ -16,14 +16,15 @@ namespace Viscometer
         string portName = string.Empty;
         string dataTail = string.Empty;
         SerialPort serialPort = null;
-        string idOrder;
-        string idTest;
-
-        public WorkForm(string IdOrder, string IdTest)
+        DataRow dataRowTest = null;
+        DataRow dataRowProgramm = null;
+        
+        public WorkForm(string IdTest)
         {
             InitializeComponent();
-            idOrder = IdOrder;
-            idTest = IdTest;
+
+            dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{IdTest}'").Rows[0];
+            dataRowProgramm = DataBase.GetData($"SELECT * FROM [dbo].[TestProgramm] WHERE idProgramm = '{dataRowTest["idProgramm"]}'").Rows[0];
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,11 +36,12 @@ namespace Viscometer
                 else
                     this.Close();
 
-                this.Text = portName + " Заказ #" + idOrder + " Испытание #" + idTest;
+                this.Text = portName;
             }
 
             try
             {
+                if (portName == string.Empty) return;
                 serialPort = new SerialPort(portName);
                 serialPort.DataReceived += SerialPort_DataReceived;
                 serialPort.Open();
@@ -49,7 +51,10 @@ namespace Viscometer
                 MessageBox.Show(ex.Message);
                 this.Close();
             }
-            
+
+            lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
+            lblLoad.Text = dataRowTest["numLoad"].ToString();
+            lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)

@@ -47,9 +47,8 @@
             this.lblMoony = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNum = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblLoad = new System.Windows.Forms.Label();
+            this.lblOrder = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -64,6 +63,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblCompound = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -91,6 +93,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblCompound);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.lblTemp2Res);
             this.panel1.Controls.Add(this.lblTimeRes);
             this.panel1.Controls.Add(this.lblTemp1Res);
@@ -101,9 +106,8 @@
             this.panel1.Controls.Add(this.lblMoony);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.lblNum);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.lblLoad);
+            this.panel1.Controls.Add(this.lblOrder);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
@@ -229,37 +233,30 @@
             this.lblNum.TabIndex = 16;
             this.lblNum.Text = "Номер:";
             // 
-            // label14
+            // lblLoad
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(191, 100);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Статус:";
+            this.lblLoad.AutoSize = true;
+            this.lblLoad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblLoad.Location = new System.Drawing.Point(104, 98);
+            this.lblLoad.Name = "lblLoad";
+            this.lblLoad.Size = new System.Drawing.Size(12, 15);
+            this.lblLoad.TabIndex = 14;
+            this.lblLoad.Text = "-";
             // 
-            // label13
+            // lblOrder
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 100);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 13);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Номер заправки:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(3, 78);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(83, 13);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Номер заказа:";
+            this.lblOrder.AutoSize = true;
+            this.lblOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblOrder.Location = new System.Drawing.Point(92, 76);
+            this.lblOrder.Name = "lblOrder";
+            this.lblOrder.Size = new System.Drawing.Size(12, 15);
+            this.lblOrder.TabIndex = 13;
+            this.lblOrder.Text = "-";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(157, 78);
+            this.label11.Location = new System.Drawing.Point(157, 100);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(78, 13);
             this.label11.TabIndex = 12;
@@ -268,7 +265,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(146, 56);
+            this.label10.Location = new System.Drawing.Point(146, 76);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 13);
             this.label10.TabIndex = 11;
@@ -442,6 +439,34 @@
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 78);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Номер заказа:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 100);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 13);
+            this.label5.TabIndex = 27;
+            this.label5.Text = "Номер заправки:";
+            // 
+            // lblCompound
+            // 
+            this.lblCompound.AutoSize = true;
+            this.lblCompound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblCompound.Location = new System.Drawing.Point(76, 54);
+            this.lblCompound.Name = "lblCompound";
+            this.lblCompound.Size = new System.Drawing.Size(12, 15);
+            this.lblCompound.TabIndex = 28;
+            this.lblCompound.Text = "-";
+            // 
             // WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -474,9 +499,8 @@
         private System.Windows.Forms.Label lblTemperature;
         private System.Windows.Forms.Label lblPreheat;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperature;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblLoad;
+        private System.Windows.Forms.Label lblOrder;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -492,6 +516,9 @@
         private System.Windows.Forms.Label lblTemp2Res;
         private System.Windows.Forms.Label lblTimeRes;
         private System.Windows.Forms.Label lblTemp1Res;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCompound;
     }
 }
 

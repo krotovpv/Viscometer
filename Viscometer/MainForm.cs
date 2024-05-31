@@ -53,7 +53,10 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count < 1) { MessageBox.Show("Выберите заказ!"); return; }
             if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
 
-            new WorkForm(dgvOrders.SelectedRows[0].Cells["ColNumOrder"].Value.ToString(), dgvTests.SelectedRows[0].Cells["ColNumLoad"].Value.ToString()).Show();
+            if (DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString() == "1")
+                new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString()).Show();
+            else
+                MessageBox.Show("Донное испытание уже проводилось.", "Испытание");
         }
 
         private void btnAddTest_Click(object sender, EventArgs e)
