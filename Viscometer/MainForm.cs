@@ -45,15 +45,7 @@ namespace Viscometer
          
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
-            if (dgvOrders.SelectedRows.Count > 0)
-            {
-                dgvTests.DataSource = DataBase.GetData(
-                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.short_description " +
-                    "FROM Tests " +
-                    "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
-                    "INNER JOIN TestProgramm ON Tests.idProgramm = TestProgramm.idProgramm AND Compounds.idParameters = TestProgramm.idProgramm " +
-                    "INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE (Tests.idOrder = '" + dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString() + "')");
-            }
+            loadTests();
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -68,8 +60,7 @@ namespace Viscometer
         {
             if (dgvOrders.SelectedRows[0].Index < 0)
             {
-                MessageBox.Show("Выберите заказ!");
-                return;
+                MessageBox.Show("Выберите заказ!"); return;
             }
 
             new AddTest(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
@@ -79,8 +70,12 @@ namespace Viscometer
         {
             if (dgvTests.SelectedRows[0].Index < 0)
             {
-                MessageBox.Show("Выберите испытание!");
-                return;
+                MessageBox.Show("Выберите испытание!", "Удаление"); return;
+            }
+
+            if (DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString() == "4")
+            {
+                MessageBox.Show("Принятые испытания защищены от удаления!", "Удаление"); return;
             }
 
             if (MessageBox.Show("Вы уверены что желаете удалить испытание?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -91,12 +86,62 @@ namespace Viscometer
         {
             if (dgvOrders.SelectedRows[0].Index < 0)
             {
-                MessageBox.Show("Выберите заказ!");
-                return;
+                MessageBox.Show("Выберите заказ!"); return;
             }
 
             if (MessageBox.Show("Вы уверены что желаете удалить заказ?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DataBase.GetData($"DELETE FROM [dbo].[Orders] WHERE idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value}'");
+        }
+
+        private void btnReceiptTest_Click(object sender, EventArgs e)
+        {
+            if (dgvTests.SelectedRows[0].Index < 0)
+            {
+                MessageBox.Show("Выберите испытание!"); return;
+            }
+
+            DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
+            if (row["idStatus"].ToString() == "1") 
+            {
+                MessageBox.Show("Испытание еще не проводилось!"); return;
+            }
+
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '4' WHERE idTest = '{row["idTest"]}'");
+        }
+
+        private void btnRejectTest_Click(object sender, EventArgs e)
+        {
+            if (dgvTests.SelectedRows[0].Index < 0)
+            {
+                MessageBox.Show("Выберите испытание!");
+                return;
+            }
+
+            DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
+            if (row["idStatus"].ToString() == "1")
+            {
+                MessageBox.Show("Испытание еще не проводилось!"); return;
+            }
+
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '5' WHERE idTest = '{row["idTest"]}'");
+        }
+
+        private void btnViewTest_Click(object sender, EventArgs e)
+        {
+            loadTests();
+        }
+
+        private void loadTests()
+        {
+            if (dgvOrders.SelectedRows.Count > 0)
+            {
+                dgvTests.DataSource = DataBase.GetData(
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.short_description " +
+                    "FROM Tests " +
+                    "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
+                    "INNER JOIN TestProgramm ON Tests.idProgramm = TestProgramm.idProgramm AND Compounds.idParameters = TestProgramm.idProgramm " +
+                    "INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE (Tests.idOrder = '" + dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString() + "')");
+            }
         }
     }
 }

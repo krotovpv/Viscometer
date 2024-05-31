@@ -251,6 +251,7 @@
             this.btnRejectTest.TabIndex = 17;
             this.toolTipForButton.SetToolTip(this.btnRejectTest, "Забраковать результат");
             this.btnRejectTest.UseVisualStyleBackColor = true;
+            this.btnRejectTest.Click += new System.EventHandler(this.btnRejectTest_Click);
             // 
             // btnReceiptTest
             // 
@@ -262,6 +263,7 @@
             this.btnReceiptTest.TabIndex = 18;
             this.toolTipForButton.SetToolTip(this.btnReceiptTest, "Подтвердить результат");
             this.btnReceiptTest.UseVisualStyleBackColor = true;
+            this.btnReceiptTest.Click += new System.EventHandler(this.btnReceiptTest_Click);
             // 
             // btnViewTest
             // 
@@ -273,6 +275,7 @@
             this.btnViewTest.TabIndex = 19;
             this.toolTipForButton.SetToolTip(this.btnViewTest, "Обновить");
             this.btnViewTest.UseVisualStyleBackColor = true;
+            this.btnViewTest.Click += new System.EventHandler(this.btnViewTest_Click);
             // 
             // btnStartTest
             // 
