@@ -216,6 +216,7 @@
             this.btnDelOrder.TabIndex = 14;
             this.toolTipForButton.SetToolTip(this.btnDelOrder, "Удалить");
             this.btnDelOrder.UseVisualStyleBackColor = true;
+            this.btnDelOrder.Click += new System.EventHandler(this.btnDelOrder_Click);
             // 
             // btnDelTest
             // 

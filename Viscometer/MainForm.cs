@@ -79,12 +79,24 @@ namespace Viscometer
         {
             if (dgvTests.SelectedRows[0].Index < 0)
             {
-                MessageBox.Show("Выберите заказ!");
+                MessageBox.Show("Выберите испытание!");
                 return;
             }
 
             if (MessageBox.Show("Вы уверены что желаете удалить испытание?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DataBase.GetData($"DELETE FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'");
+        }
+
+        private void btnDelOrder_Click(object sender, EventArgs e)
+        {
+            if (dgvOrders.SelectedRows[0].Index < 0)
+            {
+                MessageBox.Show("Выберите заказ!");
+                return;
+            }
+
+            if (MessageBox.Show("Вы уверены что желаете удалить заказ?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DataBase.GetData($"DELETE FROM [dbo].[Orders] WHERE idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value}'");
         }
     }
 }
