@@ -74,5 +74,17 @@ namespace Viscometer
 
             new AddTest(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
         }
+
+        private void btnDelTest_Click(object sender, EventArgs e)
+        {
+            if (dgvTests.SelectedRows[0].Index < 0)
+            {
+                MessageBox.Show("Выберите заказ!");
+                return;
+            }
+
+            if (MessageBox.Show("Вы уверены что желаете удалить испытание?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                DataBase.GetData($"DELETE FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'");
+        }
     }
 }

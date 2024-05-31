@@ -31,7 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nudLoadNumber = new System.Windows.Forms.NumericUpDown();
             this.cbProgramm = new System.Windows.Forms.ComboBox();
-            this.cbCompaund = new System.Windows.Forms.ComboBox();
+            this.cbCompound = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblOrderNumber = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -78,15 +78,15 @@
             this.cbProgramm.Size = new System.Drawing.Size(211, 24);
             this.cbProgramm.TabIndex = 2;
             // 
-            // cbCompaund
+            // cbCompound
             // 
-            this.cbCompaund.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCompaund.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbCompaund.FormattingEnabled = true;
-            this.cbCompaund.Location = new System.Drawing.Point(131, 114);
-            this.cbCompaund.Name = "cbCompaund";
-            this.cbCompaund.Size = new System.Drawing.Size(211, 24);
-            this.cbCompaund.TabIndex = 3;
+            this.cbCompound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCompound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbCompound.FormattingEnabled = true;
+            this.cbCompound.Location = new System.Drawing.Point(131, 114);
+            this.cbCompound.Name = "cbCompound";
+            this.cbCompound.Size = new System.Drawing.Size(211, 24);
+            this.cbCompound.TabIndex = 3;
             // 
             // label2
             // 
@@ -136,6 +136,7 @@
             this.btnOk.TabIndex = 8;
             this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // AddTest
             // 
@@ -147,7 +148,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblOrderNumber);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.cbCompaund);
+            this.Controls.Add(this.cbCompound);
             this.Controls.Add(this.cbProgramm);
             this.Controls.Add(this.nudLoadNumber);
             this.Controls.Add(this.label1);
@@ -168,7 +169,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudLoadNumber;
         private System.Windows.Forms.ComboBox cbProgramm;
-        private System.Windows.Forms.ComboBox cbCompaund;
+        private System.Windows.Forms.ComboBox cbCompound;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblOrderNumber;
         private System.Windows.Forms.Label label3;
