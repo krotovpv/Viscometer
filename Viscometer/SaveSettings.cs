@@ -17,14 +17,14 @@ namespace Viscometer
 
         public static void Save()
         {
-            Properties.Settings.Default.Viscometers = JsonConvert.SerializeObject(Viscometers);
+            Properties.Settings.Default.DbName = JsonConvert.SerializeObject(Viscometers);
             Properties.Settings.Default.Save();
         }
 
         public static void Load()
         {
             Viscometers.Clear();
-            string strViscosimeters = Properties.Settings.Default.Viscometers;
+            string strViscosimeters = Properties.Settings.Default.DbName;
             if (strViscosimeters != "")
                 Viscometers.AddRange(JsonConvert.DeserializeObject<List<Viscometer>>(strViscosimeters));
         }

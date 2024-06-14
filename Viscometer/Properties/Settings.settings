@@ -2,8 +2,8 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Viscometer.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Viscometers" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="DbName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DESKTOP-1Q3NRGG1</Value>
     </Setting>
   </Settings>
 </SettingsFile>

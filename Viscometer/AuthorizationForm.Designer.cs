@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.maskedTxtPassword = new System.Windows.Forms.MaskedTextBox();
             this.btnEnter = new System.Windows.Forms.Button();
-            this.linkLblOffline = new System.Windows.Forms.LinkLabel();
+            this.linkLblSetting = new System.Windows.Forms.LinkLabel();
             this.cbSub = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -90,16 +90,17 @@
             this.btnEnter.UseVisualStyleBackColor = true;
             this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
-            // linkLblOffline
+            // linkLblSetting
             // 
-            this.linkLblOffline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.linkLblOffline.AutoSize = true;
-            this.linkLblOffline.Location = new System.Drawing.Point(12, 156);
-            this.linkLblOffline.Name = "linkLblOffline";
-            this.linkLblOffline.Size = new System.Drawing.Size(63, 13);
-            this.linkLblOffline.TabIndex = 5;
-            this.linkLblOffline.TabStop = true;
-            this.linkLblOffline.Text = "Автономно";
+            this.linkLblSetting.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLblSetting.AutoSize = true;
+            this.linkLblSetting.Location = new System.Drawing.Point(12, 156);
+            this.linkLblSetting.Name = "linkLblSetting";
+            this.linkLblSetting.Size = new System.Drawing.Size(62, 13);
+            this.linkLblSetting.TabIndex = 5;
+            this.linkLblSetting.TabStop = true;
+            this.linkLblSetting.Text = "Настройки";
+            this.linkLblSetting.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLblSetting_LinkClicked);
             // 
             // cbSub
             // 
@@ -126,7 +127,7 @@
             this.ClientSize = new System.Drawing.Size(356, 181);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbSub);
-            this.Controls.Add(this.linkLblOffline);
+            this.Controls.Add(this.linkLblSetting);
             this.Controls.Add(this.btnEnter);
             this.Controls.Add(this.maskedTxtPassword);
             this.Controls.Add(this.label2);
@@ -151,7 +152,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox maskedTxtPassword;
         private System.Windows.Forms.Button btnEnter;
-        private System.Windows.Forms.LinkLabel linkLblOffline;
+        private System.Windows.Forms.LinkLabel linkLblSetting;
         private System.Windows.Forms.ComboBox cbSub;
         private System.Windows.Forms.Label label3;
     }

@@ -73,5 +73,9 @@ namespace Viscometer
             }
         }
 
+        private void linkLblSetting_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new Setting().ShowDialog();
+        }
     }
 }
