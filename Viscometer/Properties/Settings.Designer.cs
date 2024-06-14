@@ -34,5 +34,17 @@ namespace Viscometer.Properties {
                 this["DbName"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Viscometers {
+            get {
+                return ((string)(this["Viscometers"]));
+            }
+            set {
+                this["Viscometers"] = value;
+            }
+        }
     }
 }
