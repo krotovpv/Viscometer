@@ -55,6 +55,8 @@ namespace Viscometer
             lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
             lblLoad.Text = dataRowTest["numLoad"].ToString();
             lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
+
+            //получить программу испытания и залить в вискозиметр, если не выйдет выдать сообщение и закрыться
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -102,6 +104,7 @@ namespace Viscometer
                 txtData.ScrollToCaret();
             });
 
+            //переделать прием данных! он не корректен
             string[] arr = line.Split(',');
             if (arr[0] == "L" && arr[1][0] == 'a')
             {
