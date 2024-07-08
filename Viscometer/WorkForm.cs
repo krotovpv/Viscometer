@@ -18,11 +18,13 @@ namespace Viscometer
         SerialPort serialPort = null;
         DataRow dataRowTest = null;
         DataRow dataRowProgramm = null;
+        string idTest = string.Empty;
         
         public WorkForm(string IdTest)
         {
             InitializeComponent();
 
+            idTest = IdTest;
             dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{IdTest}'").Rows[0];
             dataRowProgramm = DataBase.GetData($"SELECT * FROM [dbo].[TestProgramm] WHERE idProgramm = '{dataRowTest["idProgramm"]}'").Rows[0];
         }
@@ -95,7 +97,7 @@ namespace Viscometer
         private void ParseLine(string line)
         {
             if (line == "") return;
-            //записываем строку в базу
+            DataBase.GetData($"INSERT INTO [dbo].[ProcessLink] ([idTest],[stringFromStand]) VALUES ('{idTest}' ,'{line}')");
 
             txtData.InvokeEx(() => 
             {
