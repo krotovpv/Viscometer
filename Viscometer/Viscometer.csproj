@@ -220,5 +220,8 @@
   <ItemGroup>
     <None Include="Resources\линейный-график-40.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Info\ExampleResponseFromStand.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
