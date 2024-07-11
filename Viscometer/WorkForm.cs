@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
@@ -106,7 +107,24 @@ namespace Viscometer
                 txtData.ScrollToCaret();
             });
 
-            //переделать прием данных! он не корректен
+            //A - Ответ стенда при получении комынды
+            //S - Start, начальная запись перед процессом испытания
+            //L - Текущие данные, получаемые в процессе испытания
+            //E - End, завершающая строка с результатами испытания
+            switch (line[0])
+            {
+                case 'A':
+                    ParseA(line); break;
+                case 'S':
+                    ParseS(line); break;
+                case 'L':
+                    ParseL(line); break;
+                case 'E':
+                    ParseE(line); break;
+                default:
+                    break;
+            }
+
             string[] arr = line.Split(',');
             if (arr[0] == "L" && arr[1][0] == 'a')
             {
@@ -176,6 +194,107 @@ namespace Viscometer
                 lblTemp2Res.InvokeEx(() =>
                     lblTemp2Res.Text = arr[4].Trim(' ', 'p'));
             }
+        }
+
+        /// <summary>
+        /// Разбор сообщение о принятой команде
+        /// </summary>
+        /// <param name="responce">Сообщение от стенда</param>
+        private bool ParseA(string[] responce)
+        {
+            
+        }
+
+
+        /// <summary>
+        /// Разбор сообщения о начале испытания
+        /// </summary>
+        /// <param name="responce">Сообщение от стенда</param>
+        /// <returns>Успешно ли получено сообщение</returns>
+        private bool ParseS(string responce)
+        {
+            DataBase.GetData("UPDATE [dbo].[Tests] " +
+                "SET " +
+                    "[dateStartTest] = CURRENT_TIMESTAMP, " +
+                    $"[startString] = '{responce}' " +
+                "WHERE " +
+                    $"[idTest] = '{idTest}'");
+
+            string[] arr = responce.Split(',');
+
+            if (arr.Length < 6) return false;
+
+            if (arr[0][1] == 'S')
+            {
+                //Испытание типа Scorch
+            }
+            else if (arr[0][1] == 'V')
+            {
+                //Испытание типа Viscosity
+            }
+            else
+            {
+                return false;
+            }
+
+            if (arr[0][3] == 'S')
+            {
+                //Испытание с Small ротором
+            }
+            else if (arr[0][3] == 'L')
+            {
+                //Испытание с Large ротором
+            }
+            else
+            {
+                return false;
+            }
+
+            //A - температура заданная (Set point)
+            //B - Установленое время для испытания (Set Time)
+            //C - Время подогрева (прогрев) (Preheat)
+            //D - Релоксация (Decay)
+            //E - (Visc range)
+            //F - Заводской номер (Factory Number)
+            for (int i = 1; i < arr.Length; i++)
+            {
+                switch (arr[i][0])
+                {
+                    case 'A': 
+                        break;
+                    case 'B':
+                        break;
+                    case 'C':
+                        break;
+                    case 'D':
+                        break;
+                    case 'E':
+                        break;
+                    case 'F':
+                        break;
+                    default:
+                        break;
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Разбор сообщения о текущщих данных испытания
+        /// </summary>
+        /// <param name="responce">Сообщение от стенда</param>
+        private bool ParseL(string responce)
+        {
+
+        }
+
+        /// <summary>
+        /// Разбор сообщения о завершении испытания
+        /// </summary>
+        /// <param name="responce">Сообщение от стенда</param>
+        private bool ParseE(string[] responce)
+        {
+
         }
 
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
