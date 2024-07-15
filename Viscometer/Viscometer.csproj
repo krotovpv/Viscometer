@@ -88,6 +88,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Response\CurrentResponse.cs" />
+    <Compile Include="Response\EndResponse.cs" />
+    <Compile Include="Response\ErrorResponse.cs" />
+    <Compile Include="Response\IResponseOfStand.cs" />
+    <Compile Include="Response\ParameterResponse.cs" />
+    <Compile Include="Response\ResponseOfStand.cs" />
+    <Compile Include="Response\StartResponse.cs" />
     <Compile Include="SaveSettings.cs" />
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
