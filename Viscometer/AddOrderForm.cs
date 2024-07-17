@@ -34,17 +34,17 @@ namespace Viscometer
 
         private void Secure()
         {
-            if (Tester.Rights == Rights.Name.MyOrders.ToString())
+            if (Tester.Right == Tester.Rights.MyOrders)
             {
                 cbTester.Enabled = false;
                 cbSubdivision.Enabled = false;
             }
-            else if (Tester.Rights == Rights.Name.MySub.ToString())
+            else if (Tester.Right == Tester.Rights.MySub)
             {
                 cbTester.Enabled = true;
                 cbSubdivision.Enabled = false;
             }
-            else if (Tester.Rights == Rights.Name.AllSub.ToString())
+            else if (Tester.Right == Tester.Rights.AllSub)
             {
                 cbTester.Enabled = true;
                 cbSubdivision.Enabled = true;

@@ -36,11 +36,32 @@ namespace Viscometer
 
         private void btnView_Click(object sender, EventArgs e)
         {
-            dgvOrders.DataSource = DataBase.GetData(
-                "SELECT Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv " +
-                "FROM Orders " +
-                "INNER JOIN Testers ON Orders.idTester = Testers.idTester " +
-                "INNER JOIN Subdivisions ON Orders.idSubdiv = Subdivisions.idSubdiv AND Testers.idSubdiv = Subdivisions.idSubdiv");
+            if (Tester.Right == Tester.Rights.AllSub)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.numOrder, Orders.dateOrder, Testers.nameTester, S1.nameSubdiv AS subTest, S2.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions AS S1 ON Testers.idSubdiv = S1.idSubdiv " +
+                    "JOIN Subdivisions AS S2 ON Orders.idSubdivisionCustomer = S2.idSubdiv");
+            }
+            else if (Tester.Right == Tester.Rights.MySub)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.numOrder, Orders.dateOrder, Testers.nameTester, S1.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions AS S1 ON Orders.idSubdivisionCustomer = S1.idSubdiv " +
+                    $"WHERE Orders.idSubdivisionCustomer = '{Tester.IdSub}'");
+            }
+            else if (Tester.Right == Tester.Rights.MyOrders)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.numOrder, Orders.dateOrder, S1.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Subdivisions AS S1 ON Orders.idSubdivisionCustomer = S1.idSubdiv " +
+                    $"WHERE Orders.idTester = '{Tester.Id}'");
+            }
         }
          
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
