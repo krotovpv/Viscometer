@@ -14,7 +14,7 @@ namespace Viscometer
         DataRow dataRowTest = null;
         DataRow dataRowProgramm = null;
         string idTest = string.Empty;
-        string idOrder = string.Empty;
+        string numOrder = string.Empty;
         string nameCompound;
         
         public WorkForm(string IdTest)
@@ -23,14 +23,13 @@ namespace Viscometer
 
             idTest = IdTest;
             dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{IdTest}'").Rows[0];
-            idOrder = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
-            dataRowProgramm = DataBase.GetData($"SELECT * FROM [dbo].[TestingProgramms] WHERE idProgramm = '{dataRowTest["idProgramm"]}'").Rows[0];
+            numOrder = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
             nameCompound = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblOrder.Text = idOrder;
+            lblOrder.Text = numOrder;
             lblLoad.Text = dataRowTest["numLoad"].ToString();
             lblCompound.Text = nameCompound;
 
@@ -57,7 +56,7 @@ namespace Viscometer
                 this.Close();
             }
 
-            //получить программу испытания и залить в вискозиметр, если не выйдет выдать сообщение и закрыться
+            //!!! Задать программу испытания и проверить что она загружена! Если не выйдет выдать сообщение и закрыться
 
         }
 

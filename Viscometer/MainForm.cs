@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Viscometer.Properties;
 
 namespace Viscometer
 {
@@ -39,27 +32,27 @@ namespace Viscometer
             if (Tester.Right == Tester.Rights.AllSub)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.numOrder, Orders.dateOrder, Testers.nameTester, S1.nameSubdiv AS subTest, S2.nameSubdiv AS subCustomer " +
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
-                    "JOIN Subdivisions AS S1 ON Testers.idSubdiv = S1.idSubdiv " +
-                    "JOIN Subdivisions AS S2 ON Orders.idSubdivisionCustomer = S2.idSubdiv");
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv");
             }
             else if (Tester.Right == Tester.Rights.MySub)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.numOrder, Orders.dateOrder, Testers.nameTester, S1.nameSubdiv AS subCustomer " +
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
-                    "JOIN Subdivisions AS S1 ON Orders.idSubdivisionCustomer = S1.idSubdiv " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
                     $"WHERE Orders.idSubdivisionCustomer = '{Tester.IdSub}'");
             }
             else if (Tester.Right == Tester.Rights.MyOrders)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.numOrder, Orders.dateOrder, S1.nameSubdiv AS subCustomer " +
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
-                    "JOIN Subdivisions AS S1 ON Orders.idSubdivisionCustomer = S1.idSubdiv " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
                     $"WHERE Orders.idTester = '{Tester.Id}'");
             }
         }
@@ -160,11 +153,10 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 dgvTests.DataSource = DataBase.GetData(
-                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, TestProgramm.name, Status.short_description " +
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, Tests.loadProgramm, Status.shortDescription " +
                     "FROM Tests " +
                     "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
-                    "INNER JOIN TestProgramm ON Tests.idProgramm = TestProgramm.idProgramm AND Compounds.idParameters = TestProgramm.idProgramm " +
-                    "INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE (Tests.idOrder = '" + dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString() + "')");
+                    $"INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE Tests.idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString()}'");
             }
         }
     }
