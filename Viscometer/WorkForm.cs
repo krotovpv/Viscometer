@@ -144,7 +144,7 @@ namespace Viscometer
                 {
                     this.InvokeEx(() => 
                     {
-                        lblResaultStatus.Text = "Good";
+                        lblResaultStatus.Text = "Успешно";
                         lblResaultStatus.BackColor = Color.LightGreen;
                     });
                 }
@@ -152,7 +152,7 @@ namespace Viscometer
                 {
                     this.InvokeEx(() =>
                     {
-                        lblResaultStatus.Text = "Bad";
+                        lblResaultStatus.Text = "Провалено";
                         lblResaultStatus.BackColor = Color.LightCoral;
                     });
                 }

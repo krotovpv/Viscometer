@@ -84,7 +84,7 @@ namespace Viscometer
             if (DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString() == "1")
                 new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString()).Show();
             else
-                MessageBox.Show("Донное испытание уже проводилось.", "Испытание");
+                MessageBox.Show("Данное испытание уже проводилось.", "Испытание");
         }
 
         private void btnAddTest_Click(object sender, EventArgs e)
