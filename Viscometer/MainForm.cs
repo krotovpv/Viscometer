@@ -29,6 +29,12 @@ namespace Viscometer
 
         private void btnView_Click(object sender, EventArgs e)
         {
+            dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv");
+            /*
             if (Tester.Right == Tester.Rights.AllSub)
             {
                 dgvOrders.DataSource = DataBase.GetData(
@@ -55,6 +61,7 @@ namespace Viscometer
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
                     $"WHERE Orders.idTester = '{Tester.Id}'");
             }
+            */
         }
          
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
@@ -80,7 +87,7 @@ namespace Viscometer
                 MessageBox.Show("Выберите заказ!"); return;
             }
 
-            new AddTest(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
+            new AddTestForm(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
         }
 
         private void btnDelTest_Click(object sender, EventArgs e)
@@ -90,9 +97,14 @@ namespace Viscometer
                 MessageBox.Show("Выберите испытание!", "Удаление"); return;
             }
 
-            if (DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString() == "4")
+            string status = DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString();
+            if (status == "4")
             {
                 MessageBox.Show("Принятые испытания защищены от удаления!", "Удаление"); return;
+            }
+            if (status == "6")
+            {
+                MessageBox.Show("Данное испытание в работе!\n\nЕсли все же намерены удалить, необходимо убедится что испытание не запущено на одном из стендов. Если оно не запущено, смените статус испытания и попробуйте удалить.", "Удаление"); return;
             }
 
             if (MessageBox.Show("Вы уверены что желаете удалить испытание?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -101,7 +113,7 @@ namespace Viscometer
 
         private void btnDelOrder_Click(object sender, EventArgs e)
         {
-            if (dgvOrders.SelectedRows[0].Index < 0)
+            if (dgvOrders.SelectedRows.Count < 1)
             {
                 MessageBox.Show("Выберите заказ!"); return;
             }
@@ -112,7 +124,7 @@ namespace Viscometer
 
         private void btnReceiptTest_Click(object sender, EventArgs e)
         {
-            if (dgvTests.SelectedRows[0].Index < 0)
+            if (dgvTests.SelectedRows.Count < 1)
             {
                 MessageBox.Show("Выберите испытание!"); return;
             }
@@ -128,7 +140,7 @@ namespace Viscometer
 
         private void btnRejectTest_Click(object sender, EventArgs e)
         {
-            if (dgvTests.SelectedRows[0].Index < 0)
+            if (dgvTests.SelectedRows.Count < 1)
             {
                 MessageBox.Show("Выберите испытание!");
                 return;

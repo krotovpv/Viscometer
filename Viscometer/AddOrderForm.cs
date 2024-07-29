@@ -21,13 +21,8 @@ namespace Viscometer
         {
             DataTable dtSub = DataBase.GetData("SELECT [nameSubdiv] FROM [Subdivisions]");
             for (int i = 0; i < dtSub.Rows.Count; i++)
-                cbSubdivision.Items.Add(dtSub.Rows[i].Field<string>("nameSubdiv"));
-            cbSubdivision.SelectedItem = Tester.NameSub;
-
-                DataTable dtTesters = DataBase.GetData("SELECT [nameTester] FROM [Testers]");
-            for (int i = 0; i < dtTesters.Rows.Count; i++)
-                cbTester.Items.Add(dtTesters.Rows[i].Field<string>("nameTester"));
-            cbTester.SelectedItem = Tester.Name;
+                cbSubdivisionCustomer.Items.Add(dtSub.Rows[i].Field<string>("nameSubdiv"));
+            cbSubdivisionCustomer.SelectedItem = Tester.NameSub;
 
             Secure();
         }
@@ -37,17 +32,27 @@ namespace Viscometer
             if (Tester.Right == Tester.Rights.MyOrders)
             {
                 cbTester.Enabled = false;
-                cbSubdivision.Enabled = false;
+
+                cbTester.Items.Add(Tester.Name);
+                cbTester.SelectedItem = Tester.Name;
             }
             else if (Tester.Right == Tester.Rights.MySub)
             {
                 cbTester.Enabled = true;
-                cbSubdivision.Enabled = false;
+
+                DataTable dtTesters = DataBase.GetData($"SELECT [nameTester] FROM [Testers] WHERE [idTester] = '{Tester.Id}'");
+                for (int i = 0; i < dtTesters.Rows.Count; i++)
+                    cbTester.Items.Add(dtTesters.Rows[i].Field<string>("nameTester"));
+                cbTester.SelectedItem = Tester.Name;
             }
             else if (Tester.Right == Tester.Rights.AllSub)
             {
                 cbTester.Enabled = true;
-                cbSubdivision.Enabled = true;
+
+                DataTable dtTesters = DataBase.GetData("SELECT [nameTester] FROM [Testers]");
+                for (int i = 0; i < dtTesters.Rows.Count; i++)
+                    cbTester.Items.Add(dtTesters.Rows[i].Field<string>("nameTester"));
+                cbTester.SelectedItem = Tester.Name;
             }
         }
 
@@ -59,12 +64,12 @@ namespace Viscometer
                 return;
             }
             DataBase.GetData(
-                "INSERT INTO [dbo].[Orders] ([numOrder],[dateOrder],[idSubdiv],[idTester])" +
+                "INSERT INTO [dbo].[Orders] ([numOrder],[dateOrder],[idTester],[idSubdivisionCustomer])" +
                 "VALUES(" +
-                    "'" + txtNumOrder.Text.Trim() + "'," +
-                    "'" + dtpDate.Value + "'," +
-                    "(SELECT [idSubdiv] FROM [Subdivisions] WHERE [nameSubdiv] = '" + cbSubdivision.SelectedItem + "')," +
-                    "(SELECT [idTester] FROM [Testers] WHERE [nameTester] = '" + cbTester.SelectedItem + "')" +
+                    $"'{txtNumOrder.Text.Trim()}'," +
+                    $"'{dtpDate.Value}'," +
+                    $"(SELECT [idTester] FROM [Testers] WHERE [nameTester] = '{cbTester.SelectedItem}')," +
+                    $"(SELECT [idSubdiv] FROM [Subdivisions] WHERE [nameSubdiv] = '{cbSubdivisionCustomer.SelectedItem}')" +
                 ")");
 
             this.Close();

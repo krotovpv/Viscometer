@@ -58,11 +58,11 @@
     <Compile Include="AddOrderForm.Designer.cs">
       <DependentUpon>AddOrderForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddTest.cs">
+    <Compile Include="AddTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddTest.Designer.cs">
-      <DependentUpon>AddTest.cs</DependentUpon>
+      <DependentUpon>AddTestForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AddViscometerForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +96,12 @@
     <Compile Include="Response\ResponseOfStand.cs" />
     <Compile Include="Response\StartResponse.cs" />
     <Compile Include="SaveSettings.cs" />
+    <Compile Include="SetProgramm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetProgramm.Designer.cs">
+      <DependentUpon>SetProgramm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,7 +135,7 @@
       <DependentUpon>AddOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddTest.resx">
-      <DependentUpon>AddTest.cs</DependentUpon>
+      <DependentUpon>AddTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddViscometerForm.resx">
       <DependentUpon>AddViscometerForm.cs</DependentUpon>
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SetProgramm.resx">
+      <DependentUpon>SetProgramm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>

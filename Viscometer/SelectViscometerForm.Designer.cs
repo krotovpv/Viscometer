@@ -67,6 +67,7 @@
             this.ClientSize = new System.Drawing.Size(465, 260);
             this.Controls.Add(this.flowLayoutPanelMain);
             this.Name = "SelectViscometerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Выбор устройства";
             this.Load += new System.EventHandler(this.SelectViscometerForm_Load);
             this.flowLayoutPanelMain.ResumeLayout(false);

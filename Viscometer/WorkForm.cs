@@ -56,8 +56,22 @@ namespace Viscometer
                 this.Close();
             }
 
-            //!!! Задать программу испытания и проверить что она загружена! Если не выйдет выдать сообщение и закрыться
-
+            //Задаем программу испытания
+            using (SetProgramm setProgramm = new SetProgramm(serialPort))
+            {
+                if (setProgramm.ShowDialog() == DialogResult.OK)
+                {
+                    //меняем статус испытания и записываем примененную программу
+                    DataBase.GetData("UPDATE [dbo].[Tests] " +
+                        "SET [idStatus] = '6' ," +
+                        $"[loadProgramm] = '{setProgramm.TestPragrammString}' " +
+                        $"WHERE [idTest] = '{idTest}'");
+                }
+                else
+                {
+                    this.Close(); 
+                }
+            }
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -126,6 +140,8 @@ namespace Viscometer
 
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            string status = DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0]["idStatus"].ToString();
+            if (status == "6") DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
             serialPort?.Close();
         }
     }

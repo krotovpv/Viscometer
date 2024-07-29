@@ -33,7 +33,7 @@
             this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cbSubdivision = new System.Windows.Forms.ComboBox();
+            this.cbSubdivisionCustomer = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbTester = new System.Windows.Forms.ComboBox();
             this.btnOK = new System.Windows.Forms.Button();
@@ -84,29 +84,29 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 75);
+            this.label3.Location = new System.Drawing.Point(12, 105);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Подразделение";
+            this.label3.Text = "Заказчик";
             // 
-            // cbSubdivision
+            // cbSubdivisionCustomer
             // 
-            this.cbSubdivision.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cbSubdivisionCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cbSubdivision.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSubdivision.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbSubdivision.FormattingEnabled = true;
-            this.cbSubdivision.Location = new System.Drawing.Point(131, 72);
-            this.cbSubdivision.Name = "cbSubdivision";
-            this.cbSubdivision.Size = new System.Drawing.Size(142, 24);
-            this.cbSubdivision.TabIndex = 5;
+            this.cbSubdivisionCustomer.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubdivisionCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbSubdivisionCustomer.FormattingEnabled = true;
+            this.cbSubdivisionCustomer.Location = new System.Drawing.Point(104, 102);
+            this.cbSubdivisionCustomer.Name = "cbSubdivisionCustomer";
+            this.cbSubdivisionCustomer.Size = new System.Drawing.Size(169, 24);
+            this.cbSubdivisionCustomer.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 105);
+            this.label4.Location = new System.Drawing.Point(12, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(86, 16);
             this.label4.TabIndex = 6;
@@ -119,7 +119,7 @@
             this.cbTester.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbTester.FormattingEnabled = true;
-            this.cbTester.Location = new System.Drawing.Point(104, 102);
+            this.cbTester.Location = new System.Drawing.Point(104, 72);
             this.cbTester.Name = "cbTester";
             this.cbTester.Size = new System.Drawing.Size(169, 24);
             this.cbTester.TabIndex = 7;
@@ -127,7 +127,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOK.Location = new System.Drawing.Point(169, 168);
+            this.btnOK.Location = new System.Drawing.Point(169, 157);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(104, 32);
             this.btnOK.TabIndex = 8;
@@ -139,11 +139,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 212);
+            this.ClientSize = new System.Drawing.Size(285, 201);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.cbTester);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.cbSubdivision);
+            this.Controls.Add(this.cbSubdivisionCustomer);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dtpDate);
@@ -165,7 +165,7 @@
         private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbSubdivision;
+        private System.Windows.Forms.ComboBox cbSubdivisionCustomer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cbTester;
         private System.Windows.Forms.Button btnOK;

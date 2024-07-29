@@ -30,6 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvOrders = new System.Windows.Forms.DataGridView();
+            this.ColIdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDateOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNumOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNameTester = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSubCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
             this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
@@ -53,17 +58,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dgvTests = new System.Windows.Forms.DataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.ColIdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDateOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNumOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColNameTester = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSubCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColIdTest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNumLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCompaund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -97,6 +97,44 @@
             this.dgvOrders.Size = new System.Drawing.Size(481, 373);
             this.dgvOrders.TabIndex = 0;
             this.dgvOrders.SelectionChanged += new System.EventHandler(this.dgvOrders_SelectionChanged);
+            // 
+            // ColIdOrder
+            // 
+            this.ColIdOrder.DataPropertyName = "idOrder";
+            this.ColIdOrder.HeaderText = "Id";
+            this.ColIdOrder.Name = "ColIdOrder";
+            this.ColIdOrder.ReadOnly = true;
+            this.ColIdOrder.Visible = false;
+            // 
+            // ColDateOrder
+            // 
+            this.ColDateOrder.DataPropertyName = "dateOrder";
+            this.ColDateOrder.HeaderText = "Дата";
+            this.ColDateOrder.Name = "ColDateOrder";
+            this.ColDateOrder.ReadOnly = true;
+            // 
+            // ColNumOrder
+            // 
+            this.ColNumOrder.DataPropertyName = "numOrder";
+            this.ColNumOrder.HeaderText = "Номер заказа";
+            this.ColNumOrder.Name = "ColNumOrder";
+            this.ColNumOrder.ReadOnly = true;
+            this.ColNumOrder.Width = 138;
+            // 
+            // ColNameTester
+            // 
+            this.ColNameTester.DataPropertyName = "nameTester";
+            this.ColNameTester.HeaderText = "Испытатель";
+            this.ColNameTester.Name = "ColNameTester";
+            this.ColNameTester.ReadOnly = true;
+            // 
+            // ColSubCustomer
+            // 
+            this.ColSubCustomer.DataPropertyName = "subCustomer";
+            this.ColSubCustomer.HeaderText = "Заказчик";
+            this.ColSubCustomer.Name = "ColSubCustomer";
+            this.ColSubCustomer.ReadOnly = true;
+            this.ColSubCustomer.Width = 70;
             // 
             // button10
             // 
@@ -385,54 +423,6 @@
             this.dgvTests.Size = new System.Drawing.Size(474, 373);
             this.dgvTests.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            // 
-            // ColIdOrder
-            // 
-            this.ColIdOrder.DataPropertyName = "idOrder";
-            this.ColIdOrder.HeaderText = "Id";
-            this.ColIdOrder.Name = "ColIdOrder";
-            this.ColIdOrder.ReadOnly = true;
-            this.ColIdOrder.Visible = false;
-            // 
-            // ColDateOrder
-            // 
-            this.ColDateOrder.DataPropertyName = "dateOrder";
-            this.ColDateOrder.HeaderText = "Дата";
-            this.ColDateOrder.Name = "ColDateOrder";
-            this.ColDateOrder.ReadOnly = true;
-            // 
-            // ColNumOrder
-            // 
-            this.ColNumOrder.DataPropertyName = "numOrder";
-            this.ColNumOrder.HeaderText = "Номер заказа";
-            this.ColNumOrder.Name = "ColNumOrder";
-            this.ColNumOrder.ReadOnly = true;
-            this.ColNumOrder.Width = 138;
-            // 
-            // ColNameTester
-            // 
-            this.ColNameTester.DataPropertyName = "nameTester";
-            this.ColNameTester.HeaderText = "Испытатель";
-            this.ColNameTester.Name = "ColNameTester";
-            this.ColNameTester.ReadOnly = true;
-            // 
-            // ColSubCustomer
-            // 
-            this.ColSubCustomer.DataPropertyName = "subCustomer";
-            this.ColSubCustomer.HeaderText = "Заказчик";
-            this.ColSubCustomer.Name = "ColSubCustomer";
-            this.ColSubCustomer.ReadOnly = true;
-            this.ColSubCustomer.Width = 70;
-            // 
             // ColIdTest
             // 
             this.ColIdTest.DataPropertyName = "idTest";
@@ -473,6 +463,16 @@
             this.ColTesterStatus.ReadOnly = true;
             this.ColTesterStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -486,7 +486,7 @@
             this.Controls.Add(this.grpBoxTester);
             this.Controls.Add(this.splitContMain);
             this.Name = "MainForm";
-            this.Text = " ";
+            this.Text = " Вискозиметр";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).EndInit();
             this.grpBoxTester.ResumeLayout(false);

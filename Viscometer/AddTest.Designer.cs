@@ -1,6 +1,6 @@
 ﻿namespace Viscometer
 {
-    partial class AddTest
+    partial class AddTestForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,11 +30,9 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.nudLoadNumber = new System.Windows.Forms.NumericUpDown();
-            this.cbProgramm = new System.Windows.Forms.ComboBox();
             this.cbCompound = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblOrderNumber = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).BeginInit();
@@ -68,22 +66,12 @@
             0,
             0});
             // 
-            // cbProgramm
-            // 
-            this.cbProgramm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProgramm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cbProgramm.FormattingEnabled = true;
-            this.cbProgramm.Location = new System.Drawing.Point(131, 84);
-            this.cbProgramm.Name = "cbProgramm";
-            this.cbProgramm.Size = new System.Drawing.Size(211, 24);
-            this.cbProgramm.TabIndex = 2;
-            // 
             // cbCompound
             // 
             this.cbCompound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbCompound.FormattingEnabled = true;
-            this.cbCompound.Location = new System.Drawing.Point(131, 114);
+            this.cbCompound.Location = new System.Drawing.Point(131, 82);
             this.cbCompound.Name = "cbCompound";
             this.cbCompound.Size = new System.Drawing.Size(211, 24);
             this.cbCompound.TabIndex = 3;
@@ -108,21 +96,11 @@
             this.lblOrderNumber.TabIndex = 5;
             this.lblOrderNumber.Text = "-";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(12, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 16);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Программа исп.:";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 117);
+            this.label4.Location = new System.Drawing.Point(12, 85);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(75, 16);
             this.label4.TabIndex = 7;
@@ -130,7 +108,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(238, 161);
+            this.btnOk.Location = new System.Drawing.Point(238, 133);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(104, 32);
             this.btnOk.TabIndex = 8;
@@ -142,14 +120,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 205);
+            this.ClientSize = new System.Drawing.Size(354, 180);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.lblOrderNumber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cbCompound);
-            this.Controls.Add(this.cbProgramm);
             this.Controls.Add(this.nudLoadNumber);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -157,7 +133,7 @@
             this.MinimizeBox = false;
             this.Name = "AddTest";
             this.Text = "Добавить испытание";
-            this.Load += new System.EventHandler(this.AddTest_Load);
+            this.Load += new System.EventHandler(this.AddTestForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -168,11 +144,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown nudLoadNumber;
-        private System.Windows.Forms.ComboBox cbProgramm;
         private System.Windows.Forms.ComboBox cbCompound;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblOrderNumber;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOk;
     }
