@@ -31,7 +31,7 @@ namespace Viscometer.Response
         /// <summary>
         /// Прогрев. Осуществляется перед испытанием для лучшей стабилизации температуры. 000.0
         /// </summary>
-        public float Preheat { get; }
+        public TimeSpan Preheat { get; }
         /// <summary>
         /// Время для релоксации. mmm:ss.f
         /// </summary>
@@ -63,15 +63,18 @@ namespace Viscometer.Response
                                 TestType = clearResponse[1];
                                 RotorSize = clearResponse[3]; break;
                             case 'A'://Заданная температура (Set point).
-                                SetPoint = float.Parse(clearResponse.Substring(1)); break;
+                                SetPoint = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'B'://Заданная температура испытания.
-                                SetTime = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpSetTime = clearResponse.Substring(1).Trim().Split(':', '.');
+                                SetTime = new TimeSpan(0, 0, Convert.ToInt32(tmpSetTime[0]), Convert.ToInt32(tmpSetTime[1]), Convert.ToInt32(tmpSetTime[2])); break;
                             case 'C'://Прогрев.
-                                Preheat = float.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpPreheat = clearResponse.Substring(1).Trim().Split(':', '.');
+                                Preheat = new TimeSpan(0, 0, Convert.ToInt32(tmpPreheat[0]), Convert.ToInt32(tmpPreheat[1]), Convert.ToInt32(tmpPreheat[2])); ; break;
                             case 'D'://Релоксация.
-                                Decay = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpDecay = clearResponse.Substring(1).Trim().Split(':', '.');
+                                Decay = new TimeSpan(0, 0, Convert.ToInt32(tmpDecay[0]), Convert.ToInt32(tmpDecay[1]), Convert.ToInt32(tmpDecay[2])); break;
                             case 'E'://Visc range
-                                ViscRange = float.Parse(clearResponse.Substring(1)); break;
+                                ViscRange = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'F'://Заводской номер.
                                 FactoryNumber = clearResponse.Substring(1); break;
                             default:

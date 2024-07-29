@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
 using Viscometer.Response;
@@ -126,15 +127,45 @@ namespace Viscometer
             }
             else if (response.GetType() == typeof(StartResponse))
             {
-                
+                StartResponse startResponse = response as StartResponse;
+                this.InvokeEx(() =>
+                {
+                    lblTestTime.Text = "Время испытания: " + startResponse.SetTime.ToString();
+                    lblTemperature.Text = "Температура: " + startResponse.SetPoint.ToString();
+                    lblRelax.Text = "Время релаксации: " + startResponse.Decay.ToString();
+                    lblPreheat.Text = "Время прогрева: " + startResponse.Preheat.ToString();
+                    lblNum.Text = "Номер: " + startResponse.FactoryNumber.ToString();
+                });
             }
             else if (response.GetType() == typeof(EndResponse))
             {
-
+                EndResponse endResponse = response as EndResponse;
+                if (endResponse.Status == 1)
+                {
+                    this.InvokeEx(() => 
+                    {
+                        lblResaultStatus.Text = "Good";
+                        lblResaultStatus.BackColor = Color.LightGreen;
+                    });
+                }
+                else if (endResponse.Status == 2)
+                {
+                    this.InvokeEx(() =>
+                    {
+                        lblResaultStatus.Text = "Bad";
+                        lblResaultStatus.BackColor = Color.LightCoral;
+                    });
+                }
             }
             else if (response.GetType() == typeof (CurrentResponse))
             {
-
+                CurrentResponse currentResponse = response as CurrentResponse;
+                this.InvokeEx(() =>
+                {
+                    chartValue.Series[0].Points.Add(currentResponse.Viscosity);
+                    chartTemperature.Series[0].Points.Add(currentResponse.TemperatureUp);
+                    chartTemperature.Series[1].Points.Add(currentResponse.TemperatureDown);
+                });
             }
         }
 

@@ -25,9 +25,16 @@ namespace Viscometer
         private void btnAdd_Click(object sender, EventArgs e)
         {
             new AddOrderForm().ShowDialog();
+
+            loadOrders();
         }
 
         private void btnView_Click(object sender, EventArgs e)
+        {
+            loadOrders();
+        }
+
+        private void loadOrders()
         {
             dgvOrders.DataSource = DataBase.GetData(
                     "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
@@ -63,7 +70,7 @@ namespace Viscometer
             }
             */
         }
-         
+
         private void dgvOrders_SelectionChanged(object sender, EventArgs e)
         {
             loadTests();
@@ -88,6 +95,8 @@ namespace Viscometer
             }
 
             new AddTestForm(dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value.ToString()).ShowDialog();
+
+            loadTests();
         }
 
         private void btnDelTest_Click(object sender, EventArgs e)
@@ -109,6 +118,8 @@ namespace Viscometer
 
             if (MessageBox.Show("Вы уверены что желаете удалить испытание?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DataBase.GetData($"DELETE FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'");
+            
+            loadTests();
         }
 
         private void btnDelOrder_Click(object sender, EventArgs e)
@@ -120,6 +131,8 @@ namespace Viscometer
 
             if (MessageBox.Show("Вы уверены что желаете удалить заказ?", "Удаление", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 DataBase.GetData($"DELETE FROM [dbo].[Orders] WHERE idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value}'");
+
+            loadOrders();
         }
 
         private void btnReceiptTest_Click(object sender, EventArgs e)
@@ -136,6 +149,8 @@ namespace Viscometer
             }
 
             DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '4' WHERE idTest = '{row["idTest"]}'");
+
+            loadTests();
         }
 
         private void btnRejectTest_Click(object sender, EventArgs e)
@@ -153,6 +168,8 @@ namespace Viscometer
             }
 
             DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '5' WHERE idTest = '{row["idTest"]}'");
+
+            loadTests();
         }
 
         private void btnViewTest_Click(object sender, EventArgs e)

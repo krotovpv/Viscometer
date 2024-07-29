@@ -48,13 +48,14 @@ namespace Viscometer.Response
                         switch (clearResponse[0])
                         {
                             case 'a'://Текущее время испытания
-                                Time = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpTime = clearResponse.Substring(1).Trim().Split(':', '.');
+                                Time = new TimeSpan(0, 0, Convert.ToInt32(tmpTime[0]), Convert.ToInt32(tmpTime[1]), Convert.ToInt32(tmpTime[2])); break;
                             case 'b'://Текущая вязкость (Viscosity)
-                                Viscosity = float.Parse(clearResponse.Substring(1)); break;
+                                Viscosity = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'd'://Температура верхней плиты
-                                TemperatureUp = float.Parse(clearResponse.Substring(1)); break;
+                                TemperatureUp = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'e'://Температура нижней плиты
-                                TemperatureDown = float.Parse(clearResponse.Substring(1)); break;
+                                TemperatureDown = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             default:
                                 break;
                         }

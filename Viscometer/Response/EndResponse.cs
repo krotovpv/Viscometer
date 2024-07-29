@@ -70,21 +70,25 @@ namespace Viscometer.Response
                             case 'E'://Информация о результате испытания
                                 Status = short.Parse(clearResponse[1].ToString()); break;
                             case 'a'://Начальная вязкость (Initial MU).
-                                InitialMU = float.Parse(clearResponse.Substring(1)); break;
+                                InitialMU = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'b'://Минимальная вязкость (Minimum MU).
-                                MinimumMU = float.Parse(clearResponse.Substring(1)); break;
+                                MinimumMU = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'c'://t5.
-                                T5 = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpT5 = clearResponse.Substring(1).Trim().Split(':', '.');
+                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT5[0]), Convert.ToInt32(tmpT5[1]), Convert.ToInt32(tmpT5[2])); break;
                             case 'd'://t35.
-                                T35 = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpT35 = clearResponse.Substring(1).Trim().Split(':', '.');
+                                T35 = new TimeSpan(0, 0, Convert.ToInt32(tmpT35[0]), Convert.ToInt32(tmpT35[1]), Convert.ToInt32(tmpT35[2])); break;
                             case 'q'://t10.
-                                T10 = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                string[] tmpT10 = clearResponse.Substring(1).Trim().Split(':', '.');
+                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT10[0]), Convert.ToInt32(tmpT10[1]), Convert.ToInt32(tmpT10[2])); break;
                             case 'e'://???.
-                                Viscosity_e = float.Parse(clearResponse.Substring(1)); break;
-                            case 'f'://???.
-                                Decay = TimeSpan.Parse(clearResponse.Substring(1)); break;
+                                Viscosity_e = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
+                            case 'f'://Релаксация (Decay)
+                                string[] tmpTDecay = clearResponse.Substring(1).Trim().Split(':', '.');
+                                Decay = new TimeSpan(0, 0, Convert.ToInt32(tmpTDecay[0]), Convert.ToInt32(tmpTDecay[1]), Convert.ToInt32(tmpTDecay[2])); break;
                             case 'p'://Итоговая вязкость.
-                                FinalViscosity = float.Parse(clearResponse.Substring(1)); break;
+                                FinalViscosity = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'r'://???.
                                 Simbol_r = clearResponse.Substring(1); break;
                             default:

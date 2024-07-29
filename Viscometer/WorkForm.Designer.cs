@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series9 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lblResaultStatus = new System.Windows.Forms.Label();
             this.lblCompound = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -58,7 +59,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.lblResaultStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -112,6 +112,17 @@
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
             this.panel1.Size = new System.Drawing.Size(294, 630);
             this.panel1.TabIndex = 0;
+            // 
+            // lblResaultStatus
+            // 
+            this.lblResaultStatus.BackColor = System.Drawing.Color.White;
+            this.lblResaultStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblResaultStatus.Location = new System.Drawing.Point(0, 581);
+            this.lblResaultStatus.Name = "lblResaultStatus";
+            this.lblResaultStatus.Size = new System.Drawing.Size(294, 49);
+            this.lblResaultStatus.TabIndex = 29;
+            this.lblResaultStatus.Text = "-";
+            this.lblResaultStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCompound
             // 
@@ -261,7 +272,7 @@
             // lblRelax
             // 
             this.lblRelax.AutoSize = true;
-            this.lblRelax.Location = new System.Drawing.Point(3, 204);
+            this.lblRelax.Location = new System.Drawing.Point(3, 226);
             this.lblRelax.Name = "lblRelax";
             this.lblRelax.Size = new System.Drawing.Size(106, 13);
             this.lblRelax.TabIndex = 5;
@@ -270,7 +281,7 @@
             // lblTemperature
             // 
             this.lblTemperature.AutoSize = true;
-            this.lblTemperature.Location = new System.Drawing.Point(3, 182);
+            this.lblTemperature.Location = new System.Drawing.Point(3, 204);
             this.lblTemperature.Name = "lblTemperature";
             this.lblTemperature.Size = new System.Drawing.Size(77, 13);
             this.lblTemperature.TabIndex = 4;
@@ -279,7 +290,7 @@
             // lblPreheat
             // 
             this.lblPreheat.AutoSize = true;
-            this.lblPreheat.Location = new System.Drawing.Point(3, 226);
+            this.lblPreheat.Location = new System.Drawing.Point(3, 182);
             this.lblPreheat.Name = "lblPreheat";
             this.lblPreheat.Size = new System.Drawing.Size(93, 13);
             this.lblPreheat.TabIndex = 2;
@@ -309,75 +320,65 @@
             // 
             // chartValue
             // 
-            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea1.AxisY.IsStartedFromZero = false;
-            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea1.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea1.Name = "ChartArea1";
-            this.chartValue.ChartAreas.Add(chartArea1);
+            chartArea5.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea5.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea5.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea5.AxisY.IsStartedFromZero = false;
+            chartArea5.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea5.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea5.Name = "ChartArea1";
+            this.chartValue.ChartAreas.Add(chartArea5);
             this.chartValue.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chartValue.Legends.Add(legend1);
+            legend5.Name = "Legend1";
+            this.chartValue.Legends.Add(legend5);
             this.chartValue.Location = new System.Drawing.Point(3, 3);
             this.chartValue.Name = "chartValue";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Color = System.Drawing.Color.Blue;
-            series1.IsVisibleInLegend = false;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            this.chartValue.Series.Add(series1);
+            series7.ChartArea = "ChartArea1";
+            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series7.Color = System.Drawing.Color.Blue;
+            series7.IsVisibleInLegend = false;
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            series7.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            this.chartValue.Series.Add(series7);
             this.chartValue.Size = new System.Drawing.Size(713, 312);
             this.chartValue.TabIndex = 1;
             this.chartValue.Text = "chart1";
             // 
             // chartTemperature
             // 
-            chartArea2.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea2.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
-            chartArea2.AxisY.IsStartedFromZero = false;
-            chartArea2.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
-            chartArea2.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
-            chartArea2.Name = "ChartArea1";
-            this.chartTemperature.ChartAreas.Add(chartArea2);
+            chartArea6.AxisX.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea6.AxisX.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea6.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
+            chartArea6.AxisY.IsStartedFromZero = false;
+            chartArea6.AxisY.MajorGrid.LineColor = System.Drawing.Color.Gainsboro;
+            chartArea6.AxisY.MajorTickMark.TickMarkStyle = System.Windows.Forms.DataVisualization.Charting.TickMarkStyle.InsideArea;
+            chartArea6.Name = "ChartArea1";
+            this.chartTemperature.ChartAreas.Add(chartArea6);
             this.chartTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.chartTemperature.Legends.Add(legend2);
+            legend6.Name = "Legend1";
+            this.chartTemperature.Legends.Add(legend6);
             this.chartTemperature.Location = new System.Drawing.Point(3, 321);
             this.chartTemperature.Name = "chartTemperature";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Color = System.Drawing.Color.Red;
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            series3.IsVisibleInLegend = false;
-            series3.Legend = "Legend1";
-            series3.Name = "Series2";
-            series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
-            this.chartTemperature.Series.Add(series2);
-            this.chartTemperature.Series.Add(series3);
+            series8.ChartArea = "ChartArea1";
+            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series8.Color = System.Drawing.Color.Red;
+            series8.IsVisibleInLegend = false;
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            series8.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            series9.ChartArea = "ChartArea1";
+            series9.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series9.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            series9.IsVisibleInLegend = false;
+            series9.Legend = "Legend1";
+            series9.Name = "Series2";
+            series9.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
+            this.chartTemperature.Series.Add(series8);
+            this.chartTemperature.Series.Add(series9);
             this.chartTemperature.Size = new System.Drawing.Size(713, 312);
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
-            // 
-            // lblResaultStatus
-            // 
-            this.lblResaultStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblResaultStatus.Location = new System.Drawing.Point(0, 581);
-            this.lblResaultStatus.Name = "lblResaultStatus";
-            this.lblResaultStatus.Size = new System.Drawing.Size(294, 49);
-            this.lblResaultStatus.TabIndex = 29;
-            this.lblResaultStatus.Text = "-";
-            this.lblResaultStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // WorkForm
             // 
