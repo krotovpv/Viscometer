@@ -146,6 +146,7 @@ namespace Viscometer
                     {
                         lblResaultStatus.Text = "Успешно";
                         lblResaultStatus.BackColor = Color.LightGreen;
+                        DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '3' WHERE [idTest] = '{idTest}'");
                     });
                 }
                 else if (endResponse.Status == 2)
@@ -154,6 +155,7 @@ namespace Viscometer
                     {
                         lblResaultStatus.Text = "Провалено";
                         lblResaultStatus.BackColor = Color.LightCoral;
+                        DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
                     });
                 }
             }
