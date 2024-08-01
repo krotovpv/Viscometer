@@ -81,12 +81,12 @@ namespace Viscometer.Response
                                 InitialMU = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'b'://Минимальная вязкость (Minimum MU).
                                 MinimumMU = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
-                            case 'c'://t5.
-                                string[] tmpT5 = clearResponse.Substring(1).Trim().Split(':', '.');
-                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT5[0]), Convert.ToInt32(tmpT5[1]), Convert.ToInt32(tmpT5[2])); break;
-                            case 'd'://t35.
-                                string[] tmpT35 = clearResponse.Substring(1).Trim().Split(':', '.');
-                                T35 = new TimeSpan(0, 0, Convert.ToInt32(tmpT35[0]), Convert.ToInt32(tmpT35[1]), Convert.ToInt32(tmpT35[2])); break;
+                            case 'c'://t3 or t5.
+                                string[] tmpT3orT5 = clearResponse.Substring(1).Trim().Split(':', '.');
+                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT3orT5[0]), Convert.ToInt32(tmpT3orT5[1]), Convert.ToInt32(tmpT3orT5[2])); break;
+                            case 'd'://t18 or t35.
+                                string[] tmpT18orT35 = clearResponse.Substring(1).Trim().Split(':', '.');
+                                T35 = new TimeSpan(0, 0, Convert.ToInt32(tmpT18orT35[0]), Convert.ToInt32(tmpT18orT35[1]), Convert.ToInt32(tmpT18orT35[2])); break;
                             case 'q'://t10.
                                 string[] tmpT10 = clearResponse.Substring(1).Trim().Split(':', '.');
                                 T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT10[0]), Convert.ToInt32(tmpT10[1]), Convert.ToInt32(tmpT10[2])); break;
