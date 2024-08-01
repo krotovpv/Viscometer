@@ -9,6 +9,8 @@ namespace Viscometer
     {
         public string TestPragrammString = "-";
         SerialPort _serialPort;
+        string dataTail = string.Empty;
+
         public SetProgramm(SerialPort serialPort)
         {
             InitializeComponent();
@@ -16,6 +18,39 @@ namespace Viscometer
         }
 
         private void SetProgramm_Load(object sender, EventArgs e)
+        {
+            _serialPort.DataReceived += _serialPort_DataReceived;
+        }
+
+        private void _serialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            dataTail += ((SerialPort)sender).ReadExisting();
+
+            string line = String.Empty;
+            foreach (char item in dataTail)
+            {
+                if (item == '\n' || item == '\r')
+                {
+                    try
+                    {
+                        ParseLine(line);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
+                    line = String.Empty;
+                }
+                else
+                {
+                    line += item;
+                }
+            }
+            dataTail = line;
+        }
+
+        private void ParseLine(string line)
         {
 
         }

@@ -50,7 +50,6 @@ namespace Viscometer
             {
                 if (portName == string.Empty) this.Close();
                 serialPort = new SerialPort(portName);
-                serialPort.DataReceived += SerialPort_DataReceived;
                 serialPort.Open();
             }
             catch (Exception ex)
@@ -75,6 +74,9 @@ namespace Viscometer
                     this.Close(); 
                 }
             }
+
+            //Подписываемся на обработку данных ТОЛЬКО после того как со стендом пообщалось окошко задания программы испытания!
+            serialPort.DataReceived += SerialPort_DataReceived;
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
