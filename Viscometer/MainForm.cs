@@ -81,7 +81,8 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count < 1) { MessageBox.Show("Выберите заказ!"); return; }
             if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
 
-            if (DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString() == "1")
+            int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"]);
+            if (status == (int)Status.TestStatus.Blank)
                 new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString()).Show();
             else
                 MessageBox.Show("Данное испытание уже проводилось.", "Испытание");
@@ -106,12 +107,12 @@ namespace Viscometer
                 MessageBox.Show("Выберите испытание!", "Удаление"); return;
             }
 
-            string status = DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"].ToString();
-            if (status == "4")
+            int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"]);
+            if (status == (int)Status.TestStatus.Handshake)
             {
                 MessageBox.Show("Принятые испытания защищены от удаления!", "Удаление"); return;
             }
-            if (status == "6")
+            if (status == (int)Status.TestStatus.Work)
             {
                 MessageBox.Show("Данное испытание в работе!\n\nЕсли все же намерены удалить, необходимо убедится что испытание не запущено на одном из стендов. Если оно не запущено, смените статус испытания и попробуйте удалить.", "Удаление"); return;
             }
@@ -143,12 +144,12 @@ namespace Viscometer
             }
 
             DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
-            if (row["idStatus"].ToString() == "1") 
+            if (Convert.ToInt16(row["idStatus"]) == (int)Status.TestStatus.Blank) 
             {
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '4' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Handshake}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }
@@ -162,12 +163,12 @@ namespace Viscometer
             }
 
             DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
-            if (row["idStatus"].ToString() == "1")
+            if (Convert.ToInt16(row["idStatus"]) == (int)Status.TestStatus.Blank)
             {
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '5' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Ignor}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }

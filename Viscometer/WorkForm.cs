@@ -161,7 +161,7 @@ namespace Viscometer
                         }
 
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '3' WHERE [idTest] = '{idTest}'");
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Success}' WHERE [idTest] = '{idTest}'");
                 }
                 else if (endResponse.Status == 2)
                 {
@@ -170,7 +170,7 @@ namespace Viscometer
                         lblResault.Text = "Провалено";
                         lblResault.BackColor = Color.LightCoral;
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
                 }
             }
             else if (response.GetType() == typeof (CurrentResponse))
@@ -188,7 +188,7 @@ namespace Viscometer
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             string status = DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0]["idStatus"].ToString();
-            if (status == "6") DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
+            if (status == "6") DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
             serialPort?.Close();
         }
     }

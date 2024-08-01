@@ -108,6 +108,7 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Status.cs" />
     <Compile Include="Tester.cs" />
     <Compile Include="Viscometer.cs" />
     <Compile Include="WorkForm.cs">
