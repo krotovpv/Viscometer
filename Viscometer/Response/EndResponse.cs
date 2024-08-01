@@ -25,25 +25,17 @@ namespace Viscometer.Response
         /// </summary>
         public float MinimumMU { get; }
         /// <summary>
-        /// Время необходимое вязкости для увеличения от минимального значения на 3 пунктов
+        /// Время необходимое вязкости для увеличения от минимального значения на 3 или 5 пунктов
         /// </summary>
-        public TimeSpan T3 { get; }
-        /// <summary>
-        /// Время необходимое вязкости для увеличения от минимального значения на 5 пунктов
-        /// </summary>
-        public TimeSpan T5 { get; }
+        public TimeSpan T3orT5 { get; }
         /// <summary>
         /// Время необходимое вязкости для увеличения от минимального значения на 10 пунктов
         /// </summary>
         public TimeSpan T10 { get; }
         /// <summary>
-        /// Время необходимое вязкости для увеличения от минимального значения на 18 пунктов
+        /// Время необходимое вязкости для увеличения от минимального значения на 18 или 35 пунктов
         /// </summary>
-        public TimeSpan T18 { get; }
-        /// <summary>
-        /// Время необходимое вязкости для увеличения от минимального значения на 35 пунктов
-        /// </summary>
-        public TimeSpan T35 { get; }
+        public TimeSpan T18orT35 { get; }
         /// <summary>
         /// Вязкость. ??? Пока непонятно что именно значит. Совподает с результатом испытания.
         /// </summary>
@@ -83,13 +75,13 @@ namespace Viscometer.Response
                                 MinimumMU = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'c'://t3 or t5.
                                 string[] tmpT3orT5 = clearResponse.Substring(1).Trim().Split(':', '.');
-                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT3orT5[0]), Convert.ToInt32(tmpT3orT5[1]), Convert.ToInt32(tmpT3orT5[2])); break;
+                                T3orT5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT3orT5[0]), Convert.ToInt32(tmpT3orT5[1]), Convert.ToInt32(tmpT3orT5[2])); break;
                             case 'd'://t18 or t35.
                                 string[] tmpT18orT35 = clearResponse.Substring(1).Trim().Split(':', '.');
-                                T35 = new TimeSpan(0, 0, Convert.ToInt32(tmpT18orT35[0]), Convert.ToInt32(tmpT18orT35[1]), Convert.ToInt32(tmpT18orT35[2])); break;
+                                T18orT35 = new TimeSpan(0, 0, Convert.ToInt32(tmpT18orT35[0]), Convert.ToInt32(tmpT18orT35[1]), Convert.ToInt32(tmpT18orT35[2])); break;
                             case 'q'://t10.
                                 string[] tmpT10 = clearResponse.Substring(1).Trim().Split(':', '.');
-                                T5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT10[0]), Convert.ToInt32(tmpT10[1]), Convert.ToInt32(tmpT10[2])); break;
+                                T3orT5 = new TimeSpan(0, 0, Convert.ToInt32(tmpT10[0]), Convert.ToInt32(tmpT10[1]), Convert.ToInt32(tmpT10[2])); break;
                             case 'e'://???.
                                 Viscosity_e = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'f'://Релаксация (Decay)

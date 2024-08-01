@@ -155,7 +155,7 @@ namespace Viscometer
                         else if (testType == 'S')
                         {
                             if (rotorSize == 'L')
-                                lblResault.Text = "Δt35 (" + endResponse.T35.ToString() + ") - Δt5 (" + endResponse.T5
+                                lblResault.Text = "Δt35 (" + endResponse.T18orT35.ToString() + ") - Δt5 (" + endResponse.T3orT5
                         }   
                             
                     });
