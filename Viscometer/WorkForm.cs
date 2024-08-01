@@ -155,9 +155,11 @@ namespace Viscometer
                         else if (testType == 'S')
                         {
                             if (rotorSize == 'L')
-                                lblResault.Text = "Δt35 (" + endResponse.T18orT35.ToString() + ") - Δt5 (" + endResponse.T3orT5
-                        }   
-                            
+                                lblResault.Text = $"t35 ({endResponse.T18orT35.ToString()}) - t5 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
+                            else if (rotorSize == 'S')
+                                lblResault.Text = $"t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
+                        }
+
                     });
                     DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '3' WHERE [idTest] = '{idTest}'");
                 }
