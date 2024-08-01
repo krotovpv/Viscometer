@@ -17,6 +17,8 @@ namespace Viscometer
         string idTest = string.Empty;
         string numOrder = string.Empty;
         string nameCompound;
+        char testType;
+        char rotorSize;
         
         public WorkForm(string IdTest)
         {
@@ -135,6 +137,8 @@ namespace Viscometer
                     lblRelax.Text = "Время релаксации: " + startResponse.Decay.ToString();
                     lblPreheat.Text = "Время прогрева: " + startResponse.Preheat.ToString();
                     lblNum.Text = "Номер: " + startResponse.FactoryNumber.ToString();
+                    testType = startResponse.TestType;
+                    rotorSize = startResponse.RotorSize;
                 });
             }
             else if (response.GetType() == typeof(EndResponse))
@@ -144,19 +148,27 @@ namespace Viscometer
                 {
                     this.InvokeEx(() => 
                     {
-                        lblResaultStatus.Text = "Успешно";
-                        lblResaultStatus.BackColor = Color.LightGreen;
-                        DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '3' WHERE [idTest] = '{idTest}'");
+                        lblResault.Text = "Успешно";
+                        lblResault.BackColor = Color.LightGreen;
+                        if (testType == 'V')
+                            lblResault.Text = "MU " + endResponse.FinalViscosity.ToString();
+                        else if (testType == 'S')
+                        {
+                            if (rotorSize == 'L')
+                                lblResault.Text = "Δt35 (" + endResponse.T35.ToString() + ") - Δt5 (" + endResponse.T5
+                        }   
+                            
                     });
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '3' WHERE [idTest] = '{idTest}'");
                 }
                 else if (endResponse.Status == 2)
                 {
                     this.InvokeEx(() =>
                     {
-                        lblResaultStatus.Text = "Провалено";
-                        lblResaultStatus.BackColor = Color.LightCoral;
-                        DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
+                        lblResault.Text = "Провалено";
+                        lblResault.BackColor = Color.LightCoral;
                     });
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '2' WHERE [idTest] = '{idTest}'");
                 }
             }
             else if (response.GetType() == typeof (CurrentResponse))

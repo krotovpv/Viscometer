@@ -25,6 +25,10 @@ namespace Viscometer.Response
         /// </summary>
         public float MinimumMU { get; }
         /// <summary>
+        /// Время необходимое вязкости для увеличения от минимального значения на 3 пунктов
+        /// </summary>
+        public TimeSpan T3 { get; }
+        /// <summary>
         /// Время необходимое вязкости для увеличения от минимального значения на 5 пунктов
         /// </summary>
         public TimeSpan T5 { get; }
@@ -32,6 +36,10 @@ namespace Viscometer.Response
         /// Время необходимое вязкости для увеличения от минимального значения на 10 пунктов
         /// </summary>
         public TimeSpan T10 { get; }
+        /// <summary>
+        /// Время необходимое вязкости для увеличения от минимального значения на 18 пунктов
+        /// </summary>
+        public TimeSpan T18 { get; }
         /// <summary>
         /// Время необходимое вязкости для увеличения от минимального значения на 35 пунктов
         /// </summary>
