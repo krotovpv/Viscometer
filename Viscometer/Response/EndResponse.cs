@@ -65,6 +65,7 @@ namespace Viscometer.Response
                     clearResponse = arr[i].Trim();
                     try
                     {
+                        if (clearResponse.Length < 1) break;
                         switch (clearResponse[0])
                         {
                             case 'E'://Информация о результате испытания

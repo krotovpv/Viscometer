@@ -96,11 +96,11 @@
     <Compile Include="Response\ResponseOfStand.cs" />
     <Compile Include="Response\StartResponse.cs" />
     <Compile Include="SaveSettings.cs" />
-    <Compile Include="SetProgramm.cs">
+    <Compile Include="SetProgrammForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SetProgramm.Designer.cs">
-      <DependentUpon>SetProgramm.cs</DependentUpon>
+    <Compile Include="SetProgrammForm.Designer.cs">
+      <DependentUpon>SetProgrammForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting.cs">
       <SubType>Form</SubType>
@@ -108,6 +108,11 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
+    <Compile Include="Stand\Command.cs" />
+    <Compile Include="Stand\LastCommand.cs" />
+    <Compile Include="Stand\RotorType.cs" />
+    <Compile Include="Stand\Stand.cs" />
+    <Compile Include="Stand\TestType.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Tester.cs" />
     <Compile Include="Viscometer.cs" />
@@ -147,8 +152,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SetProgramm.resx">
-      <DependentUpon>SetProgramm.cs</DependentUpon>
+    <EmbeddedResource Include="SetProgrammForm.resx">
+      <DependentUpon>SetProgrammForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Setting.resx">
       <DependentUpon>Setting.cs</DependentUpon>
@@ -239,6 +244,7 @@
     <None Include="Resources\линейный-график-40.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Info\ExampelErrorResponse.txt" />
     <Content Include="Info\ExampleResponseFromStand.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -39,7 +40,7 @@ namespace Viscometer
             SelectViscometerForm frm = flp.Parent as SelectViscometerForm;
             frm.SelectPortName = lblPortName.Text;
             frm.DialogResult = DialogResult.OK;
-        }
+        }  
 
         private void picBoxDel_Click(object sender, EventArgs e)
         {

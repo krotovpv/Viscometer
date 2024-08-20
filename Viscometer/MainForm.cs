@@ -149,7 +149,7 @@ namespace Viscometer
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Handshake}' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Handshake}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }
@@ -168,7 +168,7 @@ namespace Viscometer
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Ignor}' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Ignor}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }

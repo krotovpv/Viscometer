@@ -45,6 +45,7 @@ namespace Viscometer.Response
                     clearResponse = arr[i].Trim();
                     try
                     {
+                        if (clearResponse.Length < 1) break;
                         switch (clearResponse[0])
                         {
                             case 'a'://Текущее время испытания

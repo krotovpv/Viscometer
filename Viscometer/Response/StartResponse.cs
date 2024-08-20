@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Viscometer.Stand;
 
 namespace Viscometer.Response
 {
@@ -15,11 +16,11 @@ namespace Viscometer.Response
         /// <summary>
         /// Тип испытания. Ex.: V - Viscosity, S - Scorch.
         /// </summary>
-        public char TestType { get; }
+        public TestType TestType { get; }
         /// <summary>
         /// Размер ротора. Ex.: L - Large, S - Small.
         /// </summary>
-        public char RotorSize { get; }
+        public RotorType RotorSize { get; }
         /// <summary>
         /// Заданная температура испытания. 000.0
         /// </summary>
@@ -57,11 +58,19 @@ namespace Viscometer.Response
                     clearResponse = arr[i].Trim();
                     try
                     {
+                        if (clearResponse.Length < 1) break;
                         switch (clearResponse[0])
                         {
                             case 'S'://Информация о типе испытания и применяемом роторе
-                                TestType = clearResponse[1];
-                                RotorSize = clearResponse[3]; break;
+                                if (clearResponse[1] == 'V')
+                                    TestType = TestType.Viscosity;
+                                else if (clearResponse[1] == 'S')
+                                    TestType = TestType.Scorch;
+                                if (clearResponse[3] == 'L')
+                                    RotorSize = RotorType.Large;
+                                else if (clearResponse[3] == 'S')
+                                    RotorSize = RotorType.Small; 
+                                break;
                             case 'A'://Заданная температура (Set point).
                                 SetPoint = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
                             case 'B'://Заданная температура испытания.

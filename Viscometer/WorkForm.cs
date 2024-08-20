@@ -4,12 +4,12 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Windows.Forms;
 using Viscometer.Response;
+using Viscometer.Stand;
 
 namespace Viscometer
 {
     public partial class WorkForm : Form
     {
-        string portName = string.Empty;
         string dataTail = string.Empty;
         SerialPort serialPort = null;
         DataRow dataRowTest = null;
@@ -17,8 +17,8 @@ namespace Viscometer
         string idTest = string.Empty;
         string numOrder = string.Empty;
         string nameCompound;
-        char testType;
-        char rotorSize;
+        TestType testType;
+        RotorType rotorSize;
         
         public WorkForm(string IdTest)
         {
@@ -39,33 +39,33 @@ namespace Viscometer
             using (SelectViscometerForm svForm = new SelectViscometerForm())
             {
                 if (svForm.ShowDialog() == DialogResult.OK)
-                    portName = svForm.SelectPortName;
+                {
+                    this.Text = svForm.SelectPortName;
+                    if (svForm.SelectPortName == String.Empty) this.Close();
+
+                    try
+                    {
+                        serialPort = new SerialPort(svForm.SelectPortName);
+                        serialPort.Open();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        this.Close();
+                    }
+                }
                 else
                     this.Close();
-
-                this.Text = portName;
-            }
-
-            try
-            {
-                if (portName == string.Empty) this.Close();
-                serialPort = new SerialPort(portName);
-                serialPort.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                this.Close();
             }
 
             //Задаем программу испытания
-            using (SetProgramm setProgramm = new SetProgramm(serialPort))
+            using (SetProgrammForm setProgramm = new SetProgrammForm(serialPort))
             {
                 if (setProgramm.ShowDialog() == DialogResult.OK)
                 {
                     //меняем статус испытания и записываем примененную программу
                     DataBase.GetData("UPDATE [dbo].[Tests] " +
-                        "SET [idStatus] = '6' ," +
+                        $"SET [idStatus] = '{(int)Status.TestStatus.Work}' ," +
                         $"[loadProgramm] = '{setProgramm.TestPragrammString}' " +
                         $"WHERE [idTest] = '{idTest}'");
                 }
@@ -152,18 +152,18 @@ namespace Viscometer
                     {
                         lblResault.Text = "Успешно";
                         lblResault.BackColor = Color.LightGreen;
-                        if (testType == 'V')
+                        if (testType == TestType.Viscosity)
                             lblResault.Text = "MU " + endResponse.FinalViscosity.ToString();
-                        else if (testType == 'S')
+                        else if (testType == TestType.Scorch)
                         {
-                            if (rotorSize == 'L')
+                            if (rotorSize == RotorType.Large)
                                 lblResault.Text = $"t35 ({endResponse.T18orT35.ToString()}) - t5 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
-                            else if (rotorSize == 'S')
+                            else if (rotorSize == RotorType.Small)
                                 lblResault.Text = $"t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
                         }
 
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Success}' WHERE [idTest] = '{idTest}'");
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Success}' WHERE [idTest] = '{idTest}'");
                 }
                 else if (endResponse.Status == 2)
                 {
@@ -172,7 +172,7 @@ namespace Viscometer
                         lblResault.Text = "Провалено";
                         lblResault.BackColor = Color.LightCoral;
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
                 }
             }
             else if (response.GetType() == typeof (CurrentResponse))
@@ -189,8 +189,16 @@ namespace Viscometer
 
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            string status = DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0]["idStatus"].ToString();
-            if (status == "6") DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
+            try
+            {
+                int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0]["idStatus"]);
+                if (status == (int)Status.TestStatus.Work) DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
             serialPort?.Close();
         }
     }
