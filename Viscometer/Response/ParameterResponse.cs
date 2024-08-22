@@ -11,7 +11,7 @@ namespace Viscometer.Response
         /// <summary>
         /// Первый символ сообщения, является индикатором типа сообщения.
         /// </summary>
-        public static char FirstSymbol { get; } = 'A';
+        public static char FirstSymbol { get; } = '0';
         public EState State { get; }
         public string ResponseCode { get; }
 
@@ -45,7 +45,7 @@ namespace Viscometer.Response
 
                 if (State == EState.Success)
                 {
-                    ResponseCode = arr[2].Split(' ')[1];
+                    ResponseCode = arr[2].Trim().Split(' ')[1];
                 }
             }
         }

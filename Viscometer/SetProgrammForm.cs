@@ -125,6 +125,15 @@ namespace Viscometer
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            //инициализация
+            lblLinkDecay.BackColor = Color.LightCoral;
+            lblLinkPreheatTime.BackColor = Color.LightCoral;
+            lblLinkPrintPreheat.BackColor = Color.LightCoral;
+            lblLinkRotorSize.BackColor = Color.LightCoral;
+            lblLinkSetTime.BackColor = Color.LightCoral;
+            lblLinkTempTest.BackColor = Color.LightCoral;
+            lblLinkTestType.BackColor = Color.LightCoral;
+
             if (radioBtnViscosity.Checked)
             {
                 TestPragrammString = "M";
@@ -189,7 +198,12 @@ namespace Viscometer
                 else
                     loop = maxTryRequest;
             }
-            this.DialogResult = DialogResult.OK;
+
+            if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&
+                ResponseSuccessA22 && ResponseSuccessA23 && ResponseSuccessA24)
+                this.DialogResult = DialogResult.OK;
+            else
+                btnOk.Text = "Повторить";
         }
 
         private void sentMsg(string msg)
@@ -208,6 +222,7 @@ namespace Viscometer
                 }
                 Thread.Sleep(10);
             }
+            _serialPort.Write("\r");
             Thread.Sleep(100);
         }
 
