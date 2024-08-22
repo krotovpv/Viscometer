@@ -76,31 +76,31 @@ namespace Viscometer
                     {
                         case "0":
                             ResponseSuccessA0 = true;
-                            lblLinkSetTime.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkSetTime.BackColor = Color.LightGreen; });
                             break;
                         case "1": 
                             ResponseSuccessA1 = true;
-                            lblLinkTempTest.BackColor = Color.LightGreen; 
+                            this.InvokeEx(() => { lblLinkTempTest.BackColor = Color.LightGreen; });
                             break;
                         case "2":
                             ResponseSuccessA2 = true;
-                            lblLinkPreheatTime.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkPreheatTime.BackColor = Color.LightGreen; });
                             break;
                         case "3":
                             ResponseSuccessA3 = true;
-                            lblLinkDecay.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkDecay.BackColor = Color.LightGreen; });
                             break;
                         case "22":
                             ResponseSuccessA22 = true;
-                            lblLinkRotorSize.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkRotorSize.BackColor = Color.LightGreen; });
                             break;
                         case "23":
                             ResponseSuccessA23 = true;
-                            lblLinkTestType.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkTestType.BackColor = Color.LightGreen; });
                             break;
                         case "24":
                             ResponseSuccessA24 = true;
-                            lblLinkPrintPreheat.BackColor = Color.LightGreen;
+                            this.InvokeEx(() => { lblLinkPrintPreheat.BackColor = Color.LightGreen; });
                             break;
                         default:
                             break;

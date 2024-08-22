@@ -17,6 +17,7 @@ namespace Viscometer
         string idTest = string.Empty;
         string numOrder = string.Empty;
         string nameCompound;
+        string testProgStr;
         TestType testType;
         RotorType rotorSize;
         
@@ -63,11 +64,7 @@ namespace Viscometer
             {
                 if (setProgramm.ShowDialog() == DialogResult.OK)
                 {
-                    //меняем статус испытания и записываем примененную программу
-                    DataBase.GetData("UPDATE [dbo].[Tests] " +
-                        $"SET [idStatus] = '{(int)Status.TestStatus.Work}' ," +
-                        $"[loadProgramm] = '{setProgramm.TestPragrammString}' " +
-                        $"WHERE [idTest] = '{idTest}'");
+                    testProgStr = setProgramm.TestPragrammString;
                 }
                 else
                 {
@@ -125,12 +122,24 @@ namespace Viscometer
             });
 
             IResponseOfStand response = ResponseOfStand.Parse(line);
-            if (response.GetType() == typeof(ParameterResponse))
+            if (response.GetType() == typeof(CurrentResponse))
             {
-
+                CurrentResponse currentResponse = response as CurrentResponse;
+                this.InvokeEx(() =>
+                {
+                    chartValue.Series[0].Points.Add(currentResponse.Viscosity);
+                    chartTemperature.Series[0].Points.Add(currentResponse.TemperatureUp);
+                    chartTemperature.Series[1].Points.Add(currentResponse.TemperatureDown);
+                });
             }
-            else if (response.GetType() == typeof(StartResponse))
+            else if(response.GetType() == typeof(StartResponse))
             {
+                DataBase.GetData("UPDATE [dbo].[Tests] SET " +
+                    $"[idStatus] = '{(int)Status.TestStatus.Work}' ," +
+                    $"[loadProgramm] = '{testProgStr}' " +
+                    "WHERE " +
+                    $"[idTest] = '{idTest}'");
+
                 StartResponse startResponse = response as StartResponse;
                 this.InvokeEx(() =>
                 {
@@ -148,6 +157,11 @@ namespace Viscometer
                 EndResponse endResponse = response as EndResponse;
                 if (endResponse.Status == 1)
                 {
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET " +
+                    $"[idStatus] = '{(int)Status.TestStatus.Success}' " +
+                    "WHERE " +
+                    $"[idTest] = '{idTest}'");
+
                     this.InvokeEx(() => 
                     {
                         lblResault.Text = "Успешно";
@@ -161,29 +175,21 @@ namespace Viscometer
                             else if (rotorSize == RotorType.Small)
                                 lblResault.Text = $"t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
                         }
-
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Success}' WHERE [idTest] = '{idTest}'");
                 }
                 else if (endResponse.Status == 2)
                 {
+                    DataBase.GetData($"UPDATE [dbo].[Tests] SET " +
+                        $"[idStatus] = '{(int)Status.TestStatus.Fail}' " +
+                        "WHERE " +
+                        $"[idTest] = '{idTest}'");
+
                     this.InvokeEx(() =>
                     {
                         lblResault.Text = "Провалено";
                         lblResault.BackColor = Color.LightCoral;
                     });
-                    DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
                 }
-            }
-            else if (response.GetType() == typeof (CurrentResponse))
-            {
-                CurrentResponse currentResponse = response as CurrentResponse;
-                this.InvokeEx(() =>
-                {
-                    chartValue.Series[0].Points.Add(currentResponse.Viscosity);
-                    chartTemperature.Series[0].Points.Add(currentResponse.TemperatureUp);
-                    chartTemperature.Series[1].Points.Add(currentResponse.TemperatureDown);
-                });
             }
         }
 

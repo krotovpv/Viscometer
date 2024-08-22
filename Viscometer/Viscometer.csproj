@@ -108,10 +108,7 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stand\Command.cs" />
-    <Compile Include="Stand\LastCommand.cs" />
     <Compile Include="Stand\RotorType.cs" />
-    <Compile Include="Stand\Stand.cs" />
     <Compile Include="Stand\TestType.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Tester.cs" />
