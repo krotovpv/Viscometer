@@ -22,7 +22,7 @@ namespace Viscometer
             lblOrderNumber.Text = DataBase.GetData($"Select numOrder From Orders WHERE idOrder = '{orderId}'").Rows[0].ItemArray[0].ToString();
             nudLoadNumber.Value = DataBase.GetData($"Select * From Tests WHERE idOrder = '{orderId}'").Rows.Count + 1;
 
-            cbTypeCompound.DataSource = DataBase.GetData("Select idTypeCompound, nameTypeCompound");
+            cbTypeCompound.DataSource = DataBase.GetData("SELECT [idTypeCompound],[nameTypeCompound] FROM [Viscosimeters].[dbo].[TypeOfCompound]");
             cbTypeCompound.ValueMember = "idTypeCompound";
             cbTypeCompound.DisplayMember = "nameTypeCompound";
             cbTypeCompound.SelectedIndexChanged += CbTypeCompound_SelectedIndexChanged;

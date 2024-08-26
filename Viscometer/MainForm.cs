@@ -36,11 +36,43 @@ namespace Viscometer
 
         private void loadOrders()
         {
-            dgvOrders.DataSource = DataBase.GetData(
+            if (!dateTimePicker1.Checked && !dateTimePicker2.Checked)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
                     "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv");
+            }
+            else if (dateTimePicker1.Checked && !dateTimePicker2.Checked)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
+                    $"WHERE (dateOrder >= '{dateTimePicker1.Value.Date}')");
+            }
+            else if (!dateTimePicker1.Checked && dateTimePicker2.Checked)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
+                    $"WHERE (dateOrder <= '{dateTimePicker2.Value.Date}')");
+            }
+            else if (dateTimePicker1.Checked && dateTimePicker2.Checked)
+            {
+                dgvOrders.DataSource = DataBase.GetData(
+                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "FROM Orders " +
+                    "JOIN Testers ON Orders.idTester = Testers.idTester " +
+                    "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
+                    $"WHERE (dateOrder >= '{dateTimePicker1.Value.Date} ' AND dateOrder <= '{dateTimePicker2.Value.Date}')");
+            }
+
+
             /*
             if (Tester.Right == Tester.Rights.AllSub)
             {

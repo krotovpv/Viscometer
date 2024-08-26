@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.dgvOrders = new System.Windows.Forms.DataGridView();
             this.ColIdOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDateOrder = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,18 +38,6 @@
             this.ColSubCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
             this.btnStartTest = new System.Windows.Forms.Button();
-            this.btnMaterials = new System.Windows.Forms.Button();
-            this.btnUsers = new System.Windows.Forms.Button();
-            this.btnViewOrder = new System.Windows.Forms.Button();
-            this.btnAddOrder = new System.Windows.Forms.Button();
-            this.btnChartOrder = new System.Windows.Forms.Button();
-            this.btnDelOrder = new System.Windows.Forms.Button();
-            this.btnAddTest = new System.Windows.Forms.Button();
-            this.btnDelTest = new System.Windows.Forms.Button();
-            this.btnChartTest = new System.Windows.Forms.Button();
-            this.btnRejectTest = new System.Windows.Forms.Button();
-            this.btnReceiptTest = new System.Windows.Forms.Button();
-            this.btnViewTest = new System.Windows.Forms.Button();
             this.grpBoxTester = new System.Windows.Forms.GroupBox();
             this.lblTester = new System.Windows.Forms.Label();
             this.splitContMain = new System.Windows.Forms.SplitContainer();
@@ -64,6 +53,18 @@
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
+            this.btnMaterials = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
+            this.btnViewOrder = new System.Windows.Forms.Button();
+            this.btnAddOrder = new System.Windows.Forms.Button();
+            this.btnChartOrder = new System.Windows.Forms.Button();
+            this.btnDelOrder = new System.Windows.Forms.Button();
+            this.btnAddTest = new System.Windows.Forms.Button();
+            this.btnDelTest = new System.Windows.Forms.Button();
+            this.btnChartTest = new System.Windows.Forms.Button();
+            this.btnRejectTest = new System.Windows.Forms.Button();
+            this.btnReceiptTest = new System.Windows.Forms.Button();
+            this.btnViewTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -152,10 +153,192 @@
             this.btnStartTest.UseVisualStyleBackColor = true;
             this.btnStartTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
+            // grpBoxTester
+            // 
+            this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpBoxTester.Controls.Add(this.lblTester);
+            this.grpBoxTester.Location = new System.Drawing.Point(621, 12);
+            this.grpBoxTester.Name = "grpBoxTester";
+            this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
+            this.grpBoxTester.TabIndex = 10;
+            this.grpBoxTester.TabStop = false;
+            this.grpBoxTester.Text = "Подразделение";
+            // 
+            // lblTester
+            // 
+            this.lblTester.AutoSize = true;
+            this.lblTester.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblTester.Location = new System.Drawing.Point(3, 16);
+            this.lblTester.Name = "lblTester";
+            this.lblTester.Size = new System.Drawing.Size(106, 15);
+            this.lblTester.TabIndex = 0;
+            this.lblTester.Text = "Имя испытателя";
+            // 
+            // splitContMain
+            // 
+            this.splitContMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContMain.Location = new System.Drawing.Point(0, 62);
+            this.splitContMain.Name = "splitContMain";
+            // 
+            // splitContMain.Panel1
+            // 
+            this.splitContMain.Panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContMain.Panel1.Controls.Add(this.label2);
+            this.splitContMain.Panel1.Controls.Add(this.dgvOrders);
+            this.splitContMain.Panel1.Controls.Add(this.dateTimePicker2);
+            this.splitContMain.Panel1.Controls.Add(this.btnViewOrder);
+            this.splitContMain.Panel1.Controls.Add(this.label1);
+            this.splitContMain.Panel1.Controls.Add(this.btnAddOrder);
+            this.splitContMain.Panel1.Controls.Add(this.dateTimePicker1);
+            this.splitContMain.Panel1.Controls.Add(this.btnChartOrder);
+            this.splitContMain.Panel1.Controls.Add(this.btnDelOrder);
+            // 
+            // splitContMain.Panel2
+            // 
+            this.splitContMain.Panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.splitContMain.Panel2.Controls.Add(this.btnAddTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnDelTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnChartTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnRejectTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnReceiptTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnViewTest);
+            this.splitContMain.Panel2.Controls.Add(this.btnStartTest);
+            this.splitContMain.Panel2.Controls.Add(this.dgvTests);
+            this.splitContMain.Size = new System.Drawing.Size(963, 427);
+            this.splitContMain.SplitterDistance = 483;
+            this.splitContMain.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(296, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "По";
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker2.Checked = false;
+            this.dateTimePicker2.Location = new System.Drawing.Point(323, 28);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.ShowCheckBox = true;
+            this.dateTimePicker2.Size = new System.Drawing.Size(157, 20);
+            this.dateTimePicker2.TabIndex = 18;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(296, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "С";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePicker1.Checked = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(323, 3);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowCheckBox = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(157, 20);
+            this.dateTimePicker1.TabIndex = 16;
+            // 
+            // dgvTests
+            // 
+            this.dgvTests.AllowUserToAddRows = false;
+            this.dgvTests.AllowUserToDeleteRows = false;
+            this.dgvTests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvTests.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColIdTest,
+            this.ColNumLoad,
+            this.ColCompaund,
+            this.ColNameParogramm,
+            this.ColTesterStatus});
+            this.dgvTests.Location = new System.Drawing.Point(1, 53);
+            this.dgvTests.MultiSelect = false;
+            this.dgvTests.Name = "dgvTests";
+            this.dgvTests.ReadOnly = true;
+            this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvTests.Size = new System.Drawing.Size(474, 373);
+            this.dgvTests.TabIndex = 0;
+            // 
+            // ColIdTest
+            // 
+            this.ColIdTest.DataPropertyName = "idTest";
+            this.ColIdTest.HeaderText = "Id";
+            this.ColIdTest.Name = "ColIdTest";
+            this.ColIdTest.ReadOnly = true;
+            this.ColIdTest.Visible = false;
+            // 
+            // ColNumLoad
+            // 
+            this.ColNumLoad.DataPropertyName = "numLoad";
+            this.ColNumLoad.HeaderText = "Номер";
+            this.ColNumLoad.Name = "ColNumLoad";
+            this.ColNumLoad.ReadOnly = true;
+            this.ColNumLoad.Width = 50;
+            // 
+            // ColCompaund
+            // 
+            this.ColCompaund.DataPropertyName = "nameCompound";
+            this.ColCompaund.HeaderText = "Компаунд";
+            this.ColCompaund.Name = "ColCompaund";
+            this.ColCompaund.ReadOnly = true;
+            this.ColCompaund.Width = 131;
+            // 
+            // ColNameParogramm
+            // 
+            this.ColNameParogramm.DataPropertyName = "loadProgramm";
+            this.ColNameParogramm.HeaderText = "Программа испытания";
+            this.ColNameParogramm.Name = "ColNameParogramm";
+            this.ColNameParogramm.ReadOnly = true;
+            this.ColNameParogramm.Width = 150;
+            // 
+            // ColTesterStatus
+            // 
+            this.ColTesterStatus.DataPropertyName = "shortDescription";
+            this.ColTesterStatus.HeaderText = "Статус";
+            this.ColTesterStatus.Name = "ColTesterStatus";
+            this.ColTesterStatus.ReadOnly = true;
+            this.ColTesterStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button10.Location = new System.Drawing.Point(907, 12);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(44, 44);
+            this.button10.TabIndex = 15;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // btnMaterials
             // 
             this.btnMaterials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaterials.BackgroundImage = global::Viscometer.Properties.Resources.material;
+            this.btnMaterials.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaterials.BackgroundImage")));
             this.btnMaterials.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnMaterials.Location = new System.Drawing.Point(857, 12);
             this.btnMaterials.Name = "btnMaterials";
@@ -295,184 +478,6 @@
             this.toolTipForButton.SetToolTip(this.btnViewTest, "Обновить");
             this.btnViewTest.UseVisualStyleBackColor = true;
             this.btnViewTest.Click += new System.EventHandler(this.btnViewTest_Click);
-            // 
-            // grpBoxTester
-            // 
-            this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpBoxTester.Controls.Add(this.lblTester);
-            this.grpBoxTester.Location = new System.Drawing.Point(621, 12);
-            this.grpBoxTester.Name = "grpBoxTester";
-            this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
-            this.grpBoxTester.TabIndex = 10;
-            this.grpBoxTester.TabStop = false;
-            this.grpBoxTester.Text = "Подразделение";
-            // 
-            // lblTester
-            // 
-            this.lblTester.AutoSize = true;
-            this.lblTester.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTester.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblTester.Location = new System.Drawing.Point(3, 16);
-            this.lblTester.Name = "lblTester";
-            this.lblTester.Size = new System.Drawing.Size(106, 15);
-            this.lblTester.TabIndex = 0;
-            this.lblTester.Text = "Имя испытателя";
-            // 
-            // splitContMain
-            // 
-            this.splitContMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitContMain.Location = new System.Drawing.Point(0, 62);
-            this.splitContMain.Name = "splitContMain";
-            // 
-            // splitContMain.Panel1
-            // 
-            this.splitContMain.Panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContMain.Panel1.Controls.Add(this.label2);
-            this.splitContMain.Panel1.Controls.Add(this.dgvOrders);
-            this.splitContMain.Panel1.Controls.Add(this.dateTimePicker2);
-            this.splitContMain.Panel1.Controls.Add(this.btnViewOrder);
-            this.splitContMain.Panel1.Controls.Add(this.label1);
-            this.splitContMain.Panel1.Controls.Add(this.btnAddOrder);
-            this.splitContMain.Panel1.Controls.Add(this.dateTimePicker1);
-            this.splitContMain.Panel1.Controls.Add(this.btnChartOrder);
-            this.splitContMain.Panel1.Controls.Add(this.btnDelOrder);
-            // 
-            // splitContMain.Panel2
-            // 
-            this.splitContMain.Panel2.BackColor = System.Drawing.SystemColors.Control;
-            this.splitContMain.Panel2.Controls.Add(this.btnAddTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnDelTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnChartTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnRejectTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnReceiptTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnViewTest);
-            this.splitContMain.Panel2.Controls.Add(this.btnStartTest);
-            this.splitContMain.Panel2.Controls.Add(this.dgvTests);
-            this.splitContMain.Size = new System.Drawing.Size(963, 427);
-            this.splitContMain.SplitterDistance = 483;
-            this.splitContMain.TabIndex = 12;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(303, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "По";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker2.Location = new System.Drawing.Point(334, 28);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(146, 20);
-            this.dateTimePicker2.TabIndex = 18;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(303, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "С";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(334, 3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(146, 20);
-            this.dateTimePicker1.TabIndex = 16;
-            // 
-            // dgvTests
-            // 
-            this.dgvTests.AllowUserToAddRows = false;
-            this.dgvTests.AllowUserToDeleteRows = false;
-            this.dgvTests.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvTests.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dgvTests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTests.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColIdTest,
-            this.ColNumLoad,
-            this.ColCompaund,
-            this.ColNameParogramm,
-            this.ColTesterStatus});
-            this.dgvTests.Location = new System.Drawing.Point(1, 53);
-            this.dgvTests.MultiSelect = false;
-            this.dgvTests.Name = "dgvTests";
-            this.dgvTests.ReadOnly = true;
-            this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvTests.Size = new System.Drawing.Size(474, 373);
-            this.dgvTests.TabIndex = 0;
-            // 
-            // ColIdTest
-            // 
-            this.ColIdTest.DataPropertyName = "idTest";
-            this.ColIdTest.HeaderText = "Id";
-            this.ColIdTest.Name = "ColIdTest";
-            this.ColIdTest.ReadOnly = true;
-            this.ColIdTest.Visible = false;
-            // 
-            // ColNumLoad
-            // 
-            this.ColNumLoad.DataPropertyName = "numLoad";
-            this.ColNumLoad.HeaderText = "Номер";
-            this.ColNumLoad.Name = "ColNumLoad";
-            this.ColNumLoad.ReadOnly = true;
-            this.ColNumLoad.Width = 50;
-            // 
-            // ColCompaund
-            // 
-            this.ColCompaund.DataPropertyName = "nameCompound";
-            this.ColCompaund.HeaderText = "Компаунд";
-            this.ColCompaund.Name = "ColCompaund";
-            this.ColCompaund.ReadOnly = true;
-            this.ColCompaund.Width = 131;
-            // 
-            // ColNameParogramm
-            // 
-            this.ColNameParogramm.DataPropertyName = "loadProgramm";
-            this.ColNameParogramm.HeaderText = "Программа испытания";
-            this.ColNameParogramm.Name = "ColNameParogramm";
-            this.ColNameParogramm.ReadOnly = true;
-            this.ColNameParogramm.Width = 150;
-            // 
-            // ColTesterStatus
-            // 
-            this.ColTesterStatus.DataPropertyName = "shortDescription";
-            this.ColTesterStatus.HeaderText = "Статус";
-            this.ColTesterStatus.Name = "ColTesterStatus";
-            this.ColTesterStatus.ReadOnly = true;
-            this.ColTesterStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            // 
-            // button10
-            // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(907, 12);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(44, 44);
-            this.button10.TabIndex = 15;
-            this.button10.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
