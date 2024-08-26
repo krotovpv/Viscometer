@@ -36,20 +36,19 @@
             this.ColNameTester = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSubCustomer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTipForButton = new System.Windows.Forms.ToolTip(this.components);
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnStartTest = new System.Windows.Forms.Button();
+            this.btnMaterials = new System.Windows.Forms.Button();
+            this.btnUsers = new System.Windows.Forms.Button();
             this.btnViewOrder = new System.Windows.Forms.Button();
             this.btnAddOrder = new System.Windows.Forms.Button();
             this.btnChartOrder = new System.Windows.Forms.Button();
             this.btnDelOrder = new System.Windows.Forms.Button();
+            this.btnAddTest = new System.Windows.Forms.Button();
             this.btnDelTest = new System.Windows.Forms.Button();
             this.btnChartTest = new System.Windows.Forms.Button();
             this.btnRejectTest = new System.Windows.Forms.Button();
             this.btnReceiptTest = new System.Windows.Forms.Button();
             this.btnViewTest = new System.Windows.Forms.Button();
-            this.btnStartTest = new System.Windows.Forms.Button();
-            this.btnAddTest = new System.Windows.Forms.Button();
             this.grpBoxTester = new System.Windows.Forms.GroupBox();
             this.lblTester = new System.Windows.Forms.Label();
             this.splitContMain = new System.Windows.Forms.SplitContainer();
@@ -64,6 +63,7 @@
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button10 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -136,41 +136,46 @@
             this.ColSubCustomer.ReadOnly = true;
             this.ColSubCustomer.Width = 70;
             // 
-            // button10
+            // btnStartTest
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(907, 12);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(44, 44);
-            this.button10.TabIndex = 15;
-            this.toolTipForButton.SetToolTip(this.button10, "Поиск");
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnStartTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnStartTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnStartTest.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStartTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStartTest.Location = new System.Drawing.Point(387, 3);
+            this.btnStartTest.Name = "btnStartTest";
+            this.btnStartTest.Size = new System.Drawing.Size(83, 44);
+            this.btnStartTest.TabIndex = 5;
+            this.btnStartTest.Text = "ТЕСТ";
+            this.btnStartTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTipForButton.SetToolTip(this.btnStartTest, "Испытание");
+            this.btnStartTest.UseVisualStyleBackColor = true;
+            this.btnStartTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
-            // button9
+            // btnMaterials
             // 
-            this.button9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button9.BackgroundImage = global::Viscometer.Properties.Resources.icons8_архив_64__1_;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button9.Location = new System.Drawing.Point(857, 12);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(44, 44);
-            this.button9.TabIndex = 14;
-            this.toolTipForButton.SetToolTip(this.button9, "Поиск");
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnMaterials.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaterials.BackgroundImage = global::Viscometer.Properties.Resources.material;
+            this.btnMaterials.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnMaterials.Location = new System.Drawing.Point(857, 12);
+            this.btnMaterials.Name = "btnMaterials";
+            this.btnMaterials.Size = new System.Drawing.Size(44, 44);
+            this.btnMaterials.TabIndex = 14;
+            this.toolTipForButton.SetToolTip(this.btnMaterials, "Материалы");
+            this.btnMaterials.UseVisualStyleBackColor = true;
+            this.btnMaterials.Click += new System.EventHandler(this.btnMaterials_Click);
             // 
-            // button8
+            // btnUsers
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.BackgroundImage = global::Viscometer.Properties.Resources.icons8_архив_64;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button8.Location = new System.Drawing.Point(807, 12);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(44, 44);
-            this.button8.TabIndex = 13;
-            this.toolTipForButton.SetToolTip(this.button8, "Поиск");
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnUsers.BackgroundImage = global::Viscometer.Properties.Resources.icons8_архив_64;
+            this.btnUsers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUsers.Location = new System.Drawing.Point(807, 12);
+            this.btnUsers.Name = "btnUsers";
+            this.btnUsers.Size = new System.Drawing.Size(44, 44);
+            this.btnUsers.TabIndex = 13;
+            this.toolTipForButton.SetToolTip(this.btnUsers, "Пользователи");
+            this.btnUsers.UseVisualStyleBackColor = true;
             // 
             // btnViewOrder
             // 
@@ -219,6 +224,18 @@
             this.btnDelOrder.UseVisualStyleBackColor = true;
             this.btnDelOrder.Click += new System.EventHandler(this.btnDelOrder_Click);
             // 
+            // btnAddTest
+            // 
+            this.btnAddTest.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
+            this.btnAddTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAddTest.Location = new System.Drawing.Point(53, 3);
+            this.btnAddTest.Name = "btnAddTest";
+            this.btnAddTest.Size = new System.Drawing.Size(44, 44);
+            this.btnAddTest.TabIndex = 20;
+            this.toolTipForButton.SetToolTip(this.btnAddTest, "Добавить испытание");
+            this.btnAddTest.UseVisualStyleBackColor = true;
+            this.btnAddTest.Click += new System.EventHandler(this.btnAddTest_Click);
+            // 
             // btnDelTest
             // 
             this.btnDelTest.BackgroundImage = global::Viscometer.Properties.Resources.icons8_мусор_64;
@@ -241,6 +258,7 @@
             this.btnChartTest.TabIndex = 16;
             this.toolTipForButton.SetToolTip(this.btnChartTest, "Детальная информация");
             this.btnChartTest.UseVisualStyleBackColor = true;
+            this.btnChartTest.Click += new System.EventHandler(this.btnChartTest_Click);
             // 
             // btnRejectTest
             // 
@@ -277,34 +295,6 @@
             this.toolTipForButton.SetToolTip(this.btnViewTest, "Обновить");
             this.btnViewTest.UseVisualStyleBackColor = true;
             this.btnViewTest.Click += new System.EventHandler(this.btnViewTest_Click);
-            // 
-            // btnStartTest
-            // 
-            this.btnStartTest.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnStartTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnStartTest.Font = new System.Drawing.Font("Bahnschrift Condensed", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStartTest.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStartTest.Location = new System.Drawing.Point(387, 3);
-            this.btnStartTest.Name = "btnStartTest";
-            this.btnStartTest.Size = new System.Drawing.Size(83, 44);
-            this.btnStartTest.TabIndex = 5;
-            this.btnStartTest.Text = "ТЕСТ";
-            this.btnStartTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTipForButton.SetToolTip(this.btnStartTest, "Испытание");
-            this.btnStartTest.UseVisualStyleBackColor = true;
-            this.btnStartTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
-            // btnAddTest
-            // 
-            this.btnAddTest.BackgroundImage = global::Viscometer.Properties.Resources.добавить_64;
-            this.btnAddTest.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnAddTest.Location = new System.Drawing.Point(53, 3);
-            this.btnAddTest.Name = "btnAddTest";
-            this.btnAddTest.Size = new System.Drawing.Size(44, 44);
-            this.btnAddTest.TabIndex = 20;
-            this.toolTipForButton.SetToolTip(this.btnAddTest, "Добавить испытание");
-            this.btnAddTest.UseVisualStyleBackColor = true;
-            this.btnAddTest.Click += new System.EventHandler(this.btnAddTest_Click);
             // 
             // grpBoxTester
             // 
@@ -473,6 +463,17 @@
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
+            // button10
+            // 
+            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button10.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
+            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button10.Location = new System.Drawing.Point(907, 12);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(44, 44);
+            this.button10.TabIndex = 15;
+            this.button10.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -481,8 +482,8 @@
             this.ClientSize = new System.Drawing.Size(963, 489);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button10);
-            this.Controls.Add(this.button9);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnMaterials);
+            this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.grpBoxTester);
             this.Controls.Add(this.splitContMain);
             this.Name = "MainForm";
@@ -520,8 +521,8 @@
         private System.Windows.Forms.Button btnRejectTest;
         private System.Windows.Forms.Button btnReceiptTest;
         private System.Windows.Forms.Button btnViewTest;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button btnUsers;
+        private System.Windows.Forms.Button btnMaterials;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;

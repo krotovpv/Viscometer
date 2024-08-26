@@ -35,6 +35,8 @@
             this.lblOrderNumber = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnOk = new System.Windows.Forms.Button();
+            this.cbTypeCompound = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +44,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(12, 55);
+            this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 16);
             this.label1.TabIndex = 0;
@@ -51,7 +53,7 @@
             // nudLoadNumber
             // 
             this.nudLoadNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.nudLoadNumber.Location = new System.Drawing.Point(291, 50);
+            this.nudLoadNumber.Location = new System.Drawing.Point(291, 36);
             this.nudLoadNumber.Minimum = new decimal(new int[] {
             1,
             0,
@@ -71,7 +73,7 @@
             this.cbCompound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCompound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbCompound.FormattingEnabled = true;
-            this.cbCompound.Location = new System.Drawing.Point(131, 82);
+            this.cbCompound.Location = new System.Drawing.Point(131, 98);
             this.cbCompound.Name = "cbCompound";
             this.cbCompound.Size = new System.Drawing.Size(211, 24);
             this.cbCompound.TabIndex = 3;
@@ -100,15 +102,15 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label4.Location = new System.Drawing.Point(12, 85);
+            this.label4.Location = new System.Drawing.Point(12, 106);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(75, 16);
+            this.label4.Size = new System.Drawing.Size(76, 16);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Компаунд:";
+            this.label4.Text = "Материал:";
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(238, 133);
+            this.btnOk.Location = new System.Drawing.Point(238, 152);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(104, 32);
             this.btnOk.TabIndex = 8;
@@ -116,11 +118,33 @@
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // cbTypeCompound
+            // 
+            this.cbTypeCompound.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTypeCompound.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cbTypeCompound.FormattingEnabled = true;
+            this.cbTypeCompound.Location = new System.Drawing.Point(131, 68);
+            this.cbTypeCompound.Name = "cbTypeCompound";
+            this.cbTypeCompound.Size = new System.Drawing.Size(211, 24);
+            this.cbTypeCompound.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(12, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(110, 16);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Тип материала:";
+            // 
             // AddTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 180);
+            this.ClientSize = new System.Drawing.Size(354, 196);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cbTypeCompound);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblOrderNumber);
@@ -150,5 +174,7 @@
         private System.Windows.Forms.Label lblOrderNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnOk;
+        private System.Windows.Forms.ComboBox cbTypeCompound;
+        private System.Windows.Forms.Label label3;
     }
 }

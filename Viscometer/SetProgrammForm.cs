@@ -230,14 +230,5 @@ namespace Viscometer
         {
             _serialPort.DataReceived -= _serialPort_DataReceived;
         }
-
-        //protected class LastCommand
-        //{
-        //    protected string Prefix {  get; }
-        //    protected bool IsSuccess { get; }
-        //    protected DateTime DateTime {  get; } = DateTime.UtcNow; 
-
-        //    protected LastCommand(string prefix)
-        //}
     }
 }

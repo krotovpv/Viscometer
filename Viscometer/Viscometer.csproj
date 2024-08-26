@@ -83,6 +83,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MaterialsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaterialsForm.Designer.cs">
+      <DependentUpon>MaterialsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,7 +143,7 @@
     <EmbeddedResource Include="AddOrderForm.resx">
       <DependentUpon>AddOrderForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddTest.resx">
+    <EmbeddedResource Include="AddTestForm.resx">
       <DependentUpon>AddTestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddViscometerForm.resx">
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaterialsForm.resx">
+      <DependentUpon>MaterialsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SetProgrammForm.resx">
       <DependentUpon>SetProgrammForm.cs</DependentUpon>
@@ -243,6 +252,7 @@
   <ItemGroup>
     <Content Include="Info\ExampelErrorResponse.txt" />
     <Content Include="Info\ExampleResponseFromStand.txt" />
+    <None Include="Resources\material.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

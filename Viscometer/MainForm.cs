@@ -83,7 +83,7 @@ namespace Viscometer
 
             int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"]);
             if (status == (int)Status.TestStatus.Blank)
-                new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString()).Show();
+                new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString(), true).Show();
             else
                 MessageBox.Show("Данное испытание уже проводилось.", "Испытание");
         }
@@ -188,6 +188,19 @@ namespace Viscometer
                     "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
                     $"INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE Tests.idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString()}'");
             }
+        }
+
+        private void btnChartTest_Click(object sender, EventArgs e)
+        {
+            if (dgvOrders.SelectedRows.Count < 1) { MessageBox.Show("Выберите заказ!"); return; }
+            if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
+
+            new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString(), false).Show();
+        }
+
+        private void btnMaterials_Click(object sender, EventArgs e)
+        {
+            new MaterialsForm().Show();
         }
     }
 }

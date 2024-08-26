@@ -45,8 +45,6 @@
             this.lblNum = new System.Windows.Forms.Label();
             this.lblLoad = new System.Windows.Forms.Label();
             this.lblOrder = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,6 +57,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.chartValue = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTemperature = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.lblType = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartValue)).BeginInit();
@@ -86,6 +85,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.lblType);
             this.panel1.Controls.Add(this.lblResault);
             this.panel1.Controls.Add(this.lblCompound);
             this.panel1.Controls.Add(this.label5);
@@ -94,8 +94,6 @@
             this.panel1.Controls.Add(this.lblNum);
             this.panel1.Controls.Add(this.lblLoad);
             this.panel1.Controls.Add(this.lblOrder);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label4);
@@ -196,24 +194,6 @@
             this.lblOrder.TabIndex = 13;
             this.lblOrder.Text = "-";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(157, 100);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(78, 13);
-            this.label11.TabIndex = 12;
-            this.label11.Text = "М-д старения:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(146, 76);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "М-д подготовки:";
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -250,12 +230,12 @@
             this.txtData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtData.Location = new System.Drawing.Point(0, 302);
+            this.txtData.Location = new System.Drawing.Point(0, 318);
             this.txtData.Multiline = true;
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtData.Size = new System.Drawing.Size(294, 256);
+            this.txtData.Size = new System.Drawing.Size(294, 240);
             this.txtData.TabIndex = 7;
             // 
             // label7
@@ -264,7 +244,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.BackColor = System.Drawing.Color.SkyBlue;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.Location = new System.Drawing.Point(0, 276);
+            this.label7.Location = new System.Drawing.Point(0, 289);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(294, 23);
             this.label7.TabIndex = 6;
@@ -382,6 +362,15 @@
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(4, 272);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(29, 13);
+            this.lblType.TabIndex = 30;
+            this.lblType.Text = "Тип:";
+            // 
             // WorkForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -416,8 +405,6 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chartTemperature;
         private System.Windows.Forms.Label lblLoad;
         private System.Windows.Forms.Label lblOrder;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
@@ -427,6 +414,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblCompound;
         private System.Windows.Forms.Label lblResault;
+        private System.Windows.Forms.Label lblType;
     }
 }
 
