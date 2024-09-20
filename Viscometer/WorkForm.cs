@@ -96,6 +96,8 @@ namespace Viscometer
                 WorkNewTest();
             else
                 WorkOldTest();
+
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
@@ -161,15 +163,17 @@ namespace Viscometer
                 if (IsNewTest)
                 {
                     DataBase.GetData("UPDATE [dbo].[Tests] SET " +
-                    $"[idStatus] = '{(int)Status.TestStatus.Work}' ," +
-                    $"[loadProgramm] = '{testProgStr}' " +
-                    "WHERE " +
-                    $"[idTest] = '{idTest}'");
+                        $"[dateStartTest] = '{DateTime.Now}'," +
+                        $"[idStatus] = '{(int)Status.TestStatus.Work}'," +
+                        $"[loadProgramm] = '{testProgStr}' " +
+                        "WHERE " +
+                        $"[idTest] = '{idTest}'");
                 }
 
                 StartResponse startResponse = response as StartResponse;
                 this.InvokeEx(() =>
                 {
+                    lblStartTime.Text = DateTime.Now.ToString();
                     lblTestTime.Text = "Время испытания: " + startResponse.SetTime.ToString();
                     lblTemperature.Text = "Температура: " + startResponse.SetPoint.ToString();
                     lblRelax.Text = "Время релаксации: " + startResponse.Decay.ToString();

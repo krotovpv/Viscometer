@@ -151,13 +151,13 @@ namespace Viscometer
                 else if (radioBtnRotorS.Checked) TestPragrammString += "t18 - t3";
             }
 
-            int loop = 0;
-            while (loop < maxTryRequest)
-            {
+            //int loop = 0;
+            //while (loop < maxTryRequest)
+            //{
                 if (!ResponseSuccessA0)
                 {
                     //A 0 Время испытания
-                    sentMsg($"A 0 {dtpPreheat.Value.Minute.ToString("D3")}:{dtpPreheat.Value.Second.ToString("D2")}.{dtpPreheat.Value.Millisecond.ToString("D1")}");
+                    sentMsg($"A 0 {dtpTimeTest.Value.Minute.ToString("D3")}:{dtpTimeTest.Value.Second.ToString("D2")}.{dtpTimeTest.Value.Millisecond.ToString("D1")}");
                 }
                 if (!ResponseSuccessA1)
                 {
@@ -167,7 +167,7 @@ namespace Viscometer
                 if (!ResponseSuccessA2)
                 {
                     //A 2 Время прогрева образца
-                    sentMsg($"A 2 {dtpTimeTest.Value.Minute.ToString("D3")}:{dtpTimeTest.Value.Second.ToString("D2")}.{dtpTimeTest.Value.Millisecond.ToString("D1")}");
+                    sentMsg($"A 2 {dtpPreheat.Value.Minute.ToString("D3")}:{dtpPreheat.Value.Second.ToString("D2")}.{dtpPreheat.Value.Millisecond.ToString("D1")}");
                 }
                 if (!ResponseSuccessA3)
                 {
@@ -191,19 +191,20 @@ namespace Viscometer
                     //A 24 1-передавать данные при прогревве 0-отключить данные про прогреве
                     sentMsg("A 24 1");
                 }
-                Thread.Sleep(200);
-                if (!ResponseSuccessA0 || !ResponseSuccessA1 || !ResponseSuccessA2 || !ResponseSuccessA3 ||
-                    !ResponseSuccessA22 || !ResponseSuccessA23 || !ResponseSuccessA24)
-                    loop++;
-                else
-                    loop = maxTryRequest;
-            }
 
-            if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&
-                ResponseSuccessA22 && ResponseSuccessA23 && ResponseSuccessA24)
-                this.DialogResult = DialogResult.OK;
-            else
-                btnOk.Text = "Повторить";
+                //Thread.Sleep(1000);
+                //if (!ResponseSuccessA0 || !ResponseSuccessA1 || !ResponseSuccessA2 || !ResponseSuccessA3 ||
+                //    !ResponseSuccessA22 || !ResponseSuccessA23 || !ResponseSuccessA24)
+                //    loop++;
+                //else
+                //    loop = maxTryRequest;
+            //}
+
+            //if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&
+            //    ResponseSuccessA22 && ResponseSuccessA23 && ResponseSuccessA24)
+            //    this.DialogResult = DialogResult.OK;
+            //else
+            //    btnOk.Text = "Повторить";
         }
 
         private void sentMsg(string msg)
@@ -229,6 +230,50 @@ namespace Viscometer
         private void SetProgrammForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _serialPort.DataReceived -= _serialPort_DataReceived;
+        }
+
+        private void CheckLinck()
+        {
+            if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&
+                ResponseSuccessA22 && ResponseSuccessA23 && ResponseSuccessA24)
+                this.DialogResult = DialogResult.OK;
+            else
+                btnOk.Text = "Повторить";
+        }
+
+        private void lblLinkSetTime_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkTempTest_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkPreheatTime_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkDecay_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkRotorSize_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkTestType_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
+        }
+
+        private void lblLinkPrintPreheat_BackColorChanged(object sender, EventArgs e)
+        {
+            CheckLinck();
         }
     }
 }

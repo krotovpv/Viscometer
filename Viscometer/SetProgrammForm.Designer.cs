@@ -236,6 +236,7 @@
             this.lblLinkTestType.Size = new System.Drawing.Size(37, 10);
             this.lblLinkTestType.TabIndex = 15;
             this.toolTip1.SetToolTip(this.lblLinkTestType, "Результат запроса типа испытания");
+            this.lblLinkTestType.BackColorChanged += new System.EventHandler(this.lblLinkTestType_BackColorChanged);
             // 
             // lblLinkRotorSize
             // 
@@ -246,6 +247,7 @@
             this.lblLinkRotorSize.Size = new System.Drawing.Size(37, 10);
             this.lblLinkRotorSize.TabIndex = 16;
             this.toolTip1.SetToolTip(this.lblLinkRotorSize, "Результат запроса размера ротора");
+            this.lblLinkRotorSize.BackColorChanged += new System.EventHandler(this.lblLinkRotorSize_BackColorChanged);
             // 
             // lblLinkTempTest
             // 
@@ -256,6 +258,7 @@
             this.lblLinkTempTest.Size = new System.Drawing.Size(37, 10);
             this.lblLinkTempTest.TabIndex = 17;
             this.toolTip1.SetToolTip(this.lblLinkTempTest, "Результат запроса температуры испытания");
+            this.lblLinkTempTest.BackColorChanged += new System.EventHandler(this.lblLinkTempTest_BackColorChanged);
             // 
             // lblLinkPreheatTime
             // 
@@ -266,6 +269,7 @@
             this.lblLinkPreheatTime.Size = new System.Drawing.Size(37, 10);
             this.lblLinkPreheatTime.TabIndex = 18;
             this.toolTip1.SetToolTip(this.lblLinkPreheatTime, "Результат испытания предварительного нагрева перед испытанием");
+            this.lblLinkPreheatTime.BackColorChanged += new System.EventHandler(this.lblLinkPreheatTime_BackColorChanged);
             // 
             // lblLinkSetTime
             // 
@@ -276,6 +280,7 @@
             this.lblLinkSetTime.Size = new System.Drawing.Size(37, 10);
             this.lblLinkSetTime.TabIndex = 19;
             this.toolTip1.SetToolTip(this.lblLinkSetTime, "Результат запроса времени испытания");
+            this.lblLinkSetTime.BackColorChanged += new System.EventHandler(this.lblLinkSetTime_BackColorChanged);
             // 
             // lblLinkDecay
             // 
@@ -286,6 +291,7 @@
             this.lblLinkDecay.Size = new System.Drawing.Size(37, 10);
             this.lblLinkDecay.TabIndex = 20;
             this.toolTip1.SetToolTip(this.lblLinkDecay, "Результат запроса длительности релоксации");
+            this.lblLinkDecay.BackColorChanged += new System.EventHandler(this.lblLinkDecay_BackColorChanged);
             // 
             // lblLinkPrintPreheat
             // 
@@ -296,6 +302,7 @@
             this.lblLinkPrintPreheat.Size = new System.Drawing.Size(37, 10);
             this.lblLinkPrintPreheat.TabIndex = 21;
             this.toolTip1.SetToolTip(this.lblLinkPrintPreheat, "Результат запроса типа испытания");
+            this.lblLinkPrintPreheat.BackColorChanged += new System.EventHandler(this.lblLinkPrintPreheat_BackColorChanged);
             // 
             // SetProgrammForm
             // 
@@ -320,6 +327,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.nudTemperature);
             this.Controls.Add(this.groupBoxRotor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SetProgrammForm";

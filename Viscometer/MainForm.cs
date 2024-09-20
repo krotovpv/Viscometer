@@ -16,6 +16,7 @@ namespace Viscometer
             new AuthorizationForm().ShowDialog();
             if (!Tester.IsAuthorization) this.Close();
 
+            this.WindowState = FormWindowState.Maximized;
             grpBoxTester.Text = Tester.NameSub;
             lblTester.Text = Tester.Name; 
 
@@ -233,6 +234,11 @@ namespace Viscometer
         private void btnMaterials_Click(object sender, EventArgs e)
         {
             new MaterialsForm().Show();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            loadOrders();
         }
     }
 }
