@@ -72,15 +72,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 250F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 240F));
             this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chartValue, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chartTemperature, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartValue, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartTemperature, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(1, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1019, 636);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -107,10 +107,10 @@
             this.panel1.Controls.Add(this.lblTestTime);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(772, 3);
+            this.panel1.Location = new System.Drawing.Point(782, 3);
             this.panel1.Name = "panel1";
             this.tableLayoutPanel1.SetRowSpan(this.panel1, 2);
-            this.panel1.Size = new System.Drawing.Size(244, 630);
+            this.panel1.Size = new System.Drawing.Size(234, 630);
             this.panel1.TabIndex = 0;
             // 
             // lblStartTime
@@ -140,7 +140,7 @@
             this.lblResault.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lblResault.Location = new System.Drawing.Point(0, 581);
             this.lblResault.Name = "lblResault";
-            this.lblResault.Size = new System.Drawing.Size(244, 49);
+            this.lblResault.Size = new System.Drawing.Size(234, 49);
             this.lblResault.TabIndex = 29;
             this.lblResault.Text = "-";
             this.lblResault.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -181,7 +181,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(0, 558);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(244, 23);
+            this.label2.Size = new System.Drawing.Size(234, 23);
             this.label2.TabIndex = 17;
             this.label2.Text = "Результат";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -241,7 +241,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(244, 23);
+            this.label4.Size = new System.Drawing.Size(234, 23);
             this.label4.TabIndex = 8;
             this.label4.Text = "Испытание";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -256,7 +256,7 @@
             this.txtData.Name = "txtData";
             this.txtData.ReadOnly = true;
             this.txtData.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtData.Size = new System.Drawing.Size(244, 240);
+            this.txtData.Size = new System.Drawing.Size(234, 240);
             this.txtData.TabIndex = 7;
             // 
             // label7
@@ -267,7 +267,7 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(0, 289);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(244, 23);
+            this.label7.Size = new System.Drawing.Size(234, 23);
             this.label7.TabIndex = 6;
             this.label7.Text = "Текущие данные";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -316,7 +316,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(0, 126);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(244, 23);
+            this.label1.Size = new System.Drawing.Size(234, 23);
             this.label1.TabIndex = 0;
             this.label1.Text = "Параметры испытания";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -334,7 +334,7 @@
             this.chartValue.Dock = System.Windows.Forms.DockStyle.Fill;
             legend1.Name = "Legend1";
             this.chartValue.Legends.Add(legend1);
-            this.chartValue.Location = new System.Drawing.Point(3, 3);
+            this.chartValue.Location = new System.Drawing.Point(3, 193);
             this.chartValue.Name = "chartValue";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -344,7 +344,7 @@
             series1.Name = "Series1";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
             this.chartValue.Series.Add(series1);
-            this.chartValue.Size = new System.Drawing.Size(763, 312);
+            this.chartValue.Size = new System.Drawing.Size(773, 440);
             this.chartValue.TabIndex = 1;
             this.chartValue.Text = "chart1";
             // 
@@ -365,7 +365,7 @@
             this.chartTemperature.Dock = System.Windows.Forms.DockStyle.Fill;
             legend2.Name = "Legend1";
             this.chartTemperature.Legends.Add(legend2);
-            this.chartTemperature.Location = new System.Drawing.Point(3, 321);
+            this.chartTemperature.Location = new System.Drawing.Point(3, 3);
             this.chartTemperature.Name = "chartTemperature";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -383,7 +383,7 @@
             series3.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.String;
             this.chartTemperature.Series.Add(series2);
             this.chartTemperature.Series.Add(series3);
-            this.chartTemperature.Size = new System.Drawing.Size(763, 312);
+            this.chartTemperature.Size = new System.Drawing.Size(773, 184);
             this.chartTemperature.TabIndex = 2;
             this.chartTemperature.Text = "chart2";
             // 

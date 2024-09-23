@@ -374,6 +374,7 @@
             this.dateTimePicker2.ShowCheckBox = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(157, 20);
             this.dateTimePicker2.TabIndex = 18;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label1
             // 
