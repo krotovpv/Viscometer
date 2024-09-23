@@ -77,7 +77,7 @@ namespace Viscometer
 
         private void txtNumOrder_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar)) e.Handled = true;
+            //if (!char.IsDigit(e.KeyChar)) e.Handled = true;
         }
     }
 }

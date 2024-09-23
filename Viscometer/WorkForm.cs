@@ -25,16 +25,26 @@ namespace Viscometer
         public WorkForm(string IdTest, bool NewTest)
         {
             InitializeComponent();
-
             IsNewTest = NewTest;
             idTest = IdTest;
-            dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{IdTest}'").Rows[0];
-            lblLoad.Text = dataRowTest["numLoad"].ToString();
-            lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
-            lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString(); 
         }
 
-        private void WorkNewTest()
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0];
+            lblLoad.Text = dataRowTest["numLoad"].ToString();
+            lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
+            lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
+
+            if (IsNewTest)
+                if (!WorkNewTest()) { this.Close(); return; }
+                else
+                    WorkOldTest();
+
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private bool WorkNewTest()
         {
             //Выбираем стенд
             using (SelectViscometerForm svForm = new SelectViscometerForm())
@@ -42,7 +52,7 @@ namespace Viscometer
                 if (svForm.ShowDialog() == DialogResult.OK)
                 {
                     this.Text = svForm.SelectPortName;
-                    if (svForm.SelectPortName == String.Empty) this.Close();
+                    if (svForm.SelectPortName == String.Empty) return false;
 
                     try
                     {
@@ -52,14 +62,12 @@ namespace Viscometer
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
-                        this.Close();
-                        return;
+                        return false;
                     }
                 }
                 else
                 {
-                    this.Close();
-                    return;
+                    return false;
                 }
             }
             //Задаем программу испытания
@@ -71,13 +79,14 @@ namespace Viscometer
                 }
                 else
                 {
-                    this.Close();
-                    return;
+                    return false;
                 }
             }
 
             //Подписываемся на обработку данных ТОЛЬКО после того как со стендом пообщалось окошко задания программы испытания!
             serialPort.DataReceived += SerialPort_DataReceived;
+
+            return true;
         }
 
         private void WorkOldTest()
@@ -88,16 +97,6 @@ namespace Viscometer
             {
                 ParseLine(item[0].ToString());
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            if (IsNewTest)
-                WorkNewTest();
-            else
-                WorkOldTest();
-
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
