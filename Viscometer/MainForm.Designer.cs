@@ -64,7 +64,7 @@
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.button10 = new System.Windows.Forms.Button();
+            this.btnCompare = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -470,16 +470,18 @@
             this.pictureBox1.TabIndex = 16;
             this.pictureBox1.TabStop = false;
             // 
-            // button10
+            // btnCompare
             // 
-            this.button10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button10.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button10.Location = new System.Drawing.Point(907, 12);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(44, 44);
-            this.button10.TabIndex = 15;
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompare.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
+            this.btnCompare.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCompare.Location = new System.Drawing.Point(907, 12);
+            this.btnCompare.Name = "btnCompare";
+            this.btnCompare.Size = new System.Drawing.Size(44, 44);
+            this.btnCompare.TabIndex = 15;
+            this.toolTipForButton.SetToolTip(this.btnCompare, "Сравнение");
+            this.btnCompare.UseVisualStyleBackColor = true;
+            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
             // 
             // MainForm
             // 
@@ -488,7 +490,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(963, 489);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button10);
+            this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.btnMaterials);
             this.Controls.Add(this.btnUsers);
             this.Controls.Add(this.grpBoxTester);
@@ -530,7 +532,7 @@
         private System.Windows.Forms.Button btnViewTest;
         private System.Windows.Forms.Button btnUsers;
         private System.Windows.Forms.Button btnMaterials;
-        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button btnCompare;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;

@@ -14,10 +14,14 @@ namespace Viscometer
     {
         string dataTail = string.Empty;
         SerialPort serialPort = null;
-        DataRow dataRowTest = null;
         DataRow dataRowProgramm = null;
+
+        string idOrder = string.Empty;
         string idTest = string.Empty;
+        int numLoad;
+        string idCompound = string.Empty;
         string testProgStr;
+
         TestType testType;
         RotorType rotorSize;
         bool IsNewTest = false;
@@ -31,15 +35,25 @@ namespace Viscometer
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0];
+            DataRow dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0];
+            idOrder = dataRowTest["idOrder"].ToString();
+            numLoad = Convert.ToInt32(dataRowTest["numLoad"]);
+            idCompound = dataRowTest["idCompound"].ToString();
+
             lblLoad.Text = dataRowTest["numLoad"].ToString();
             lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
             lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
 
             if (IsNewTest)
-                if (!WorkNewTest()) { this.Close(); return; }
-                else
-                    WorkOldTest();
+            {
+                if (!WorkNewTest())
+                    this.Close(); return;
+            }
+            else
+            {
+                WorkOldTest();
+            }
+                    
 
             this.WindowState = FormWindowState.Maximized;
         }
@@ -92,7 +106,7 @@ namespace Viscometer
         private void WorkOldTest()
         {
             this.Text = "Просмотр результатов испытания";
-            DataTable dt = DataBase.GetData($"SELECT stringFromStand FROM [dbo].[ProcessResponses] WHERE idTest = '{idTest}'");
+            DataTable dt = DataBase.GetData($"SELECT stringFromStand, timeStamp FROM [dbo].[ProcessResponses] WHERE idTest = '{idTest}' ORDER BY [timeStamp] ASC");
             foreach (DataRow item in dt.Rows)
             {
                 ParseLine(item[0].ToString());
@@ -168,6 +182,17 @@ namespace Viscometer
                         "WHERE " +
                         $"[idTest] = '{idTest}'");
                 }
+                //else
+                //{
+                //    if (lblResault.Text != "")
+                //    {
+                //        //!!!записывать программу испытания в виде строки
+                //        numLoad++;
+                //        idTest = DataBase.GetData("INSERT INTO [dbo].[Tests] ([dateStartTest],[idOrder],[idCompound],[idStatus],[numLoad]) " +
+                //            $"VALUES ('{DateTime.Now}','{idOrder}','{idCompound}','{(int)Status.TestStatus.Work}','{numLoad}') " +
+                //            "SELECT SCOPE_IDENTITY()").Rows[0].ItemArray[0].ToString();
+                //    }
+                //}
 
                 StartResponse startResponse = response as StartResponse;
                 this.InvokeEx(() =>

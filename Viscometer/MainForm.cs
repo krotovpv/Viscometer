@@ -1,11 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Viscometer
 {
     public partial class MainForm : Form
     {
+        //Label lblCountCompareItem = new Label() { Location = new Point(2,2), ForeColor = Color.White, BackColor = Color.Black, AutoSize = true, Anchor = AnchorStyles.Right, };
+        //List<string> compareList = new List<string>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -18,9 +23,10 @@ namespace Viscometer
 
             this.WindowState = FormWindowState.Maximized;
             grpBoxTester.Text = Tester.NameSub;
-            lblTester.Text = Tester.Name; 
-
-            btnView_Click(null, null);
+            lblTester.Text = Tester.Name;
+            //lblCountCompareItem.Click += btnCompare_Click;
+            //btnCompare.Controls.Add(lblCountCompareItem);
+            loadOrders();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -244,6 +250,11 @@ namespace Viscometer
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             loadOrders();
+        }
+
+        private void btnCompare_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
