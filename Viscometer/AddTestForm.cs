@@ -43,8 +43,8 @@ namespace Viscometer
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            DataBase.GetData("INSERT INTO [dbo].[Tests] ([idOrder],[idCompound],[numLoad]) " +
-                $"VALUES ('{orderId}','{cbCompound.SelectedValue}','{nudLoadNumber.Value}')");
+            DataBase.GetData("INSERT INTO [dbo].[Tests] ([idOrder],[idCompound],[numLoad],[comment]) " +
+                $"VALUES ('{orderId}','{cbCompound.SelectedValue}','{nudLoadNumber.Value}','{txtComment.Text.Trim()}')");
 
             this.Close();
         }

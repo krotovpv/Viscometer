@@ -50,6 +50,8 @@
             this.btnRejectTest = new System.Windows.Forms.Button();
             this.btnReceiptTest = new System.Windows.Forms.Button();
             this.btnViewTest = new System.Windows.Forms.Button();
+            this.btnCompare = new System.Windows.Forms.Button();
+            this.btnViscosymeter = new System.Windows.Forms.Button();
             this.grpBoxTester = new System.Windows.Forms.GroupBox();
             this.lblTester = new System.Windows.Forms.Label();
             this.splitContMain = new System.Windows.Forms.SplitContainer();
@@ -58,13 +60,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dgvTests = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.ColIdTest = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNumLoad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColCompaund = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnCompare = new System.Windows.Forms.Button();
+            this.ColComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -297,11 +299,37 @@
             this.btnViewTest.UseVisualStyleBackColor = true;
             this.btnViewTest.Click += new System.EventHandler(this.btnViewTest_Click);
             // 
+            // btnCompare
+            // 
+            this.btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCompare.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
+            this.btnCompare.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnCompare.Location = new System.Drawing.Point(907, 12);
+            this.btnCompare.Name = "btnCompare";
+            this.btnCompare.Size = new System.Drawing.Size(44, 44);
+            this.btnCompare.TabIndex = 15;
+            this.toolTipForButton.SetToolTip(this.btnCompare, "Сравнение");
+            this.btnCompare.UseVisualStyleBackColor = true;
+            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
+            // 
+            // btnViscosymeter
+            // 
+            this.btnViscosymeter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnViscosymeter.BackgroundImage = global::Viscometer.Properties.Resources.icons8_industry_48;
+            this.btnViscosymeter.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnViscosymeter.Location = new System.Drawing.Point(756, 12);
+            this.btnViscosymeter.Name = "btnViscosymeter";
+            this.btnViscosymeter.Size = new System.Drawing.Size(44, 44);
+            this.btnViscosymeter.TabIndex = 17;
+            this.toolTipForButton.SetToolTip(this.btnViscosymeter, "Задание программы");
+            this.btnViscosymeter.UseVisualStyleBackColor = true;
+            this.btnViscosymeter.Click += new System.EventHandler(this.btnViscosymeter_Click);
+            // 
             // grpBoxTester
             // 
             this.grpBoxTester.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.grpBoxTester.Controls.Add(this.lblTester);
-            this.grpBoxTester.Location = new System.Drawing.Point(621, 12);
+            this.grpBoxTester.Location = new System.Drawing.Point(570, 12);
             this.grpBoxTester.Name = "grpBoxTester";
             this.grpBoxTester.Size = new System.Drawing.Size(180, 44);
             this.grpBoxTester.TabIndex = 10;
@@ -389,7 +417,6 @@
             // dateTimePicker1
             // 
             this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimePicker1.Checked = false;
             this.dateTimePicker1.Location = new System.Drawing.Point(323, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowCheckBox = true;
@@ -411,7 +438,8 @@
             this.ColNumLoad,
             this.ColCompaund,
             this.ColNameParogramm,
-            this.ColTesterStatus});
+            this.ColTesterStatus,
+            this.ColComment});
             this.dgvTests.Location = new System.Drawing.Point(1, 53);
             this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
@@ -419,6 +447,16 @@
             this.dgvTests.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvTests.Size = new System.Drawing.Size(474, 373);
             this.dgvTests.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
             // ColIdTest
             // 
@@ -460,28 +498,12 @@
             this.ColTesterStatus.ReadOnly = true;
             this.ColTesterStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // pictureBox1
+            // ColComment
             // 
-            this.pictureBox1.Image = global::Viscometer.Properties.Resources.Belshina_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 37);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btnCompare
-            // 
-            this.btnCompare.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCompare.BackgroundImage = global::Viscometer.Properties.Resources.icons8_adobe_file_64;
-            this.btnCompare.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnCompare.Location = new System.Drawing.Point(907, 12);
-            this.btnCompare.Name = "btnCompare";
-            this.btnCompare.Size = new System.Drawing.Size(44, 44);
-            this.btnCompare.TabIndex = 15;
-            this.toolTipForButton.SetToolTip(this.btnCompare, "Сравнение");
-            this.btnCompare.UseVisualStyleBackColor = true;
-            this.btnCompare.Click += new System.EventHandler(this.btnCompare_Click);
+            this.ColComment.DataPropertyName = "comment";
+            this.ColComment.HeaderText = "Коментарий";
+            this.ColComment.Name = "ColComment";
+            this.ColComment.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -489,6 +511,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(963, 489);
+            this.Controls.Add(this.btnViscosymeter);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnCompare);
             this.Controls.Add(this.btnMaterials);
@@ -544,11 +567,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameTester;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSubCustomer;
+        private System.Windows.Forms.Button btnViscosymeter;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColIdTest;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNumLoad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCompaund;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameParogramm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTesterStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColComment;
     }
 }
 

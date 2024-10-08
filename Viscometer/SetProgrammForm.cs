@@ -154,50 +154,57 @@ namespace Viscometer
             //int loop = 0;
             //while (loop < maxTryRequest)
             //{
-                if (!ResponseSuccessA0)
+            if (!ResponseSuccessA0)
+            {
+                //A 0 Время испытания
+                sentMsg($"A 0 {dtpTimeTest.Value.Minute.ToString("D3")}:{dtpTimeTest.Value.Second.ToString("D2")}.{dtpTimeTest.Value.Millisecond.ToString("D1")}");
+            }
+            if (!ResponseSuccessA1)
+            {
+                //A 1 Температура
+                sentMsg($"A 1 {nudTemperature.Value.ToString().Replace(",", ".")}");
+            }
+            if (!ResponseSuccessA2)
+            {
+                //A 2 Время прогрева образца
+                sentMsg($"A 2 {dtpPreheat.Value.Minute.ToString("D3")}:{dtpPreheat.Value.Second.ToString("D2")}.{dtpPreheat.Value.Millisecond.ToString("D1")}");
+            }
+            if (!ResponseSuccessA3)
+            {
+                //A 3 релоксация (проводится только при испытании на вязкость)
+                if (radioBtnViscosity.Checked)
                 {
-                    //A 0 Время испытания
-                    sentMsg($"A 0 {dtpTimeTest.Value.Minute.ToString("D3")}:{dtpTimeTest.Value.Second.ToString("D2")}.{dtpTimeTest.Value.Millisecond.ToString("D1")}");
+                    sentMsg($"A 3 {dtpDecay.Value.Minute.ToString("D3")}:{dtpDecay.Value.Second.ToString("D2")}.{dtpDecay.Value.Millisecond.ToString("D1")}");
                 }
-                if (!ResponseSuccessA1)
+                else
                 {
-                    //A 1 Температура
-                    sentMsg($"A 1 {nudTemperature.Value.ToString().Replace(",", ".")}");
+                    sentMsg("A 3 000:00.0");
                 }
-                if (!ResponseSuccessA2)
-                {
-                    //A 2 Время прогрева образца
-                    sentMsg($"A 2 {dtpPreheat.Value.Minute.ToString("D3")}:{dtpPreheat.Value.Second.ToString("D2")}.{dtpPreheat.Value.Millisecond.ToString("D1")}");
-                }
-                if (!ResponseSuccessA3)
-                {
-                    //A 3 релоксация (проводится только при испытании на вязкость)
-                    if (radioBtnViscosity.Checked) sentMsg($"A 3 {dtpDecay.Value.Minute.ToString("D3")}:{dtpDecay.Value.Second.ToString("D2")}.{dtpDecay.Value.Millisecond.ToString("D1")}");
-                }
-                if (!ResponseSuccessA22)
-                {
-                    //A 22 Размер ротора
-                    if (radioBtnRotorL.Checked) sentMsg("A 22 1");
-                    else if (radioBtnRotorS.Checked) sentMsg("A 22 0");
-                }
-                if (!ResponseSuccessA23)
-                {
-                    //A 23 Тип испытания
-                    if (radioBtnViscosity.Checked) sentMsg("A 23 1");
-                    else if (radioBtnScorch.Checked) sentMsg("A 23 0");
-                }
-                if (!ResponseSuccessA24)
-                {
-                    //A 24 1-передавать данные при прогревве 0-отключить данные про прогреве
-                    sentMsg("A 24 1");
-                }
+            }
+            if (!ResponseSuccessA22)
+            {
+                //A 22 Размер ротора
+                if (radioBtnRotorL.Checked) sentMsg("A 22 1");
+                else if (radioBtnRotorS.Checked) sentMsg("A 22 0");
+            }
+            if (!ResponseSuccessA23)
+            {
+                //A 23 Тип испытания
+                if (radioBtnViscosity.Checked) sentMsg("A 23 1");
+                else if (radioBtnScorch.Checked) sentMsg("A 23 0");
+            }
+            if (!ResponseSuccessA24)
+            {
+                //A 24 1-передавать данные при прогревве 0-отключить данные про прогреве
+                sentMsg("A 24 1");
+            }
 
-                //Thread.Sleep(1000);
-                //if (!ResponseSuccessA0 || !ResponseSuccessA1 || !ResponseSuccessA2 || !ResponseSuccessA3 ||
-                //    !ResponseSuccessA22 || !ResponseSuccessA23 || !ResponseSuccessA24)
-                //    loop++;
-                //else
-                //    loop = maxTryRequest;
+            //Thread.Sleep(1000);
+            //if (!ResponseSuccessA0 || !ResponseSuccessA1 || !ResponseSuccessA2 || !ResponseSuccessA3 ||
+            //    !ResponseSuccessA22 || !ResponseSuccessA23 || !ResponseSuccessA24)
+            //    loop++;
+            //else
+            //    loop = maxTryRequest;
             //}
 
             //if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&

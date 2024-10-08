@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Viscometer.Response
 {
-    internal class EndResponse : IResponseOfStand
+    public class EndResponse : IResponseOfStand
     {
         /// <summary>
         /// Первый символ сообщения, является индикатором типа сообщения.
@@ -52,9 +52,11 @@ namespace Viscometer.Response
         /// ??? Неизвесный параметр.
         /// </summary>
         public string Simbol_r { get; } = "";
+        public string FullString { get; }
 
         public EndResponse(string response)
         {
+            FullString = response;
             if (response.Trim()[0] == FirstSymbol)
             {
                 string[] arr = response.Split(',');

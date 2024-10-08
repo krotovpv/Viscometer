@@ -37,6 +37,8 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.cbTypeCompound = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtComment = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoadNumber)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,7 +112,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(238, 152);
+            this.btnOk.Location = new System.Drawing.Point(238, 173);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(104, 32);
             this.btnOk.TabIndex = 8;
@@ -138,11 +140,32 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Тип материала:";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(12, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(90, 16);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Коментарий:";
+            // 
+            // txtComment
+            // 
+            this.txtComment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txtComment.Location = new System.Drawing.Point(131, 128);
+            this.txtComment.MaxLength = 30;
+            this.txtComment.Name = "txtComment";
+            this.txtComment.Size = new System.Drawing.Size(211, 22);
+            this.txtComment.TabIndex = 12;
+            // 
             // AddTestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 196);
+            this.ClientSize = new System.Drawing.Size(354, 217);
+            this.Controls.Add(this.txtComment);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cbTypeCompound);
             this.Controls.Add(this.btnOk);
@@ -176,5 +199,7 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.ComboBox cbTypeCompound;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtComment;
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
+using System.IO.Ports;
 using System.Windows.Forms;
+using Viscometer.TestObject;
 
 namespace Viscometer
 {
@@ -46,7 +46,7 @@ namespace Viscometer
             if (!dateTimePicker1.Checked && !dateTimePicker2.Checked)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "SELECT TOP (100) Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv");
@@ -54,7 +54,7 @@ namespace Viscometer
             else if (dateTimePicker1.Checked && !dateTimePicker2.Checked)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "SELECT TOP (100) Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
@@ -63,7 +63,7 @@ namespace Viscometer
             else if (!dateTimePicker1.Checked && dateTimePicker2.Checked)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "SELECT TOP (100) Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
@@ -72,7 +72,7 @@ namespace Viscometer
             else if (dateTimePicker1.Checked && dateTimePicker2.Checked)
             {
                 dgvOrders.DataSource = DataBase.GetData(
-                    "Select Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
+                    "SELECT TOP (100) Orders.idOrder, Orders.numOrder, Orders.dateOrder, Testers.nameTester, Subdivisions.nameSubdiv AS subCustomer " +
                     "FROM Orders " +
                     "JOIN Testers ON Orders.idTester = Testers.idTester " +
                     "JOIN Subdivisions ON Orders.idSubdivisionCustomer = Subdivisions.idSubdiv " +
@@ -121,8 +121,8 @@ namespace Viscometer
             if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
 
             int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"]);
-            if (status == (int)Status.TestStatus.Blank)
-                new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString(), true).Show();
+            if (status == (int)Test.EStatus.Blank)
+                new WorkForm(Convert.ToInt32(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value)).Show();
             else
                 MessageBox.Show("Данное испытание уже проводилось.", "Испытание");
         }
@@ -147,11 +147,11 @@ namespace Viscometer
             }
 
             int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0]["idStatus"]);
-            if (status == (int)Status.TestStatus.Handshake)
+            if (status == (int)Test.EStatus.Handshake)
             {
                 MessageBox.Show("Принятые испытания защищены от удаления!", "Удаление"); return;
             }
-            if (status == (int)Status.TestStatus.Work)
+            if (status == (int)Test.EStatus.Work)
             {
                 MessageBox.Show("Данное испытание в работе!\n\nЕсли все же намерены удалить, необходимо убедится что испытание не запущено на одном из стендов. Если оно не запущено, смените статус испытания и попробуйте удалить.", "Удаление"); return;
             }
@@ -183,12 +183,12 @@ namespace Viscometer
             }
 
             DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
-            if (Convert.ToInt16(row["idStatus"]) == (int)Status.TestStatus.Blank) 
+            if (Convert.ToInt16(row["idStatus"]) == (int)Test.EStatus.Blank) 
             {
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Handshake}' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Test.EStatus.Handshake}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }
@@ -202,12 +202,12 @@ namespace Viscometer
             }
 
             DataRow row = DataBase.GetData($"Select * From Tests Where idTest = '{dgvTests.SelectedRows[0].Cells["ColIdTest"].Value}'").Rows[0];
-            if (Convert.ToInt16(row["idStatus"]) == (int)Status.TestStatus.Blank)
+            if (Convert.ToInt16(row["idStatus"]) == (int)Test.EStatus.Blank)
             {
                 MessageBox.Show("Испытание еще не проводилось!"); return;
             }
 
-            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Ignor}' WHERE idTest = '{row["idTest"]}'");
+            DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Test.EStatus.Ignor}' WHERE idTest = '{row["idTest"]}'");
 
             loadTests();
         }
@@ -222,7 +222,7 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 dgvTests.DataSource = DataBase.GetData(
-                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, Tests.loadProgramm, Status.shortDescription " +
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, Tests.loadProgramm, Status.shortDescription, Tests.comment " +
                     "FROM Tests " +
                     "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
                     $"INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE Tests.idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString()}'");
@@ -234,7 +234,7 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count < 1) { MessageBox.Show("Выберите заказ!"); return; }
             if (dgvTests.SelectedRows.Count < 1) { MessageBox.Show("Выберите испытание!"); return; }
 
-            new WorkForm(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value.ToString(), false).Show();
+            new WorkForm(Convert.ToInt32(dgvTests.SelectedRows[0].Cells["ColIdTest"].Value), true).Show();
         }
 
         private void btnMaterials_Click(object sender, EventArgs e)
@@ -255,6 +255,45 @@ namespace Viscometer
         private void btnCompare_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnViscosymeter_Click(object sender, EventArgs e)
+        {
+            SerialPort _serialPort = null;
+            //Выбираем стенд
+            using (SelectViscometerForm svForm = new SelectViscometerForm())
+            {
+                if (svForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.Text = svForm.SelectedPortName;
+                    if (svForm.SelectedPortName == String.Empty) return;
+
+                    try
+                    {
+                        _serialPort = new SerialPort(svForm.SelectedPortName);
+                        _serialPort.Open();
+
+                        //Задаем программу испытания
+                        using (SetProgrammForm setProgramm = new SetProgrammForm(_serialPort))
+                        {
+                            if (setProgramm.ShowDialog() == DialogResult.OK)
+                            {
+                                _serialPort?.Close();
+                            }
+                            else
+                            {
+                                _serialPort?.Close();
+                                MessageBox.Show("Не удалось передать программу испытаний в стенд.");
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                        return;
+                    }
+                }
+            }
         }
     }
 }

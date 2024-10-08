@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO.Ports;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Viscometer
@@ -13,7 +7,7 @@ namespace Viscometer
     public partial class AddViscometerForm : Form
     {
         public string[] PortNames { get; set; } = SerialPort.GetPortNames();
-        public Viscometer Viscometer { get; private set; }
+        public TestObject.Viscometer Viscometer { get; private set; }
 
         public AddViscometerForm()
         {
@@ -28,7 +22,7 @@ namespace Viscometer
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            Viscometer = new Viscometer(txtName.Text.Replace(",", "").Trim(), cbPortName.Text.Trim());
+            Viscometer = new TestObject.Viscometer(txtName.Text.Replace(",", "").Trim(), cbPortName.Text.Trim());
         }
     }
 }

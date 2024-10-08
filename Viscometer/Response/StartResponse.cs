@@ -1,46 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Viscometer.Stand;
+using Viscometer.TestObject;
 
 namespace Viscometer.Response
 {
-    internal class StartResponse : IResponseOfStand
+    public class StartResponse : IResponseOfStand
     {
         /// <summary>
         /// Первый символ сообщения, является индикатором типа сообщения.
         /// </summary>
         public static char FirstSymbol { get; } = 'S';
-        /// <summary>
-        /// Тип испытания. Ex.: V - Viscosity, S - Scorch.
-        /// </summary>
-        public TestType TestType { get; }
-        /// <summary>
-        /// Размер ротора. Ex.: L - Large, S - Small.
-        /// </summary>
-        public RotorType RotorSize { get; }
-        /// <summary>
-        /// Заданная температура испытания. 000.0
-        /// </summary>
-        public float SetPoint { get; }
-        /// <summary>
-        /// Заданное время испытания. mmm:ss.f
-        /// </summary>
-        public TimeSpan SetTime { get; }
-        /// <summary>
-        /// Прогрев. Осуществляется перед испытанием для лучшей стабилизации температуры. 000.0
-        /// </summary>
-        public TimeSpan Preheat { get; }
-        /// <summary>
-        /// Время для релоксации. mmm:ss.f
-        /// </summary>
-        public TimeSpan Decay { get; }
-        /// <summary>
-        /// Диапазон вязкости
-        /// </summary>
-        public float ViscRange { get; }
+        public TestObject.Program Programm { get; }
+        public string FullString { get; }
+        
         /// <summary>
         /// Заводской номер вискозиметра.
         /// </summary>
@@ -48,44 +19,54 @@ namespace Viscometer.Response
 
         public StartResponse(string response)
         {
+            FullString = response;
             if (response.Trim()[0] == FirstSymbol)
             {
                 string[] arr = response.Split(',');
 
-                string clearResponse = "";
+                string partStartResponse = "";
+
+                Test.EType _testType = 0;
+                RotorType _rotorSize = 0;
+                float _setPoint = 0;
+                TimeSpan _setTime = new TimeSpan();
+                TimeSpan _preheat = new TimeSpan();
+                TimeSpan _decay = new TimeSpan();
+                float _viscRange = 0;
+
                 for (int i = 0; i < arr.Length; i++)
                 {
-                    clearResponse = arr[i].Trim();
+                    partStartResponse = arr[i].Trim();
                     try
                     {
-                        if (clearResponse.Length < 1) break;
-                        switch (clearResponse[0])
+                        if (partStartResponse.Length < 1) break;
+                        switch (partStartResponse[0])
                         {
                             case 'S'://Информация о типе испытания и применяемом роторе
-                                if (clearResponse[1] == 'V')
-                                    TestType = TestType.Viscosity;
-                                else if (clearResponse[1] == 'S')
-                                    TestType = TestType.Scorch;
-                                if (clearResponse[3] == 'L')
-                                    RotorSize = RotorType.Large;
-                                else if (clearResponse[3] == 'S')
-                                    RotorSize = RotorType.Small; 
+                                if (partStartResponse[1] == 'V')
+                                    _testType = Test.EType.Viscosity;
+                                else if (partStartResponse[1] == 'S')
+                                    _testType = Test.EType.Scorch;
+                                if (partStartResponse[3] == 'L')
+                                    _rotorSize = RotorType.Large;
+                                else if (partStartResponse[3] == 'S')
+                                    _rotorSize = RotorType.Small; 
                                 break;
                             case 'A'://Заданная температура (Set point).
-                                SetPoint = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
+                                _setPoint = float.Parse(partStartResponse.Replace(".", ",").Substring(1)); break;
                             case 'B'://Заданная температура испытания.
-                                string[] tmpSetTime = clearResponse.Substring(1).Trim().Split(':', '.');
-                                SetTime = new TimeSpan(0, 0, Convert.ToInt32(tmpSetTime[0]), Convert.ToInt32(tmpSetTime[1]), Convert.ToInt32(tmpSetTime[2])); break;
+                                string[] tmpSetTime = partStartResponse.Substring(1).Trim().Split(':', '.');
+                                _setTime = new TimeSpan(0, 0, Convert.ToInt32(tmpSetTime[0]), Convert.ToInt32(tmpSetTime[1]), Convert.ToInt32(tmpSetTime[2])); break;
                             case 'C'://Прогрев.
-                                string[] tmpPreheat = clearResponse.Substring(1).Trim().Split(':', '.');
-                                Preheat = new TimeSpan(0, 0, Convert.ToInt32(tmpPreheat[0]), Convert.ToInt32(tmpPreheat[1]), Convert.ToInt32(tmpPreheat[2])); ; break;
+                                string[] tmpPreheat = partStartResponse.Substring(1).Trim().Split(':', '.');
+                                _preheat = new TimeSpan(0, 0, Convert.ToInt32(tmpPreheat[0]), Convert.ToInt32(tmpPreheat[1]), Convert.ToInt32(tmpPreheat[2])); ; break;
                             case 'D'://Релоксация.
-                                string[] tmpDecay = clearResponse.Substring(1).Trim().Split(':', '.');
-                                Decay = new TimeSpan(0, 0, Convert.ToInt32(tmpDecay[0]), Convert.ToInt32(tmpDecay[1]), Convert.ToInt32(tmpDecay[2])); break;
+                                string[] tmpDecay = partStartResponse.Substring(1).Trim().Split(':', '.');
+                                _decay = new TimeSpan(0, 0, Convert.ToInt32(tmpDecay[0]), Convert.ToInt32(tmpDecay[1]), Convert.ToInt32(tmpDecay[2])); break;
                             case 'E'://Visc range
-                                ViscRange = float.Parse(clearResponse.Replace(".", ",").Substring(1)); break;
+                                _viscRange = float.Parse(partStartResponse.Replace(".", ",").Substring(1)); break;
                             case 'F'://Заводской номер.
-                                FactoryNumber = clearResponse.Substring(1); break;
+                                FactoryNumber = partStartResponse.Substring(1); break;
                             default:
                                 break;
                         }
@@ -95,6 +76,11 @@ namespace Viscometer.Response
                         Console.WriteLine(ex.ToString());
                     }
                 }
+                Programm = new TestObject.Program(_testType, _rotorSize, _setPoint, _setTime, _preheat, _decay, _viscRange);
+            }
+            else
+            {
+                throw new Exception("StartResponse: Первый символ сообщения не соответствует!");
             }
         }
     }

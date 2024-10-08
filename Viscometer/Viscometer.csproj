@@ -117,11 +117,11 @@
     <Compile Include="Setting.Designer.cs">
       <DependentUpon>Setting.cs</DependentUpon>
     </Compile>
-    <Compile Include="Stand\RotorType.cs" />
-    <Compile Include="Stand\TestType.cs" />
-    <Compile Include="Status.cs" />
-    <Compile Include="Tester.cs" />
-    <Compile Include="Viscometer.cs" />
+    <Compile Include="TestObject\Program.cs" />
+    <Compile Include="TestObject\RotorType.cs" />
+    <Compile Include="TestObject\Test.cs" />
+    <Compile Include="TestObject\Tester.cs" />
+    <Compile Include="TestObject\Viscometer.cs" />
     <Compile Include="WorkForm.cs">
       <SubType>Form</SubType>
     </Compile>

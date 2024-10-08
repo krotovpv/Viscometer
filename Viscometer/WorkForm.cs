@@ -2,76 +2,126 @@
 using System.Data;
 using System.Drawing;
 using System.IO.Ports;
-using System.Threading;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 using Viscometer.Response;
-using Viscometer.Stand;
+using Viscometer.TestObject;
 
 namespace Viscometer
 {
     public partial class WorkForm : Form
     {
         string dataTail = string.Empty;
-        SerialPort serialPort = null;
-        DataRow dataRowProgramm = null;
+        SerialPort _serialPort = null;
+        int tempIdTest;
+        bool tempIsArchive;
+        Test _Test;
 
-        string idOrder = string.Empty;
-        string idTest = string.Empty;
-        int numLoad;
-        string idCompound = string.Empty;
-        string testProgStr;
-
-        TestType testType;
-        RotorType rotorSize;
-        bool IsNewTest = false;
-        
-        public WorkForm(string IdTest, bool NewTest)
+        public WorkForm(int idTest, bool isArchive = false)
         {
             InitializeComponent();
-            IsNewTest = NewTest;
-            idTest = IdTest;
+
+            tempIdTest = idTest;
+            tempIsArchive = isArchive;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            DataRow dataRowTest = DataBase.GetData($"SELECT * FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0];
-            idOrder = dataRowTest["idOrder"].ToString();
-            numLoad = Convert.ToInt32(dataRowTest["numLoad"]);
-            idCompound = dataRowTest["idCompound"].ToString();
+            _Test = new Test(tempIdTest);
+            _Test.IsArchive = tempIsArchive;
 
-            lblLoad.Text = dataRowTest["numLoad"].ToString();
-            lblOrder.Text = DataBase.GetData($"SELECT numOrder FROM [dbo].[Orders] WHERE idOrder = '{dataRowTest["idOrder"]}'").Rows[0]["numOrder"].ToString();
-            lblCompound.Text = DataBase.GetData($"SELECT nameCompound FROM [dbo].[Compounds] WHERE idCompound = '{dataRowTest["idCompound"]}'").Rows[0]["nameCompound"].ToString();
-
-            if (IsNewTest)
+            if (_Test.IsArchive)
             {
-                if (!WorkNewTest())
-                    this.Close(); return;
+                LoadArchiveTest();
             }
             else
             {
-                WorkOldTest();
+                if (!LoadNewTest())
+                {
+                    this.Close(); return;
+                }
             }
-                    
 
+            FillUI();
             this.WindowState = FormWindowState.Maximized;
         }
 
-        private bool WorkNewTest()
+        private void FillUI()
+        {
+            if (!_Test.IsArchive)
+                ClearUI();
+
+            this.InvokeEx(() =>
+            {
+                lblStartTime.Text = _Test.DateStartTest.ToString();
+                lblLoad.Text = _Test.NumLoad.ToString();
+                lblOrder.Text = _Test.NumOrder;
+                lblCompound.Text = _Test.NameCompound;
+
+                if (_Test.LoadedProgram == null)
+                {
+                    lblTestTime.Text = "Время испытания: -";
+                    lblPreheat.Text = "Время прогрева: -";
+                    lblTemperature.Text = "Температура: -";
+                    lblRelax.Text = "Время релаксации: -";
+                }
+                else
+                {
+                    lblTestTime.Text = "Время испытания: " + _Test.LoadedProgram.SetTime.ToString();
+                    lblPreheat.Text = "Время прогрева: " + _Test.LoadedProgram.Preheat.ToString();
+                    lblTemperature.Text = "Температура: " + _Test.LoadedProgram.SetPoint.ToString();
+                    lblRelax.Text = "Время релаксации: " + _Test.LoadedProgram.Decay.ToString();
+                }
+                lblNum.Text = "Номер: " + _Test.FactoryNumStand;
+
+                if (_Test.Type == Test.EType.Viscosity)
+                {
+                    if (_Test.LoadedProgram != null && _Test.LoadedProgram.Decay.TotalSeconds > 0)
+                        lblType.Text = "Тип: Вязкость и релоксация (Viscosity + SR)";
+                    else
+                        lblType.Text = "Тип: Вязкость (Viscosity)";
+                }
+                else
+                {
+                    lblType.Text = "Тип: Подвулканизация (Scorch)";
+                }
+            });
+        }
+
+        private void ClearUI()
+        {
+            this.InvokeEx(() =>
+            {
+                lblStartTime.Text = "-";
+                lblLoad.Text = "-";
+                lblOrder.Text = "-";
+                lblCompound.Text = "-";
+                lblTestTime.Text = "Время испытания: -";
+                lblPreheat.Text = "Время прогрева: -";
+                lblTemperature.Text = "Температура: -";
+                lblRelax.Text = "Время релаксации: -";
+                txtData.Text = "";
+                lblResault.Text = "-";
+                lblResault.BackColor = Color.White;
+                chartValue.Series[0].Points.Clear();
+                chartTemperature.Series[0].Points.Clear();
+                chartTemperature.Series[1].Points.Clear();
+            });
+        }
+
+        private bool LoadNewTest()
         {
             //Выбираем стенд
             using (SelectViscometerForm svForm = new SelectViscometerForm())
             {
                 if (svForm.ShowDialog() == DialogResult.OK)
                 {
-                    this.Text = svForm.SelectPortName;
-                    if (svForm.SelectPortName == String.Empty) return false;
+                    this.Text = svForm.SelectedPortName;
+                    if (svForm.SelectedPortName == String.Empty) return false;
 
                     try
                     {
-                        serialPort = new SerialPort(svForm.SelectPortName);
-                        serialPort.Open();
+                        _serialPort = new SerialPort(svForm.SelectedPortName);
+                        _serialPort.Open();
                     }
                     catch (Exception ex)
                     {
@@ -84,29 +134,31 @@ namespace Viscometer
                     return false;
                 }
             }
+            /*
             //Задаем программу испытания
-            using (SetProgrammForm setProgramm = new SetProgrammForm(serialPort))
+            using (SetProgrammForm setProgramm = new SetProgrammForm(_serialPort))
             {
                 if (setProgramm.ShowDialog() == DialogResult.OK)
                 {
-                    testProgStr = setProgramm.TestPragrammString;
+                    //Подписываемся на обработку данных ТОЛЬКО после того как со стендом пообщалось окошко задания программы испытания!
+                    _serialPort.DataReceived += SerialPort_DataReceived;
+                    return true;
                 }
                 else
                 {
                     return false;
                 }
             }
-
-            //Подписываемся на обработку данных ТОЛЬКО после того как со стендом пообщалось окошко задания программы испытания!
-            serialPort.DataReceived += SerialPort_DataReceived;
-
+            */
+            _serialPort.DataReceived += SerialPort_DataReceived;
             return true;
         }
 
-        private void WorkOldTest()
+        private void LoadArchiveTest()
         {
             this.Text = "Просмотр результатов испытания";
-            DataTable dt = DataBase.GetData($"SELECT stringFromStand, timeStamp FROM [dbo].[ProcessResponses] WHERE idTest = '{idTest}' ORDER BY [timeStamp] ASC");
+            this.BackColor = Color.Moccasin;
+            DataTable dt = _Test.GetArchiveData();
             foreach (DataRow item in dt.Rows)
             {
                 ParseLine(item[0].ToString());
@@ -150,16 +202,6 @@ namespace Viscometer
         {
             if (line == "") return;
 
-            if (IsNewTest)
-                DataBase.GetData($"INSERT INTO [dbo].[ProcessResponses] ([idTest],[stringFromStand]) VALUES ('{idTest}' ,'{line}')");
-
-            txtData.InvokeEx(() => 
-            {
-                txtData.AppendText(line + Environment.NewLine);
-                txtData.SelectionStart = txtData.Text.Length;
-                txtData.ScrollToCaret();
-            });
-
             IResponseOfStand response = ResponseOfStand.Parse(line);
             if (response.GetType() == typeof(CurrentResponse))
             {
@@ -173,84 +215,37 @@ namespace Viscometer
             }
             else if(response.GetType() == typeof(StartResponse))
             {
-                if (IsNewTest)
-                {
-                    DataBase.GetData("UPDATE [dbo].[Tests] SET " +
-                        $"[dateStartTest] = '{DateTime.Now}'," +
-                        $"[idStatus] = '{(int)Status.TestStatus.Work}'," +
-                        $"[loadProgramm] = '{testProgStr}' " +
-                        "WHERE " +
-                        $"[idTest] = '{idTest}'");
-                }
-                //else
-                //{
-                //    if (lblResault.Text != "")
-                //    {
-                //        //!!!записывать программу испытания в виде строки
-                //        numLoad++;
-                //        idTest = DataBase.GetData("INSERT INTO [dbo].[Tests] ([dateStartTest],[idOrder],[idCompound],[idStatus],[numLoad]) " +
-                //            $"VALUES ('{DateTime.Now}','{idOrder}','{idCompound}','{(int)Status.TestStatus.Work}','{numLoad}') " +
-                //            "SELECT SCOPE_IDENTITY()").Rows[0].ItemArray[0].ToString();
-                //    }
-                //}
-
                 StartResponse startResponse = response as StartResponse;
-                this.InvokeEx(() =>
-                {
-                    lblStartTime.Text = DateTime.Now.ToString();
-                    lblTestTime.Text = "Время испытания: " + startResponse.SetTime.ToString();
-                    lblTemperature.Text = "Температура: " + startResponse.SetPoint.ToString();
-                    lblRelax.Text = "Время релаксации: " + startResponse.Decay.ToString();
-                    lblPreheat.Text = "Время прогрева: " + startResponse.Preheat.ToString();
-                    lblNum.Text = "Номер: " + startResponse.FactoryNumber.ToString();
-                    testType = startResponse.TestType;
-                    if (testType == TestType.Viscosity && startResponse.Decay.TotalSeconds > 0)
-                        lblType.Text = "Тип: Вязкость и релоксация (Viscosity + SR)";
-                    else if (testType == TestType.Viscosity)
-                        lblType.Text = "Тип: Вязкость (Viscosity)";
-                    if (testType == TestType.Scorch)
-                        lblType.Text = "Тип: Подвулканизация (Scorch)";
-                    rotorSize = startResponse.RotorSize;
-                });
+                _Test.SetStartResponse(startResponse);
+                if (_Test.IsArchive)
+                    this.InvokeEx(() => Text += " - " + startResponse.FactoryNumber);
+                else
+                    this.InvokeEx(() => Text = startResponse.FactoryNumber);
+                FillUI();
             }
             else if (response.GetType() == typeof(EndResponse))
             {
                 EndResponse endResponse = response as EndResponse;
+                _Test.SetEndResponse(endResponse);
                 if (endResponse.Status == 1)
                 {
-                    if (IsNewTest)
-                    {
-                        DataBase.GetData($"UPDATE [dbo].[Tests] SET " +
-                        $"[idStatus] = '{(int)Status.TestStatus.Success}' " +
-                        "WHERE " +
-                        $"[idTest] = '{idTest}'");
-                    }
-
                     this.InvokeEx(() => 
                     {
                         lblResault.Text = "Успешно";
                         lblResault.BackColor = Color.LightGreen;
-                        if (testType == TestType.Viscosity)
+                        if (_Test.Type == Test.EType.Viscosity)
                             lblResault.Text = "MU " + endResponse.FinalViscosity.ToString();
-                        else if (testType == TestType.Scorch)
+                        else if (_Test.Type == Test.EType.Scorch)
                         {
-                            if (rotorSize == RotorType.Large)
+                            if (_Test.RotorSize == RotorType.Large)
                                 lblResault.Text = $"t35 ({endResponse.T18orT35.ToString()}) - t5 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
-                            else if (rotorSize == RotorType.Small)
+                            else if (_Test.RotorSize == RotorType.Small)
                                 lblResault.Text = $"t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
                         }
                     });
                 }
                 else if (endResponse.Status == 2)
                 {
-                    if (IsNewTest)
-                    {
-                        DataBase.GetData($"UPDATE [dbo].[Tests] SET " +
-                        $"[idStatus] = '{(int)Status.TestStatus.Fail}' " +
-                        "WHERE " +
-                        $"[idTest] = '{idTest}'");
-                    }
-
                     this.InvokeEx(() =>
                     {
                         lblResault.Text = "Провалено";
@@ -258,17 +253,22 @@ namespace Viscometer
                     });
                 }
             }
+
+            _Test.SaveResponse(line);
+
+            txtData.InvokeEx(() =>
+            {
+                txtData.AppendText(line + Environment.NewLine);
+                txtData.SelectionStart = txtData.Text.Length;
+                txtData.ScrollToCaret();
+            });
         }
 
         private void WorkForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (IsNewTest)
-            {
-                int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{idTest}'").Rows[0]["idStatus"]);
-                if (status == (int)Status.TestStatus.Work) DataBase.GetData($"UPDATE [dbo].[Tests] SET [idStatus] = '{(int)Status.TestStatus.Fail}' WHERE [idTest] = '{idTest}'");
-            }
-            
-            serialPort?.Close();
+            _Test.SetBreakTest();
+
+            _serialPort?.Close();
         }
     }
 }

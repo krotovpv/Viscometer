@@ -12,13 +12,13 @@ namespace Viscometer
 {
     public partial class UCViscometerButton : UserControl
     {
-        public UCViscometerButton(Viscometer viscometer)
+        public UCViscometerButton(TestObject.Viscometer viscometer)
         {
             InitializeComponent();
 
             lblName.Text = viscometer.Name;
             lblPortName.Text = viscometer.PortName;
-            lblNumber.Text = viscometer.Number;
+            lblNumber.Text = viscometer.FactoryNumber;
         }
 
         private void UCViscometerButton_Load(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Viscometer
             BackColor = Color.LightGreen;
             FlowLayoutPanel flp = Parent as FlowLayoutPanel;
             SelectViscometerForm frm = flp.Parent as SelectViscometerForm;
-            frm.SelectPortName = lblPortName.Text;
+            frm.SelectedPortName = lblPortName.Text;
             frm.DialogResult = DialogResult.OK;
         }  
 

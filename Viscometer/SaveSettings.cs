@@ -1,14 +1,11 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Viscometer
 {
     public static class SaveSettings
     {
-        public static List<Viscometer> Viscometers = new List<Viscometer>();
+        public static List<TestObject.Viscometer> Viscometers = new List<TestObject.Viscometer>();
 
         static SaveSettings()
         {
@@ -26,7 +23,7 @@ namespace Viscometer
             Viscometers.Clear();
             string strViscosimeters = Properties.Settings.Default.Viscometers;
             if (strViscosimeters != "")
-                Viscometers.AddRange(JsonConvert.DeserializeObject<List<Viscometer>>(strViscosimeters));
+                Viscometers.AddRange(JsonConvert.DeserializeObject<List<TestObject.Viscometer>>(strViscosimeters));
         }
     }
 }

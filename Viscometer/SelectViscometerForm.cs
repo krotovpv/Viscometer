@@ -5,7 +5,8 @@ namespace Viscometer
 {
     public partial class SelectViscometerForm : Form
     {
-        public string SelectPortName { get; set; } = String.Empty;
+        public string SelectedPortName { get; set; } = String.Empty;
+        public string SelectedFabricNumber {  get; set; } = String.Empty;
         public SelectViscometerForm()
         {
             InitializeComponent();
@@ -82,7 +83,7 @@ namespace Viscometer
 
         private void LoadViscometer()
         {
-            foreach (Viscometer item in SaveSettings.Viscometers)
+            foreach (TestObject.Viscometer item in SaveSettings.Viscometers)
                 flowLayoutPanelMain.Controls.Add(new UCViscometerButton(item));
         }
     }

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using static Viscometer.Tester;
+﻿using System.Data;
 
-namespace Viscometer
+namespace Viscometer.TestObject
 {
     public static class Tester
     {
