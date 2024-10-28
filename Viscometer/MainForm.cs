@@ -222,7 +222,7 @@ namespace Viscometer
             if (dgvOrders.SelectedRows.Count > 0)
             {
                 dgvTests.DataSource = DataBase.GetData(
-                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, Tests.loadProgramm, Status.shortDescription, Tests.comment " +
+                    "SELECT Tests.idTest, Tests.numLoad, Compounds.nameCompound, Tests.loadProgramm, Status.shortDescription, Tests.comment, Tests.testResult " +
                     "FROM Tests " +
                     "INNER JOIN Compounds ON Tests.idCompound = Compounds.idCompound " +
                     $"INNER JOIN Status ON Tests.idStatus = Status.idStatus WHERE Tests.idOrder = '{dgvOrders.SelectedRows[0].Cells["ColIdOrder"].Value?.ToString()}'");

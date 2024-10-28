@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Viscometer.TestObject;
 
 namespace Viscometer.Response
 {
@@ -53,6 +54,7 @@ namespace Viscometer.Response
         /// </summary>
         public string Simbol_r { get; } = "";
         public string FullString { get; }
+        public string TestResult { get; }
 
         public EndResponse(string response)
         {

@@ -141,6 +141,15 @@ namespace Viscometer.TestObject
             }
         }
 
+        public void SetTestResult(string testResult) 
+        {
+            DataBase.GetData("" +
+                        $"UPDATE [dbo].[Tests] SET " +
+                            $"[testResult] = '{testResult}'" +
+                        "WHERE " +
+                            $"[idTest] = '{IdTest}'");
+        }
+
         public void SetBreakTest()
         {
             int status = Convert.ToInt16(DataBase.GetData($"SELECT idStatus FROM [dbo].[Tests] WHERE idTest = '{IdTest}'").Rows[0]["idStatus"]);

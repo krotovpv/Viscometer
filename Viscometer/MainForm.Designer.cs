@@ -67,6 +67,7 @@
             this.ColNameParogramm = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTesterStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColRes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrders)).BeginInit();
             this.grpBoxTester.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContMain)).BeginInit();
@@ -439,7 +440,8 @@
             this.ColCompaund,
             this.ColNameParogramm,
             this.ColTesterStatus,
-            this.ColComment});
+            this.ColComment,
+            this.ColRes});
             this.dgvTests.Location = new System.Drawing.Point(1, 53);
             this.dgvTests.MultiSelect = false;
             this.dgvTests.Name = "dgvTests";
@@ -504,6 +506,13 @@
             this.ColComment.HeaderText = "Коментарий";
             this.ColComment.Name = "ColComment";
             this.ColComment.ReadOnly = true;
+            // 
+            // ColRes
+            // 
+            this.ColRes.DataPropertyName = "testResult";
+            this.ColRes.HeaderText = "Результат";
+            this.ColRes.Name = "ColRes";
+            this.ColRes.ReadOnly = true;
             // 
             // MainForm
             // 
@@ -574,6 +583,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNameParogramm;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTesterStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColComment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColRes;
     }
 }
 

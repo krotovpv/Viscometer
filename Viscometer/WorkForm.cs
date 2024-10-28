@@ -134,22 +134,6 @@ namespace Viscometer
                     return false;
                 }
             }
-            /*
-            //Задаем программу испытания
-            using (SetProgrammForm setProgramm = new SetProgrammForm(_serialPort))
-            {
-                if (setProgramm.ShowDialog() == DialogResult.OK)
-                {
-                    //Подписываемся на обработку данных ТОЛЬКО после того как со стендом пообщалось окошко задания программы испытания!
-                    _serialPort.DataReceived += SerialPort_DataReceived;
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            */
             _serialPort.DataReceived += SerialPort_DataReceived;
             return true;
         }
@@ -187,7 +171,6 @@ namespace Viscometer
                     {
                         MessageBox.Show(ex.Message);
                     }
-                    
                     line = String.Empty;
                 }
                 else
@@ -233,15 +216,18 @@ namespace Viscometer
                     {
                         lblResault.Text = "Успешно";
                         lblResault.BackColor = Color.LightGreen;
+                        string testResult = string.Empty;
                         if (_Test.Type == Test.EType.Viscosity)
-                            lblResault.Text = "MU " + endResponse.FinalViscosity.ToString();
+                            testResult = "MU " + endResponse.FinalViscosity.ToString();
                         else if (_Test.Type == Test.EType.Scorch)
                         {
                             if (_Test.RotorSize == RotorType.Large)
-                                lblResault.Text = $"t35 ({endResponse.T18orT35.ToString()}) - t5 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
+                                testResult = $"Δt ({endResponse.T18orT35 - endResponse.T3orT5}) = t35 ({endResponse.T18orT35.ToString()}) - t5 ({endResponse.T3orT5.ToString()})";
                             else if (_Test.RotorSize == RotorType.Small)
-                                lblResault.Text = $"t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()}) = Δt ({endResponse.T18orT35 - endResponse.T3orT5})";
+                                testResult = $"Δt ({endResponse.T18orT35 - endResponse.T3orT5}) = t18 ({endResponse.T18orT35.ToString()}) - t3 ({endResponse.T3orT5.ToString()})";
                         }
+                        _Test.SetTestResult(testResult);
+                        lblResault.Text = testResult;
                     });
                 }
                 else if (endResponse.Status == 2)

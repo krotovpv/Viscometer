@@ -151,9 +151,6 @@ namespace Viscometer
                 else if (radioBtnRotorS.Checked) TestPragrammString += "t18 - t3";
             }
 
-            //int loop = 0;
-            //while (loop < maxTryRequest)
-            //{
             if (!ResponseSuccessA0)
             {
                 //A 0 Время испытания
@@ -198,20 +195,6 @@ namespace Viscometer
                 //A 24 1-передавать данные при прогревве 0-отключить данные про прогреве
                 sentMsg("A 24 1");
             }
-
-            //Thread.Sleep(1000);
-            //if (!ResponseSuccessA0 || !ResponseSuccessA1 || !ResponseSuccessA2 || !ResponseSuccessA3 ||
-            //    !ResponseSuccessA22 || !ResponseSuccessA23 || !ResponseSuccessA24)
-            //    loop++;
-            //else
-            //    loop = maxTryRequest;
-            //}
-
-            //if (ResponseSuccessA0 && ResponseSuccessA1 && ResponseSuccessA2 && ResponseSuccessA3 &&
-            //    ResponseSuccessA22 && ResponseSuccessA23 && ResponseSuccessA24)
-            //    this.DialogResult = DialogResult.OK;
-            //else
-            //    btnOk.Text = "Повторить";
         }
 
         private void sentMsg(string msg)
